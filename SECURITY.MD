@@ -29,3 +29,24 @@ Security reports should include:
 - steps to reproduce
 - impact
 - suggested fix, if known
+
+## In Scope
+
+Security issues may include:
+
+- unsafe agent execution
+- prompt injection vulnerabilities
+- secret leakage
+- unsafe MCP/tool descriptors
+- wallet signing risks
+- sandbox escape risks
+- exposed environment variables
+- benchmark result tampering
+
+## Out of Scope
+
+Please do not report issues related to unfinished planned features unless they create an active risk in the current codebase.
+
+## Current Status
+
+BenchArena is in early development. Security boundaries will become stricter as the passport, runner, MCP firewall, and Solana receipt layers are implemented.
