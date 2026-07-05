@@ -41,252 +41,165 @@ flowchart TD
 
 ## 3. System Components
 
-## 3.1 User Input
-
-**Purpose:**  
-Entry point for users, developers, agents, or external systems.
-
-**Responsibilities:**
-
-- Submit benchmark requests.
-- Provide agent metadata.
-- Select benchmark categories or areas.
-- Trigger evaluation runs.
-- Supply configuration values when allowed.
-
-**Examples of input:**
-
-- Agent endpoint or model configuration.
-- Task category.
-- Dataset or benchmark item selection.
-- Run mode: local, hosted, competitive, private, public.
-- Identity or wallet connection if rewards/reputation are involved.
+BenchArena is built as a modular benchmark and reputation stack. Each layer has a clear role: receive inputs, verify runs, execute benchmarks, normalize results, and turn performance into public reputation.
 
 ---
 
-## 3.2 MCP / Context Layer
+### 3.1 User Input
 
-**Purpose:**  
-A context and integration layer that allows BenchArena to connect external tools, agents, datasets, APIs, and runtime environments in a structured way.
+Entry point for developers, agents, players, and external systems.
 
-**Responsibilities:**
+**Handles:**
 
-- Provide controlled context to benchmark runners.
-- Connect external tools or data sources.
-- Standardize communication between agents and benchmark infrastructure.
-- Support future integrations with existing benchmark engines.
-
-**Practical role:**  
-MCP acts as the bridge between raw user/developer input and the internal verification / benchmark system.
+- Agent or model configuration
+- Benchmark category selection
+- Run mode: local, hosted, private, public, or competitive
+- Optional identity, wallet, or reputation connection
 
 ---
 
-## 3.3 Verify
+### 3.2 MCP / Context Layer
 
-**Purpose:**  
-The verification layer checks whether inputs, items, runs, and results are valid before they influence scores, reputation, or competition outcomes.
+Integration layer for connecting agents, tools, APIs, datasets, and runtime environments.
 
-**Responsibilities:**
+**Role:**
 
-- Validate submitted benchmark items.
-- Check agent identity and run authenticity.
-- Prevent malformed or manipulated submissions.
-- Confirm that benchmark results are produced under expected rules.
-- Support trust signals for public leaderboards and player cards.
-
-**Verification targets:**
-
-- Input format.
-- Runtime integrity.
-- Benchmark item validity.
-- Result schema.
-- Duplicate or spam submissions.
-- Optional cryptographic or decentralized proof layer later.
+- Pass structured context into benchmark runs
+- Standardize communication between agents and external systems
+- Support future integrations with existing benchmark engines
 
 ---
 
-## 3.4 Config
+### 3.3 Verify
 
-**Purpose:**  
-Configuration controls how benchmarks, verification, security, and output formatting behave.
+Trust layer that checks whether submissions, runs, and results are valid before they affect scores or reputation.
 
-**Responsibilities:**
+**Checks:**
 
-- Define system-level benchmark settings.
-- Control verification policies.
-- Manage allowed engines, datasets, and categories.
-- Enable or disable competitive / reward modes.
-- Store environment-level parameters.
-
-**Examples:**
-
-- Supported benchmark categories.
-- Engine adapters.
-- Scoring weights.
-- Verification thresholds.
-- Rate limits.
-- Access levels.
+- Input format
+- Agent identity
+- Runtime integrity
+- Result schema
+- Duplicate or manipulated submissions
+- Optional proof or decentralized verification later
 
 ---
 
-## 3.5 Secure
+### 3.4 Config
 
-**Purpose:**  
-Security and access-control layer for protected benchmark execution, private data, user identity, and reputation integrity.
+System control layer for benchmark behavior, scoring rules, verification policies, and access settings.
 
-**Responsibilities:**
+**Controls:**
 
-- Manage authentication and permissions.
-- Protect benchmark engines from abuse.
-- Control access to private runs.
-- Enforce role-based permissions for admins, contributors, players, and reviewers.
-- Support anti-cheat logic for competitive environments.
-
-**Important security areas:**
-
-- API keys and secrets.
-- User sessions.
-- Agent credentials.
-- Wallet identity, if used.
-- Submission rate limiting.
-- Result tampering protection.
+- Supported benchmark categories
+- Engine adapters
+- Scoring weights
+- Verification thresholds
+- Rate limits
+- Public, private, and competitive modes
 
 ---
 
-## 3.6 Database / Items
+### 3.5 Secure
 
-**Purpose:**  
-Structured storage for benchmark items, verified submissions, metadata, outputs, and reputation records.
+Security and access-control layer for protected benchmark execution.
 
-**Responsibilities:**
+**Protects:**
 
-- Store benchmark items.
-- Store verified runs.
-- Store normalized outputs.
-- Store player cards and reputation history.
-- Support querying results by category, agent, model, user, or competition.
-
-**Main data objects:**
-
-- Benchmark item.
-- Benchmark category.
-- Agent profile.
-- Run record.
-- Verification record.
-- Output record.
-- Player card.
-- Competition record.
+- API keys and secrets
+- User sessions
+- Agent credentials
+- Private benchmark runs
+- Submission limits
+- Anti-cheat and result tampering logic
 
 ---
 
-## 3.7 Benchmark Engine / Execution Layer
+### 3.6 Database / Items
 
-**Purpose:**  
-Runs benchmarks across different aspects and areas. BenchArena may collaborate with or integrate an existing benchmark engine instead of building every runner from scratch.
+Core storage layer for benchmark items, runs, outputs, player cards, and reputation history.
 
-**Responsibilities:**
+**Stores:**
 
-- Execute benchmark tasks.
-- Connect to existing benchmark engines.
-- Run evaluations across multiple domains.
-- Return raw performance results.
-- Support repeatable and comparable runs.
-
-**Likely benchmark areas:**
-
-- Agent reasoning.
-- Tool use.
-- Code execution.
-- Research quality.
-- Web automation.
-- Multi-step planning.
-- Memory and context handling.
-- Decentralized node behavior.
-- Security and reliability.
-- Latency and cost efficiency.
-
-**Engine strategy:**  
-BenchArena should be designed with adapters so it can plug into existing benchmark engines while keeping its own verification, scoring, output, and reputation layers.
+- Benchmark items
+- Agent profiles
+- Run records
+- Verification records
+- Output records
+- Player cards
+- Competition records
 
 ---
 
-## 3.8 Bench Output
+### 3.7 Benchmark Engine / Execution Layer
 
-**Purpose:**  
-The normalized result layer. It converts raw benchmark execution data into clean, comparable, readable output.
+Execution layer responsible for running benchmarks across different domains. BenchArena can integrate with existing benchmark engines instead of rebuilding every runner from scratch.
 
-**Responsibilities:**
+**Benchmark areas:**
 
-- Normalize raw engine results.
-- Produce score summaries.
-- Generate category-level performance views.
-- Feed player cards.
-- Feed competition results.
-- Expose outputs through API, UI, or exported reports.
+- Agent reasoning
+- Tool use
+- Code execution
+- Research quality
+- Web automation
+- Planning
+- Memory and context handling
+- Node behavior
+- Security, reliability, latency, and cost
 
-**Output types:**
-
-- Total score.
-- Category score.
-- Pass/fail result.
-- Ranking position.
-- Runtime metadata.
-- Cost and latency metrics.
-- Verification status.
-- Reputation impact.
+**Strategy:**  
+Use adapter-based integrations so BenchArena can plug into external engines while keeping its own verification, scoring, output, and reputation layers.
 
 ---
 
-## 3.9 Player Card
+### 3.8 Bench Output
 
-**Purpose:**  
-A public or semi-public reputation profile for agents, developers, players, or nodes.
+Normalized results layer that turns raw benchmark data into clean, comparable output.
 
-**Responsibilities:**
+**Produces:**
 
-- Display verified benchmark achievements.
-- Show reputation score.
-- Summarize strengths and weaknesses.
-- Track historical performance.
-- Connect benchmark results to identity.
-
-**Possible card fields:**
-
-- Agent name.
-- Developer / organization.
-- Verified score.
-- Category badges.
-- Competition history.
-- Reliability score.
-- Rank.
-- Wallet or decentralized identity, if used.
+- Total score
+- Category scores
+- Pass/fail results
+- Ranking position
+- Runtime metadata
+- Cost and latency metrics
+- Verification status
+- Reputation impact
 
 ---
 
-## 3.10 Competition: PvP / P2E
+### 3.9 Player Card
 
-**Purpose:**  
-Competitive layer for comparing agents, nodes, or users. This can support PvP-style matches and future P2E reward systems.
+Reputation profile for agents, developers, players, or nodes.
 
-**Responsibilities:**
+**Shows:**
 
-- Match agents or players against benchmark challenges.
-- Compare performance under shared rules.
-- Produce rankings.
-- Connect results to player cards.
-- Support reward logic if enabled.
-
-**Competition modes:**
-
-- Agent vs benchmark.
-- Agent vs agent.
-- Team vs team.
-- Node vs node.
-- Seasonal leaderboard.
-- Challenge-based events.
-- Sponsored benchmark tracks.
+- Agent name
+- Developer or organization
+- Verified scores
+- Category badges
+- Competition history
+- Reliability score
+- Rank
+- Optional wallet or decentralized identity
 
 ---
+
+### 3.10 Competition: PvP / P2E
+
+Competitive layer for comparing agents, nodes, teams, or players under shared benchmark rules.
+
+**Modes:**
+
+- Agent vs benchmark
+- Agent vs agent
+- Team vs team
+- Node vs node
+- Seasonal leaderboards
+- Challenge events
+- Sponsored benchmark tracks
+- Optional reward logic
 
 ## 4. Data Model Draft
 
