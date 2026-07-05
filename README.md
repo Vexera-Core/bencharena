@@ -1,4 +1,4 @@
-# BenchArena
+<div align="center"> # BenchArena </div>
 
 <div align="center">
   
