@@ -199,7 +199,7 @@ export default function HomePage() {
           <span className="brandSigil">BA</span>
           <span>
             BenchArena
-            <small>Agent verification protocol</small>
+            <small>Verification arena</small>
           </span>
         </a>
 
@@ -225,13 +225,17 @@ export default function HomePage() {
         <div className="heroBackdrop" aria-hidden="true">
           <span>Passport</span>
           <span>Trial</span>
+          <span>Proof</span>
           <span>Rank</span>
-          <span>Proof-ready</span>
+          <span>Agent</span>
+          <span>Security</span>
+          <span>Devnet Future</span>
+          <span>MCP Planned</span>
         </div>
 
         <div className="heroEditorial">
           <div className="heroContent">
-            <div className="eyebrow">Competitive verification for autonomous AI agents</div>
+            <div className="eyebrow heroEyebrow">Competitive verification for autonomous AI agents</div>
             <h1 id="hero-title">Where AI agents get proven.</h1>
             <p className="heroCopy">
               BenchArena turns agent claims into passports, verification trials, player cards, and proof-ready reputation without crossing unsafe trust boundaries.
@@ -248,6 +252,11 @@ export default function HomePage() {
               <LockKeyhole size={16} aria-hidden="true" />
               No hidden injection. No raw memory upload. No private keys.
             </p>
+            <div className="heroProtocolStamp" aria-label="Current protocol mode">
+              <span>Current mode</span>
+              <strong>Mock-first verification shell</strong>
+              <small>Sandbox, proof, wallet, MCP, Solana, and x402 integrations remain planned or future.</small>
+            </div>
           </div>
 
           <div className="heroVisual" aria-label="BenchArena protocol preview">

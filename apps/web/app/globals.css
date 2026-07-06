@@ -104,7 +104,7 @@ a {
 
 .topBar {
   position: sticky;
-  top: 14px;
+  top: 12px;
   z-index: 20;
   display: grid;
   grid-template-columns: minmax(210px, 1fr) auto minmax(210px, 1fr);
@@ -112,18 +112,27 @@ a {
   gap: 18px;
   margin: 0;
   padding: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.11);
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.14);
   border-radius: var(--radius);
-  background:
-    linear-gradient(180deg, rgba(18, 18, 24, 0.94), rgba(5, 5, 9, 0.9)),
-    rgba(2, 3, 7, 0.96);
+  background: rgba(0, 0, 0, 0.94);
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.08),
-    0 20px 70px rgba(0, 0, 0, 0.42);
+    inset 0 -1px 0 rgba(255, 51, 95, 0.2),
+    0 20px 70px rgba(0, 0, 0, 0.64);
   backdrop-filter: blur(20px);
 }
 
+.topBar::before {
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 3px;
+  content: "";
+  background: var(--danger);
+}
+
 .brandMark {
+  position: relative;
+  z-index: 1;
   display: inline-flex;
   align-items: center;
   gap: 12px;
@@ -152,8 +161,8 @@ a {
   border: 1px solid rgba(255, 255, 255, 0.18);
   border-radius: var(--radius);
   background:
-    linear-gradient(135deg, rgba(255, 43, 84, 0.34), rgba(255, 255, 255, 0.04)),
-    #08080d;
+    linear-gradient(135deg, rgba(255, 51, 95, 0.22), rgba(255, 255, 255, 0.03)),
+    #000000;
   color: #ffffff;
   font-family: var(--font-mono);
   font-size: 0.72rem;
@@ -168,11 +177,13 @@ a {
 }
 
 .primaryNav {
+  position: relative;
+  z-index: 1;
   justify-content: center;
   padding: 5px;
   border: 1px solid rgba(255, 255, 255, 0.09);
   border-radius: var(--radius);
-  background: rgba(0, 0, 0, 0.24);
+  background: rgba(255, 255, 255, 0.035);
 }
 
 .primaryNav a {
@@ -215,6 +226,8 @@ a {
 }
 
 .navActions {
+  position: relative;
+  z-index: 1;
   justify-content: flex-end;
 }
 
@@ -235,7 +248,7 @@ a {
 
 .primaryButton {
   border: 1px solid rgba(255, 43, 84, 0.5);
-  background: linear-gradient(135deg, #ff2b54, #7f1727);
+  background: linear-gradient(135deg, #ffffff, #ff335f 55%, #4c0615);
   color: #ffffff;
   box-shadow: 0 0 34px rgba(255, 43, 84, 0.2);
 }
@@ -265,33 +278,37 @@ a {
   align-content: center;
   gap: 28px;
   overflow: hidden;
-  border-bottom: 1px solid var(--border);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.14);
 }
 
 .editorialHero {
   min-height: 84vh;
+  background:
+    linear-gradient(180deg, rgba(0, 0, 0, 0), #000000 86%),
+    radial-gradient(circle at 78% 18%, rgba(255, 51, 95, 0.16), transparent 26rem),
+    #000000;
 }
 
 .heroBackdrop {
   position: absolute;
-  inset: 76px 0 auto;
+  inset: 70px 0 auto;
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(8, minmax(90px, 1fr));
   gap: 14px;
   pointer-events: none;
   opacity: 0.72;
 }
 
 .heroBackdrop span {
-  min-height: 70px;
+  min-height: 74px;
   display: grid;
   place-items: center;
-  border: 1px solid rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: var(--radius);
   background:
-    linear-gradient(135deg, rgba(255, 43, 84, 0.12), rgba(255, 255, 255, 0.025)),
-    rgba(0, 0, 0, 0.18);
-  color: rgba(255, 255, 255, 0.34);
+    linear-gradient(135deg, rgba(255, 51, 95, 0.11), rgba(255, 255, 255, 0.018)),
+    rgba(0, 0, 0, 0.68);
+  color: rgba(255, 255, 255, 0.42);
   font-family: var(--font-mono);
   font-size: 0.78rem;
   text-transform: uppercase;
@@ -315,6 +332,26 @@ a {
   animation-delay: -4.2s;
 }
 
+.heroBackdrop span:nth-child(5) {
+  --float-y: 52px;
+  animation-delay: -5.6s;
+}
+
+.heroBackdrop span:nth-child(6) {
+  --float-y: 22px;
+  animation-delay: -7s;
+}
+
+.heroBackdrop span:nth-child(7) {
+  --float-y: 78px;
+  animation-delay: -8.4s;
+}
+
+.heroBackdrop span:nth-child(8) {
+  --float-y: 8px;
+  animation-delay: -9.8s;
+}
+
 .heroEditorial {
   position: relative;
   z-index: 2;
@@ -327,7 +364,15 @@ a {
 
 .heroContent {
   display: grid;
-  gap: 22px;
+  gap: 24px;
+}
+
+.heroEyebrow {
+  width: fit-content;
+  padding: 7px 10px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-left-color: rgba(255, 51, 95, 0.76);
+  background: rgba(0, 0, 0, 0.58);
 }
 
 .eyebrow,
@@ -353,14 +398,14 @@ h1 {
   margin-bottom: 0;
   color: #ffffff;
   font-family: var(--font-display);
-  font-size: clamp(4.3rem, 8.6vw, 9.4rem);
-  line-height: 0.86;
+  font-size: clamp(4.6rem, 9vw, 10.4rem);
+  line-height: 0.82;
   letter-spacing: 0;
   text-wrap: balance;
 }
 
 .heroCopy {
-  max-width: 740px;
+  max-width: 760px;
   margin-bottom: 0;
   color: var(--soft);
   font-size: clamp(1.08rem, 2vw, 1.35rem);
@@ -393,6 +438,31 @@ h1 {
   font-weight: 800;
 }
 
+.heroProtocolStamp {
+  display: grid;
+  gap: 6px;
+  max-width: 560px;
+  padding: 16px 18px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-left-color: rgba(74, 222, 128, 0.55);
+  border-radius: var(--radius);
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.heroProtocolStamp span,
+.heroProtocolStamp small {
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+}
+
+.heroProtocolStamp strong {
+  color: #ffffff;
+  font-family: var(--font-technical);
+  font-size: 0.96rem;
+}
+
 .heroVisual {
   position: relative;
   isolation: isolate;
@@ -401,9 +471,8 @@ h1 {
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: var(--radius);
   background:
-    linear-gradient(135deg, rgba(255, 43, 84, 0.18), transparent 42%),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.025)),
-    #050508;
+    linear-gradient(135deg, rgba(255, 51, 95, 0.13), transparent 42%),
+    #000000;
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.1),
     0 26px 90px rgba(0, 0, 0, 0.42);
