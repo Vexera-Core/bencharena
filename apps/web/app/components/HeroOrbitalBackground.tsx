@@ -1,7 +1,7 @@
 "use client";
 
 import type { CSSProperties } from "react";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 type OrbitalTile = {
   label: string;
@@ -29,16 +29,36 @@ const orbitalTiles: OrbitalTile[] = [
 
 export function HeroOrbitalBackground() {
   const [motion, setMotion] = useState({ x: 0, y: 0 });
+  const frameRef = useRef<number>();
 
   useEffect(() => {
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+    if (reducedMotion.matches) {
+      return undefined;
+    }
+
     const handlePointerMove = (event: PointerEvent) => {
       const nextX = event.clientX / window.innerWidth - 0.5;
       const nextY = event.clientY / window.innerHeight - 0.5;
-      setMotion({ x: nextX, y: nextY });
+
+      if (frameRef.current) {
+        cancelAnimationFrame(frameRef.current);
+      }
+
+      frameRef.current = requestAnimationFrame(() => {
+        setMotion({ x: nextX, y: nextY });
+      });
     };
 
     window.addEventListener("pointermove", handlePointerMove, { passive: true });
-    return () => window.removeEventListener("pointermove", handlePointerMove);
+    return () => {
+      window.removeEventListener("pointermove", handlePointerMove);
+
+      if (frameRef.current) {
+        cancelAnimationFrame(frameRef.current);
+      }
+    };
   }, []);
 
   return (

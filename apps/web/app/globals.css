@@ -286,6 +286,7 @@ h1 {
 
 .heroVisual {
   position: relative;
+  isolation: isolate;
   min-height: 440px;
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.12);
@@ -1195,6 +1196,15 @@ h1 {
     left: 16px;
   }
 
+  .orbitalTile {
+    min-width: 70px;
+    padding: 9px 10px;
+  }
+
+  .orbitalTile:nth-of-type(n + 9) {
+    display: none;
+  }
+
   .stage,
   .surfaceCard,
   .statusBox,
@@ -1227,5 +1237,24 @@ h1 {
 
   .playerCard h3 {
     font-size: clamp(2.5rem, 17vw, 4rem);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+
+  .heroOrbitalBackground,
+  .heroOrbitalBackground::before,
+  .heroOrbitalBackground::after,
+  .orbitalCore,
+  .orbitalTile {
+    transform: none !important;
   }
 }
