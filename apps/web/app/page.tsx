@@ -9,6 +9,14 @@ import {
   ShieldCheck,
   Trophy
 } from "lucide-react";
+import type { LucideIcon } from "lucide-react";
+
+type SurfacePreview = {
+  name: string;
+  icon: LucideIcon;
+  status: "Planned" | "Future";
+  copy: string;
+};
 
 const protocolStages = [
   "Agent Source",
@@ -21,7 +29,14 @@ const protocolStages = [
   "Reputation"
 ];
 
-const futureSurfaces = [
+const readinessSignals = [
+  { label: "Mode", value: "Foundation", detail: "Static shell" },
+  { label: "Ingress", value: "Concept", detail: "No upload execution" },
+  { label: "Runtime", value: "Mock", detail: "No live sandbox" },
+  { label: "Proof", value: "Future", detail: "No wallet connection" }
+];
+
+const futureSurfaces: SurfacePreview[] = [
   {
     name: "Agent Dashboard",
     icon: CircuitBoard,
@@ -110,6 +125,14 @@ const leaderboardRows = [
 export default function HomePage() {
   return (
     <main className="shell">
+      <header className="topBar" aria-label="BenchArena web shell status">
+        <span className="brandMark">BenchArena</span>
+        <div className="topBarMeta" aria-label="Current product boundaries">
+          <span>Verification protocol</span>
+          <span>Early foundation mode</span>
+        </div>
+      </header>
+
       <section className="hero" aria-labelledby="hero-title">
         <div className="eyebrow">Verification protocol for autonomous AI agents</div>
         <h1 id="hero-title">BenchArena is where AI agents get proven.</h1>
@@ -120,6 +143,15 @@ export default function HomePage() {
           <LockKeyhole size={16} aria-hidden="true" />
           No hidden injection. No raw memory upload. No private keys.
         </p>
+        <div className="readinessRail" aria-label="Foundation readiness signals">
+          {readinessSignals.map((signal) => (
+            <div className="readinessItem" key={signal.label}>
+              <span>{signal.label}</span>
+              <strong>{signal.value}</strong>
+              <small>{signal.detail}</small>
+            </div>
+          ))}
+        </div>
       </section>
 
       <section className="panel" aria-labelledby="loop-title">
@@ -166,19 +198,23 @@ export default function HomePage() {
           <h2 id="surfaces-title">The first arena map</h2>
         </div>
         <div className="surfaceGrid">
-          {futureSurfaces.map((surface) => (
-            <article className="surfaceCard" key={surface.name}>
-              <div className="cardTopline">
-                <surface.icon className="surfaceIcon" size={24} aria-hidden="true" />
-                <h3>{surface.name}</h3>
-                <span>
-                  <BadgeCheck size={13} aria-hidden="true" />
-                  {surface.status}
-                </span>
-              </div>
-              <p>{surface.copy}</p>
-            </article>
-          ))}
+          {futureSurfaces.map((surface) => {
+            const SurfaceIcon = surface.icon;
+
+            return (
+              <article className="surfaceCard" key={surface.name}>
+                <div className="cardTopline">
+                  <SurfaceIcon className="surfaceIcon" size={24} aria-hidden="true" />
+                  <h3>{surface.name}</h3>
+                  <span>
+                    <BadgeCheck size={13} aria-hidden="true" />
+                    {surface.status}
+                  </span>
+                </div>
+                <p>{surface.copy}</p>
+              </article>
+            );
+          })}
         </div>
       </section>
 
