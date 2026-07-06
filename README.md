@@ -110,9 +110,7 @@ BenchArena starts with the smallest reliable version of this loop: define the pr
 
 ---
 
-# Architecture
-
-![alt text](https://github.com/Vexora-Core/bencharena/assets/initial-arch.png?raw=true)
+![alt text](https://github.com/Vexora-Core/bencharena/assets/mdown/initial-arch.png?raw=true)
 
 ---
 
