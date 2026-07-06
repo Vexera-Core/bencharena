@@ -29,6 +29,7 @@ type TrialPreview = {
   latency: string;
   lastRun: string;
   status: string;
+  progress: number;
   tone: "pass" | "warning";
 };
 
@@ -112,6 +113,7 @@ const trialPreviews: TrialPreview[] = [
     latency: "184ms",
     lastRun: "Mock session",
     status: "Mock pass",
+    progress: 100,
     tone: "pass"
   },
   {
@@ -125,6 +127,7 @@ const trialPreviews: TrialPreview[] = [
     latency: "231ms",
     lastRun: "Mock session",
     status: "Mock warning",
+    progress: 82,
     tone: "warning"
   },
   {
@@ -138,8 +141,16 @@ const trialPreviews: TrialPreview[] = [
     latency: "206ms",
     lastRun: "Mock session",
     status: "Mock pass",
+    progress: 100,
     tone: "pass"
   }
+];
+
+const rankLadder = [
+  { rank: "R-01", label: "Declared", status: "Concept" },
+  { rank: "R-03", label: "Trial-ready", status: "Mock" },
+  { rank: "R-05", label: "Disciplined", status: "Mock" },
+  { rank: "R-08", label: "Proof-ready", status: "Future" }
 ];
 
 const runtimeMetrics = [
@@ -172,9 +183,9 @@ const playerCardSignals = [
 ];
 
 const leaderboardRows = [
-  { rank: "01", agent: "Solana Dev Wolf", className: "Protocol Engineer", honor: "2,840", status: "Mock" },
-  { rank: "02", agent: "Security Hound", className: "Security Reviewer", honor: "2,410", status: "Mock" },
-  { rank: "03", agent: "Terminal Ops Scout", className: "Runtime Operator", honor: "1,980", status: "Mock" }
+  { rank: "01", agent: "Solana Dev Wolf", className: "Protocol Engineer", honor: "2,840", status: "Mock", proof: "Future proof" },
+  { rank: "02", agent: "Security Hound", className: "Security Reviewer", honor: "2,410", status: "Mock", proof: "Mock replay" },
+  { rank: "03", agent: "Terminal Ops Scout", className: "Runtime Operator", honor: "1,980", status: "Mock", proof: "Mock replay" }
 ];
 
 const trustChecklist = [
@@ -331,7 +342,7 @@ export default function HomePage() {
         <div className="sectionHeader">
           <div>
             <p className="sectionKicker">Trial library</p>
-            <h2 id="trials-title">Challenge cards for agent growth</h2>
+            <h2 id="trials-title">Trials that build rank and honor</h2>
           </div>
           <p className="sectionNote">Mock verification feedback. No real benchmark runner is connected.</p>
         </div>
@@ -344,6 +355,9 @@ export default function HomePage() {
               </div>
               <h3>{trial.name}</h3>
               <p>{trial.category}</p>
+              <div className="trialProgress" aria-label={`${trial.name} mock completion ${trial.progress}%`}>
+                <span style={{ width: `${trial.progress}%` }} />
+              </div>
               <div className="trialDetails" aria-label={`${trial.name} mock trial details`}>
                 <span>
                   <strong>{trial.difficulty}</strong>
@@ -364,6 +378,15 @@ export default function HomePage() {
                 <span>{trial.honor} honor</span>
               </div>
             </article>
+          ))}
+        </div>
+        <div className="rankLadder" aria-label="Mock rank progression ladder">
+          {rankLadder.map((item) => (
+            <div className="rankStep" key={item.rank}>
+              <strong>{item.rank}</strong>
+              <span>{item.label}</span>
+              <small>{item.status}</small>
+            </div>
           ))}
         </div>
       </section>
@@ -475,6 +498,7 @@ export default function HomePage() {
                     <small>{row.className}</small>
                   </span>
                   <span className="metaText">{row.honor} honor</span>
+                  <span className="metaText">{row.proof}</span>
                   <span className="statusPill">{row.status}</span>
                 </div>
               ))}

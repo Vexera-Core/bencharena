@@ -562,12 +562,43 @@ h1 {
 .trialCard {
   min-height: 250px;
   padding: 24px;
+  position: relative;
+}
+
+.trialCard::before {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  content: "";
+  border-radius: var(--radius);
+  background: linear-gradient(135deg, rgba(255, 43, 84, 0.11), transparent 46%);
+  opacity: 0.8;
 }
 
 .trialCard h3 {
   margin-bottom: 0;
   color: #ffffff;
   font-size: 1.35rem;
+}
+
+.trialCard > * {
+  position: relative;
+}
+
+.trialProgress {
+  height: 8px;
+  margin-top: 18px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.34);
+}
+
+.trialProgress span {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #ff2b54, #47f0a5);
 }
 
 .trialDetails {
@@ -625,6 +656,37 @@ h1 {
   color: var(--muted);
   font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
   font-size: 0.78rem;
+}
+
+.rankLadder {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.rankStep {
+  display: grid;
+  gap: 8px;
+  padding: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--radius);
+  background:
+    linear-gradient(135deg, rgba(255, 43, 84, 0.08), rgba(255, 255, 255, 0.035)),
+    rgba(0, 0, 0, 0.2);
+}
+
+.rankStep strong {
+  color: #ffffff;
+  font-size: 1.45rem;
+}
+
+.rankStep span,
+.rankStep small {
+  color: var(--muted);
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  font-size: 0.74rem;
+  text-transform: uppercase;
 }
 
 .consoleRows {
@@ -843,7 +905,7 @@ h1 {
 
 .leaderboardRow {
   display: grid;
-  grid-template-columns: 42px 1fr auto auto;
+  grid-template-columns: 42px 1fr auto auto auto;
   align-items: center;
   gap: 14px;
   padding: 18px 0;
@@ -917,6 +979,7 @@ h1 {
   .readinessRail,
   .surfaceGrid,
   .trialGrid,
+  .rankLadder,
   .metricsGrid,
   .showcaseGrid,
   .statusGrid {
