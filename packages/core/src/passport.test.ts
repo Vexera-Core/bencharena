@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 
+import { mockAgentPassports } from "./passport.fixtures.js";
 import { agentPassportSchema } from "./passport.js";
 
 describe("agentPassportSchema", () => {
@@ -75,5 +76,16 @@ describe("agentPassportSchema", () => {
     expect(passport.sourceReference?.type).toBe("local-config");
     expect(passport.securityFindings[0]?.boundary).toBe("tool");
     expect(passport.benchmarkEligibility).toBe("not-eligible");
+  });
+
+  it("keeps mock passports valid against the protocol schema", () => {
+    const parsed = mockAgentPassports.map((passport) => agentPassportSchema.parse(passport));
+
+    expect(parsed).toHaveLength(3);
+    expect(parsed.map((passport) => passport.securityStatus)).toEqual([
+      "verified",
+      "needs-review",
+      "blocked"
+    ]);
   });
 });

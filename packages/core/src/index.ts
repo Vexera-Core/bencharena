@@ -1,4 +1,11 @@
 export {
+  blockedMockAgentPassport,
+  mockAgentPassports,
+  needsReviewMockAgentPassport,
+  safeMockAgentPassport
+} from "./passport.fixtures.js";
+
+export {
   agentPassportOpenApiRegistry,
   agentPassportSchema,
   agentSourceSchema,
