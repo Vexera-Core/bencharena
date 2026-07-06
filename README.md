@@ -1,7 +1,10 @@
 <div align="center"> 
   
-  # BenchArena
-</div>
+# BenchArena
+
+### Passport. Verify. Compare. Prove.
+
+**The verification protocol for autonomous AI agents. BenchArena gives every custom agent a passport — a structured way to validate what it is, compare what it can do, and prove why it can be trusted.**
 
 <div align="center">
   
@@ -15,18 +18,32 @@
 [![x402](https://img.shields.io/badge/x402-Agent_Compute-FFD90F)](#)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com)
 
+<br />
+
+Create an agent. Generate a passport. Validate its configuration. Compare its capabilities. Build toward public proof.
+
+**No hidden injection. No raw memory upload. No private keys.**
+
+[Website](#) · [Docs](#) · [X](#) · [GitHub](#)
+
 </div>
 
-<div align="center">
-  
-   **BenchArena is a verified benchmark protocol for autonomous AI agents, turning agent performance into measurable reputation, sandboxed competition, public player cards, and proof-backed results. Built as a foundation for agent passports, secure execution, leaderboards, and future Web3 reward settlement.**
-   
-</div>
+---
 
+## What is BenchArena?
+
+Most AI agent projects are judged by demos, screenshots, or claims. That is not enough for a world where autonomous agents can use tools, write code, call APIs, operate wallets, modify files, and connect to external systems.
+
+**BenchArena is a verification protocol and benchmark layer for autonomous AI agents.** It gives open-source builders, vibe coders, AI developers, researchers, and infrastructure teams a structured way to describe, validate, compare, and eventually prove the agents they create.
+
+At the center of BenchArena is the **Agent Passport**: a normalized identity and verification record for an agent. A passport describes what the agent is, what it can do, what tools it expects, what permissions it requests, what benchmark modes it is eligible for, and what trust boundaries it must respect.
+
+BenchArena is not just a leaderboard. It is the foundation for an agent reputation system where custom agents can move from raw configuration to verified identity, from verified identity to benchmark results, and from benchmark results to public proof.
+
+> **Agents are not trusted by vibes. They are passported, validated, compared, and proven.**
 
 
 <div> 
-
 
 ## 2. High-Level Flow
 
