@@ -25,6 +25,7 @@ describe("agentPassportSchema", () => {
 
     expect(passport.memoryPolicy).toBe("raw-upload-blocked");
     expect(passport.securityStatus).toBe("draft");
+    expect(passport.securityFindings).toEqual([]);
     expect(passport.benchmarkEligibility).toBe("not-eligible");
   });
 
@@ -42,5 +43,37 @@ describe("agentPassportSchema", () => {
     });
 
     expect(result.success).toBe(false);
+  });
+
+  it("captures source references and security findings without changing eligibility", () => {
+    const passport = agentPassportSchema.parse({
+      id: "agent_review",
+      displayName: "Review Agent",
+      source: "local-config",
+      sourceReference: {
+        type: "local-config",
+        label: "local agent config",
+        uri: "file://agent.json"
+      },
+      runtime: {
+        runtime: "node",
+        version: "20"
+      },
+      securityStatus: "needs-review",
+      securityFindings: [
+        {
+          id: "finding_tool_network",
+          boundary: "tool",
+          severity: "warning",
+          title: "Network tool requires review"
+        }
+      ],
+      createdAt: "2026-07-05T00:00:00.000Z",
+      updatedAt: "2026-07-05T00:00:00.000Z"
+    });
+
+    expect(passport.sourceReference?.type).toBe("local-config");
+    expect(passport.securityFindings[0]?.boundary).toBe("tool");
+    expect(passport.benchmarkEligibility).toBe("not-eligible");
   });
 });

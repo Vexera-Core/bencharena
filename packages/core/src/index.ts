@@ -6,8 +6,12 @@ export {
   memoryPolicySchema,
   permissionBoundarySchema,
   runtimeAssumptionSchema,
+  securityFindingSchema,
+  securityFindingSeveritySchema,
   securityStatusSchema,
-  toolDescriptorSchema
+  sourceReferenceSchema,
+  toolDescriptorSchema,
+  trustBoundarySchema
 } from "./passport.js";
 
 export type {
@@ -17,6 +21,10 @@ export type {
   MemoryPolicy,
   PermissionBoundary,
   RuntimeAssumption,
+  SecurityFinding,
+  SecurityFindingSeverity,
   SecurityStatus,
+  SourceReference,
+  TrustBoundary,
   ToolDescriptor
 } from "./passport.js";
