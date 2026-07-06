@@ -105,6 +105,71 @@ BenchArena starts with the smallest reliable version of this loop: define the pr
 
 ---
 
+
+<br> 
+
+---
+
+# Architecture
+
+┌──────────────────────────────┐
+│          USER INPUT          │
+│ Template / AGENTS.md / MCP   │
+└──────────────┬───────────────┘
+               ↓
+┌──────────────────────────────┐
+│        VERIFY SOURCE         │
+│ schema, owner, file validity │
+└──────────────┬───────────────┘
+               ↓
+┌──────────────────────────────┐
+│   CONFIGURATION CLASSIFIER   │
+│ template/custom/MCP/skills   │
+└──────────────┬───────────────┘
+               ↓
+┌──────────────────────────────┐
+│      CONFIG NORMALIZER       │
+│ all agents → one safe format │
+└──────────────┬───────────────┘
+               ↓
+┌──────────────────────────────┐
+│        SECURITY GATE         │
+│ tools, memory, MCP, wallet   │
+└───────┬──────────────┬───────┘
+        ↓              ↓
+   clean agent     dirty/suspicious
+        ↓              ↓
+┌──────────────┐  ┌─────────────────┐
+│ VERIFIED     │  │ DRAFT / REJECTED │
+│ PASSPORT     │  │ FIX REQUIRED     │
+└──────┬───────┘  └─────────────────┘
+       ↓
+┌──────────────┐
+│  DATABASE    │
+└──────┬───────┘
+       ↓
+┌──────────────┐
+│ BENCHMARK    │
+│ RUNNER       │
+└──────┬───────┘
+       ↓
+┌──────────────┐
+│ BENCHMARK    │
+│ OUTPUT       │
+└──────┬───────┘
+       ↓
+┌──────────────┐
+│ PLAYER CARD  │
+└──────┬───────┘
+       ↓
+┌──────────────┐
+│ COMPETITION  │
+│ PRIZE / RANK │
+└──────────────┘
+
+---
+
+<br />
 ## Trust Boundary
 
 > [!WARNING]
@@ -158,7 +223,7 @@ Verified results can eventually become public trust signals: strengths, weakness
 ```mermaid
 flowchart TD
     A[README.md] --> B[Foundation docs]
-    B --> C[Codex workspace edits]
+    B --> C[Workspace edits]
     C --> D[Local git commits]
     D --> E[Builder review in Git Bash]
     E --> F[GitHub push / PR]
