@@ -241,8 +241,8 @@ bencharena/
   pnpm-workspace.yaml
   tsconfig.base.json
   README.md
-  CONTRIBUTING.MD
-  SECURITY.MD
+  CONTRIBUTING.md
+  SECURITY.md
 ```
 
 <br />
