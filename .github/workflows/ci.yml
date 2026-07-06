@@ -1,0 +1,22 @@
+name: Tests Passing
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  placeholder:
+    name: Placeholder green check
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Pass placeholder CI
+        run: |
+          echo "BenchArena placeholder CI passed."
+          echo "Real lint, typecheck, test, and build checks will be added later."
+          exit 0
