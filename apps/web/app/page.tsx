@@ -231,6 +231,10 @@ export default function HomePage() {
             src="/brand/arena-logo-updated.png"
             width={1254}
           />
+          <span className="brandText">
+            <strong>BenchArena</strong>
+            <small>Agent verification arena</small>
+          </span>
         </a>
 
         <nav className="primaryNav" aria-label="Product sections">

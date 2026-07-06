@@ -115,11 +115,11 @@ a {
   top: 12px;
   z-index: 20;
   display: grid;
-  grid-template-columns: minmax(210px, 1fr) auto minmax(210px, 1fr);
+  grid-template-columns: minmax(260px, 1fr) auto minmax(240px, 1fr);
   align-items: center;
   gap: 18px;
   margin: 0;
-  padding: 12px;
+  padding: 10px 12px;
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.14);
   border-radius: var(--radius);
@@ -145,6 +145,7 @@ a {
   z-index: 1;
   display: inline-flex;
   align-items: center;
+  gap: 12px;
   width: fit-content;
   color: #ffffff;
   font-family: var(--font-display);
@@ -154,11 +155,31 @@ a {
 
 .brandLogo {
   display: block;
-  width: 52px;
-  height: 52px;
+  width: 50px;
+  height: 50px;
   object-fit: contain;
   filter: drop-shadow(0 10px 24px rgba(221, 2, 14, 0.2));
   transition: filter 180ms ease, transform 180ms ease;
+}
+
+.brandText {
+  display: grid;
+  gap: 2px;
+  line-height: 1;
+}
+
+.brandText strong {
+  color: #ffffff;
+  font-family: var(--font-technical);
+  font-size: 0.98rem;
+  font-weight: 800;
+}
+
+.brandText small {
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  text-transform: uppercase;
 }
 
 .brandMark:hover .brandLogo,
@@ -178,7 +199,7 @@ a {
   position: relative;
   z-index: 1;
   justify-content: center;
-  padding: 5px;
+  padding: 4px;
   border: 1px solid rgba(255, 255, 255, 0.09);
   border-radius: var(--radius);
   background: rgba(25, 32, 57, 0.36);
@@ -187,11 +208,11 @@ a {
 .primaryNav a {
   position: relative;
   overflow: hidden;
-  padding: 9px 12px;
+  padding: 8px 12px;
   border-radius: calc(var(--radius) - 2px);
   color: var(--muted);
-  font-size: 0.82rem;
-  font-weight: 850;
+  font-size: 0.78rem;
+  font-weight: 800;
   transition: background 160ms ease, color 160ms ease, transform 160ms ease;
 }
 
@@ -234,10 +255,10 @@ a {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 40px;
-  padding: 0 14px;
+  min-height: 38px;
+  padding: 0 13px;
   border-radius: var(--radius);
-  font-size: 0.8rem;
+  font-size: 0.74rem;
   font-weight: 950;
   letter-spacing: 0;
   text-transform: uppercase;
