@@ -336,18 +336,8 @@ These commands validate the current TypeScript workspace and passport schema tes
 
 ---
 
-## Next Planned Commits
-
-```txt
-030--refresh-readme-status
-031--add-result-replay-schemas
-032--add-trust-policy-checks
-033--add-passport-normalizer-types
-034--add-static-passport-inspector
-```
-
 > [!NOTE]
-> The UI work above is planned direction, not an implemented screen. Mock data and protocol schemas should come before any live runner or hosted service.
+> The UI work is a planned direction, not an implemented screen. Mock data and protocol schemas should come before any live runner or hosted service.
 
 <br />
 
