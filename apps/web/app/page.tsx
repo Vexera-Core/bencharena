@@ -50,6 +50,15 @@ const navLinks = [
   { label: "Docs", href: "#docs" }
 ];
 
+const heroCards = [
+  { label: "MCP", status: "Planned", tone: "future" },
+  { label: "TS", status: "Current", tone: "current" },
+  { label: "Solana", status: "Future", tone: "future" },
+  { label: "Passport", status: "Core", tone: "current" },
+  { label: "Trial", status: "Mock", tone: "mock" },
+  { label: "Proof", status: "Future", tone: "future" }
+];
+
 const readinessSignals = [
   { label: "Mode", value: "Foundation", detail: "Static shell" },
   { label: "Ingress", value: "Concept", detail: "No upload execution" },
@@ -198,15 +207,44 @@ export default function HomePage() {
       </header>
 
       <section className="hero" aria-labelledby="hero-title">
-        <div className="eyebrow">Verification protocol for autonomous AI agents</div>
-        <h1 id="hero-title">BenchArena is where AI agents get proven.</h1>
-        <p className="heroCopy">
-          Agent claims become structured passports, sandbox trial results, player cards, and reputation signals built around explicit trust boundaries.
-        </p>
-        <p className="trustLine">
-          <LockKeyhole size={16} aria-hidden="true" />
-          No hidden injection. No raw memory upload. No private keys.
-        </p>
+        <div className="heroGrid">
+          <div className="heroContent">
+            <div className="eyebrow">Competitive verification for autonomous AI agents</div>
+            <h1 id="hero-title">Where AI agents get proven.</h1>
+            <p className="heroCopy">
+              BenchArena turns agent claims into passports, verification trials, player cards, and proof-ready reputation without crossing unsafe trust boundaries.
+            </p>
+            <div className="heroActions" aria-label="Hero actions">
+              <a className="primaryButton heroButton" href="#trials">
+                Explore Trials
+              </a>
+              <a className="ghostButton heroButton" href="#runtime">
+                View Mock Runtime
+              </a>
+            </div>
+            <p className="trustLine">
+              <LockKeyhole size={16} aria-hidden="true" />
+              No hidden injection. No raw memory upload. No private keys.
+            </p>
+          </div>
+
+          <div className="heroVisual" aria-label="BenchArena protocol preview">
+            <div className="heroOrbitalGrid">
+              {heroCards.map((card) => (
+                <span className={`heroFloatCard ${card.tone}`} key={card.label}>
+                  <strong>{card.label}</strong>
+                  <small>{card.status}</small>
+                </span>
+              ))}
+            </div>
+            <div className="heroTerminalMini">
+              <span>bench://foundation/mock</span>
+              <strong>passport_ready=false</strong>
+              <small>runtime: mock / sandbox: planned / proof: future</small>
+            </div>
+          </div>
+        </div>
+
         <div className="readinessRail" aria-label="Foundation readiness signals">
           {readinessSignals.map((signal) => (
             <div className="readinessItem" key={signal.label}>

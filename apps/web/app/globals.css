@@ -39,11 +39,12 @@ body {
 
 body {
   background:
-    linear-gradient(180deg, rgba(155, 140, 255, 0.08), transparent 36rem),
+    radial-gradient(circle at 50% -10%, rgba(255, 43, 84, 0.2), transparent 34rem),
+    linear-gradient(180deg, rgba(255, 43, 84, 0.08), transparent 36rem),
     linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
     linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px),
     var(--bg);
-  background-size: auto, 56px 56px, 56px 56px, auto;
+  background-size: auto, auto, 56px 56px, 56px 56px, auto;
 }
 
 a,
@@ -188,11 +189,24 @@ a {
 }
 
 .hero {
-  min-height: 76vh;
+  min-height: 78vh;
   display: grid;
   align-content: center;
-  gap: 24px;
+  gap: 28px;
   border-bottom: 1px solid var(--border);
+}
+
+.heroGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(340px, 0.95fr);
+  align-items: center;
+  gap: 44px;
+  padding-top: 46px;
+}
+
+.heroContent {
+  display: grid;
+  gap: 22px;
 }
 
 .eyebrow,
@@ -217,8 +231,8 @@ h1 {
   max-width: 1000px;
   margin-bottom: 0;
   color: #ffffff;
-  font-size: clamp(3.8rem, 8vw, 8.7rem);
-  line-height: 0.9;
+  font-size: clamp(4rem, 8vw, 8.4rem);
+  line-height: 0.86;
   letter-spacing: 0;
 }
 
@@ -228,6 +242,17 @@ h1 {
   color: var(--soft);
   font-size: clamp(1.08rem, 2vw, 1.35rem);
   line-height: 1.7;
+}
+
+.heroActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.heroButton {
+  min-height: 48px;
+  padding-inline: 18px;
 }
 
 .trustLine {
@@ -242,6 +267,96 @@ h1 {
   align-items: center;
   gap: 10px;
   font-weight: 800;
+}
+
+.heroVisual {
+  position: relative;
+  min-height: 440px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--radius);
+  background:
+    linear-gradient(135deg, rgba(255, 43, 84, 0.18), transparent 42%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.025)),
+    #050508;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.1),
+    0 26px 90px rgba(0, 0, 0, 0.42);
+}
+
+.heroVisual::before {
+  position: absolute;
+  inset: 38px;
+  content: "";
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 50%;
+}
+
+.heroOrbitalGrid {
+  position: absolute;
+  inset: 34px 28px 116px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.heroFloatCard {
+  display: grid;
+  align-content: space-between;
+  min-height: 86px;
+  padding: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--radius);
+  background: rgba(0, 0, 0, 0.42);
+}
+
+.heroFloatCard strong {
+  color: #ffffff;
+  font-size: 1.35rem;
+}
+
+.heroFloatCard small {
+  color: var(--muted);
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+}
+
+.heroFloatCard.current {
+  border-color: rgba(255, 255, 255, 0.22);
+}
+
+.heroFloatCard.mock {
+  border-color: rgba(246, 211, 101, 0.32);
+}
+
+.heroFloatCard.future {
+  border-color: rgba(255, 43, 84, 0.28);
+}
+
+.heroTerminalMini {
+  position: absolute;
+  right: 22px;
+  bottom: 22px;
+  left: 22px;
+  display: grid;
+  gap: 8px;
+  padding: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--radius);
+  background: rgba(0, 0, 0, 0.66);
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+}
+
+.heroTerminalMini span,
+.heroTerminalMini small {
+  color: var(--muted);
+  font-size: 0.74rem;
+}
+
+.heroTerminalMini strong {
+  color: #ffffff;
+  font-size: 0.92rem;
 }
 
 .readinessRail {
@@ -756,6 +871,7 @@ h1 {
 }
 
 @media (max-width: 980px) {
+  .heroGrid,
   .protocolLoop,
   .readinessRail,
   .surfaceGrid,
@@ -774,6 +890,10 @@ h1 {
   .hero {
     min-height: auto;
     padding: 88px 0 56px;
+  }
+
+  .heroGrid {
+    padding-top: 24px;
   }
 
   .sectionHeader {
@@ -825,5 +945,9 @@ h1 {
   .primaryButton,
   .ghostButton {
     flex: 1 0 auto;
+  }
+
+  .heroVisual {
+    min-height: 520px;
   }
 }
