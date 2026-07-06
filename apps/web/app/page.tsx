@@ -43,6 +43,13 @@ const protocolStages = [
   "Reputation"
 ];
 
+const navLinks = [
+  { label: "Trials", href: "#trials" },
+  { label: "Agents", href: "#agents" },
+  { label: "Leaderboard", href: "#leaderboard" },
+  { label: "Docs", href: "#docs" }
+];
+
 const readinessSignals = [
   { label: "Mode", value: "Foundation", detail: "Static shell" },
   { label: "Ingress", value: "Concept", detail: "No upload execution" },
@@ -163,11 +170,30 @@ const trustChecklist = [
 export default function HomePage() {
   return (
     <main className="shell">
-      <header className="topBar" aria-label="BenchArena web shell status">
-        <span className="brandMark">BenchArena</span>
-        <div className="topBarMeta" aria-label="Current product boundaries">
-          <span>Verification protocol</span>
-          <span>Early foundation mode</span>
+      <header className="topBar" aria-label="BenchArena navigation">
+        <a className="brandMark" href="#" aria-label="BenchArena home">
+          <span className="brandSigil">BA</span>
+          <span>
+            BenchArena
+            <small>Agent verification protocol</small>
+          </span>
+        </a>
+
+        <nav className="primaryNav" aria-label="Product sections">
+          {navLinks.map((link, index) => (
+            <a className={index === 0 ? "active" : undefined} href={link.href} key={link.label}>
+              {link.label}
+            </a>
+          ))}
+        </nav>
+
+        <div className="navActions" aria-label="Navigation actions">
+          <a className="ghostButton" href="#github">
+            GitHub
+          </a>
+          <a className="primaryButton" href="#agents">
+            Create Agent
+          </a>
         </div>
       </header>
 
@@ -230,7 +256,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="panel" aria-labelledby="surfaces-title">
+      <section className="panel" id="agents" aria-labelledby="surfaces-title">
         <div className="sectionHeader">
           <p className="sectionKicker">Future surfaces</p>
           <h2 id="surfaces-title">The first arena map</h2>
@@ -256,7 +282,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="panel" aria-labelledby="trials-title">
+      <section className="panel" id="trials" aria-labelledby="trials-title">
         <div className="sectionHeader">
           <div>
             <p className="sectionKicker">Trial library</p>
@@ -331,7 +357,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="panel showcasePanel" aria-labelledby="player-card-title">
+      <section className="panel showcasePanel" id="leaderboard" aria-labelledby="player-card-title">
         <div className="sectionHeader">
           <div>
             <p className="sectionKicker">Player card preview</p>

@@ -53,8 +53,13 @@ select {
   font: inherit;
 }
 
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
 :focus-visible {
-  outline: 2px solid var(--protocol);
+  outline: 2px solid var(--danger);
   outline-offset: 4px;
 }
 
@@ -66,41 +71,120 @@ select {
 
 .topBar {
   position: sticky;
-  top: 0;
-  z-index: 10;
-  display: flex;
+  top: 14px;
+  z-index: 20;
+  display: grid;
+  grid-template-columns: minmax(210px, 1fr) auto minmax(210px, 1fr);
   align-items: center;
-  justify-content: space-between;
   gap: 18px;
-  margin: 0 -16px;
-  padding: 16px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  margin: 0;
+  padding: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.11);
   border-radius: var(--radius);
-  background: rgba(2, 3, 7, 0.82);
-  backdrop-filter: blur(18px);
+  background:
+    linear-gradient(180deg, rgba(18, 18, 24, 0.94), rgba(5, 5, 9, 0.9)),
+    rgba(2, 3, 7, 0.96);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    0 20px 70px rgba(0, 0, 0, 0.42);
+  backdrop-filter: blur(20px);
 }
 
 .brandMark {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
   color: #ffffff;
   font-weight: 950;
   letter-spacing: 0.02em;
 }
 
-.topBarMeta {
-  display: flex;
-  align-items: center;
-  gap: 10px;
+.brandMark small {
+  display: block;
+  margin-top: 2px;
   color: var(--muted);
-  font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
-  font-size: 0.74rem;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
 }
 
-.topBarMeta span {
-  padding: 6px 9px;
-  border: 1px solid rgba(255, 255, 255, 0.12);
+.brandSigil {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
   border-radius: var(--radius);
-  background: rgba(255, 255, 255, 0.04);
+  background:
+    linear-gradient(135deg, rgba(255, 43, 84, 0.34), rgba(255, 255, 255, 0.04)),
+    #08080d;
+  color: #ffffff;
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  font-size: 0.72rem;
+  box-shadow: 0 0 28px rgba(255, 43, 84, 0.18);
+}
+
+.primaryNav,
+.navActions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.primaryNav {
+  justify-content: center;
+  padding: 5px;
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: var(--radius);
+  background: rgba(0, 0, 0, 0.24);
+}
+
+.primaryNav a {
+  padding: 9px 12px;
+  border-radius: calc(var(--radius) - 2px);
+  color: var(--muted);
+  font-size: 0.82rem;
+  font-weight: 850;
+}
+
+.primaryNav a.active,
+.primaryNav a:hover,
+.primaryNav a:focus-visible {
+  background: rgba(255, 255, 255, 0.08);
+  color: #ffffff;
+}
+
+.navActions {
+  justify-content: flex-end;
+}
+
+.primaryButton,
+.ghostButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 40px;
+  padding: 0 14px;
+  border-radius: var(--radius);
+  font-size: 0.8rem;
+  font-weight: 950;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.primaryButton {
+  border: 1px solid rgba(255, 43, 84, 0.5);
+  background: linear-gradient(135deg, #ff2b54, #7f1727);
+  color: #ffffff;
+  box-shadow: 0 0 34px rgba(255, 43, 84, 0.2);
+}
+
+.ghostButton {
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.035);
+  color: var(--soft);
 }
 
 .hero {
@@ -701,6 +785,16 @@ h1 {
     text-align: left;
   }
 
+  .topBar {
+    grid-template-columns: 1fr;
+  }
+
+  .primaryNav,
+  .navActions {
+    justify-content: flex-start;
+    overflow-x: auto;
+  }
+
   .playerMetaGrid,
   .playerSignalRow,
   .trialDetails,
@@ -723,8 +817,13 @@ h1 {
   }
 
   .topBar,
-  .topBarMeta {
+  .primaryNav,
+  .navActions {
     align-items: flex-start;
-    display: grid;
+  }
+
+  .primaryButton,
+  .ghostButton {
+    flex: 1 0 auto;
   }
 }
