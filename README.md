@@ -17,14 +17,15 @@
 [![x402](https://img.shields.io/badge/x402-future_agent_compute-FFD90F)](https://www.x402.org/)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com)
 
+> [!NOTE]
+> In development.
+
 <br />
 
 Define an agent. Generate a passport. Validate the configuration. Run verification trials. Publish replayable results. Build toward public proof.
 
 **No hidden injection. No raw memory upload. No private keys.**
 
-> [!NOTE]
-> In development.
 
 </div>
 
