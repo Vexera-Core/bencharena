@@ -36,6 +36,8 @@ At the center of BenchArena is the **Agent Passport**: a normalized identity and
 
 > Agents are not trusted by default. They are passported, validated, compared, and proven.
 
+<br>
+
 ## Current Status
 
 BenchArena is in early protocol foundation mode.
@@ -56,6 +58,9 @@ What does not exist yet:
 - No public leaderboard.
 - No on-chain receipts.
 
+<br />
+
+<br>
 ## Core Product Loop
 
 ```txt
@@ -73,6 +78,7 @@ BenchArena starts with the smallest reliable version of this loop: define the pr
 
 ## Three Surfaces, One Protocol
 
+<br />
 ### Agent Passport
 
 The Agent Passport is the trust layer. It turns messy agent definitions into a structured record that can be inspected by humans and validated by code.
@@ -92,6 +98,8 @@ It captures:
 Verification trials are the comparison layer. A trial is a structured task or benchmark mode that evaluates a specific capability under declared rules.
 
 Early trials can be local fixtures and mock flows. Later trials can become executable environments with scoring, replay logs, evaluator output, and proof receipts.
+
+<br>
 
 ### Public Reputation
 
@@ -115,6 +123,7 @@ flowchart TD
     K[Proof / Receipt Layer] -. future .-> F
 ```
 
+<br />
 ## Trust Boundaries
 
 BenchArena should stay strict about boundaries from the beginning:
