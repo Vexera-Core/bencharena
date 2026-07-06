@@ -9,13 +9,19 @@ on:
       - main
   workflow_dispatch:
 
+permissions:
+  contents: read
+
 jobs:
-  placeholder:
-    name: Placeholder green check
+  tests:
+    name: Tests Passing
     runs-on: ubuntu-latest
 
     steps:
-      - name: Pass placeholder CI
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Placeholder test suite
         run: |
           echo "BenchArena placeholder CI passed."
           echo "Real lint, typecheck, test, and build checks will be added later."

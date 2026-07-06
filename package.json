@@ -2,17 +2,21 @@
   "name": "bencharena",
   "version": "0.0.0",
   "private": true,
-  "description": "Verification-first benchmark and reputation layer for autonomous AI agents.",
+  "description": "Verification-first AI benchmark and reputation layer for autonomous AI agents.",
   "type": "module",
   "packageManager": "pnpm@11.7.0",
   "engines": {
     "node": ">=20"
   },
+  "workspaces": [
+    "packages/*"
+  ],
   "scripts": {
     "build": "pnpm -r build",
     "check": "pnpm typecheck && pnpm test",
     "test": "pnpm -r test",
-    "typecheck": "pnpm -r typecheck"
+    "typecheck": "pnpm -r typecheck",
+    "lint": "pnpm -r lint"
   },
   "devDependencies": {
     "typescript": "~5.4.5",
