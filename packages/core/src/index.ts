@@ -12,6 +12,15 @@ export {
 } from "./player-card.js";
 
 export {
+  trialCardOpenApiRegistry,
+  trialCardSchema,
+  trialCategorySchema,
+  trialRunStatusSchema,
+  trialScoreSchema,
+  trialVerificationStatusSchema
+} from "./trial-card.js";
+
+export {
   agentPassportOpenApiRegistry,
   agentPassportSchema,
   agentSourceSchema,
@@ -43,3 +52,10 @@ export type {
 } from "./passport.js";
 
 export type { PlayerCard, PlayerCardStrength } from "./player-card.js";
+export type {
+  TrialCard,
+  TrialCategory,
+  TrialRunStatus,
+  TrialScore,
+  TrialVerificationStatus
+} from "./trial-card.js";
