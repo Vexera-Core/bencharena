@@ -13,6 +13,8 @@
   --verified: #47f0a5;
   --warning: #f6d365;
   --danger: #ff7a90;
+  --radius: 8px;
+  --shadow-deep: 0 24px 80px rgba(0, 0, 0, 0.28);
   background: var(--bg);
   color: var(--text);
   font-family:
@@ -37,12 +39,11 @@ body {
 
 body {
   background:
-    radial-gradient(circle at 14% 6%, rgba(155, 140, 255, 0.18), transparent 28rem),
-    radial-gradient(circle at 86% 10%, rgba(71, 240, 165, 0.1), transparent 24rem),
+    linear-gradient(180deg, rgba(155, 140, 255, 0.08), transparent 36rem),
     linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
     linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px),
     var(--bg);
-  background-size: auto, auto, 56px 56px, 56px 56px, auto;
+  background-size: auto, 56px 56px, 56px 56px, auto;
 }
 
 a,
@@ -74,6 +75,7 @@ select {
   margin: 0 -16px;
   padding: 16px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius);
   background: rgba(2, 3, 7, 0.82);
   backdrop-filter: blur(18px);
 }
@@ -97,6 +99,7 @@ select {
 .topBarMeta span {
   padding: 6px 9px;
   border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--radius);
   background: rgba(255, 255, 255, 0.04);
 }
 
@@ -148,6 +151,7 @@ h1 {
   margin-bottom: 0;
   padding: 14px 18px;
   border: 1px solid var(--border-strong);
+  border-radius: var(--radius);
   background: rgba(255, 255, 255, 0.06);
   color: #ffffff;
   display: inline-flex;
@@ -169,6 +173,7 @@ h1 {
   min-height: 118px;
   padding: 16px;
   border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--radius);
   background: rgba(255, 255, 255, 0.045);
 }
 
@@ -236,10 +241,11 @@ h1 {
 .playerCard,
 .leaderboardPanel {
   border: 1px solid var(--border);
+  border-radius: var(--radius);
   background: linear-gradient(180deg, var(--surface-strong), var(--surface));
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.08),
-    0 24px 80px rgba(0, 0, 0, 0.28);
+    var(--shadow-deep);
 }
 
 .stage {
@@ -293,6 +299,7 @@ h1 {
   margin-bottom: 18px;
   padding: 6px 10px;
   border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: var(--radius);
   color: #ffffff;
   font-size: 0.72rem;
   font-weight: 900;
@@ -471,6 +478,7 @@ h1 {
   gap: 8px;
   padding: 16px;
   border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--radius);
   background: rgba(0, 0, 0, 0.22);
 }
 
