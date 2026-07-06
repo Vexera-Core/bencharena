@@ -122,6 +122,9 @@ dist
 # History files
 .history/
 
+# Skills
+.agents/skills/
+
 # TernJS port file
 .tern-port
 
