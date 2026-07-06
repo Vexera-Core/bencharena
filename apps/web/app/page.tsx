@@ -266,6 +266,7 @@ export default function HomePage() {
           <span>Security</span>
           <span>Devnet Future</span>
           <span>MCP Planned</span>
+          <span>x402 Future</span>
         </div>
 
         <div className="heroEditorial">
