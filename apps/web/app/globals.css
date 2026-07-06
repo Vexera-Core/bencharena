@@ -153,27 +153,17 @@ a {
 
 .brandLogo {
   display: block;
-  width: 48px;
-  height: 48px;
+  width: 52px;
+  height: 52px;
   object-fit: contain;
   filter: drop-shadow(0 10px 24px rgba(221, 2, 14, 0.2));
+  transition: filter 180ms ease, transform 180ms ease;
 }
 
-.brandSigil {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 38px;
-  height: 38px;
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  border-radius: var(--radius);
-  background:
-    linear-gradient(135deg, rgba(221, 2, 14, 0.22), rgba(25, 32, 57, 0.32)),
-    #000000;
-  color: #ffffff;
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  box-shadow: 0 0 28px rgba(221, 2, 14, 0.18);
+.brandMark:hover .brandLogo,
+.brandMark:focus-visible .brandLogo {
+  filter: drop-shadow(0 12px 28px rgba(221, 2, 14, 0.28));
+  transform: translateY(-1px);
 }
 
 .primaryNav,
@@ -1698,6 +1688,11 @@ h1 {
     padding: 10px;
   }
 
+  .brandLogo {
+    width: 44px;
+    height: 44px;
+  }
+
   .topBar,
   .primaryNav,
   .navActions {
@@ -1723,6 +1718,10 @@ h1 {
 
   .heroVisual {
     min-height: 420px;
+  }
+
+  .heroArenaLogo {
+    width: clamp(138px, 46vw, 210px);
   }
 
   .heroTerminalMini {
@@ -1781,6 +1780,11 @@ h1 {
 
   .heroVisual {
     min-height: 380px;
+  }
+
+  .brandLogo {
+    width: 40px;
+    height: 40px;
   }
 
   .trustLine {
