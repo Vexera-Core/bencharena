@@ -38,6 +38,10 @@ body {
   scroll-behavior: smooth;
 }
 
+html {
+  color-scheme: dark;
+}
+
 body {
   overflow-x: hidden;
   background:
@@ -60,6 +64,10 @@ select {
 a {
   color: inherit;
   text-decoration: none;
+}
+
+[id] {
+  scroll-margin-top: 112px;
 }
 
 :focus-visible {
@@ -89,7 +97,7 @@ a {
 .shell {
   width: min(1240px, calc(100% - 32px));
   margin: 0 auto;
-  padding: 30px 0 88px;
+  padding: calc(30px + env(safe-area-inset-top)) 0 calc(88px + env(safe-area-inset-bottom));
 }
 
 .topBar {
@@ -1253,10 +1261,6 @@ h1 {
     padding: 64px 0 56px;
   }
 
-  .heroGrid {
-    padding-top: 24px;
-  }
-
   .heroEditorial {
     padding-top: 28px;
   }
@@ -1277,6 +1281,8 @@ h1 {
 
   .topBar {
     grid-template-columns: 1fr;
+    position: relative;
+    top: 0;
   }
 
   .primaryNav,
@@ -1297,6 +1303,14 @@ h1 {
   .leaderboardHeader {
     align-items: flex-start;
     display: grid;
+  }
+
+  .surfaceCard,
+  .trialCard,
+  .metricCard,
+  .playerCard,
+  .leaderboardPanel {
+    min-height: auto;
   }
 }
 
@@ -1336,7 +1350,7 @@ h1 {
   }
 
   .heroVisual {
-    min-height: 460px;
+    min-height: 420px;
   }
 
   .heroTerminalMini {
@@ -1363,6 +1377,10 @@ h1 {
   .leaderboardPanel {
     padding: 18px;
   }
+
+  .heroBackdrop {
+    display: none;
+  }
 }
 
 @media (max-width: 460px) {
@@ -1386,6 +1404,14 @@ h1 {
 
   .playerCard h3 {
     font-size: clamp(2.5rem, 17vw, 4rem);
+  }
+
+  .heroVisual {
+    min-height: 380px;
+  }
+
+  .trustLine {
+    align-items: flex-start;
   }
 }
 

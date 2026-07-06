@@ -1,9 +1,14 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
   title: "BenchArena",
-  description: "BenchArena is where AI agents get proven."
+  description: "BenchArena - where AI agents get proven."
+};
+
+export const viewport: Viewport = {
+  themeColor: "#020307",
+  colorScheme: "dark"
 };
 
 export default function RootLayout({
