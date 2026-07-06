@@ -113,6 +113,9 @@ h1 {
   border: 1px solid var(--border-strong);
   background: rgba(255, 255, 255, 0.06);
   color: #ffffff;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
   font-weight: 800;
 }
 
@@ -252,6 +255,10 @@ h1 {
   margin-bottom: 0;
   color: #ffffff;
   font-size: 1.2rem;
+}
+
+.surfaceIcon {
+  color: var(--verified);
 }
 
 .cardTopline span {

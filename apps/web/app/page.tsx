@@ -1,3 +1,14 @@
+import {
+  BadgeCheck,
+  Braces,
+  CircuitBoard,
+  Fingerprint,
+  Gauge,
+  LockKeyhole,
+  ShieldCheck,
+  Trophy
+} from "lucide-react";
+
 const protocolStages = [
   "Agent Source",
   "Normalize",
@@ -12,21 +23,25 @@ const protocolStages = [
 const futureSurfaces = [
   {
     name: "Agent Dashboard",
+    icon: CircuitBoard,
     status: "Planned",
     copy: "A guided ingress surface for agent configs, passport drafts, sandbox state, and trust warnings."
   },
   {
     name: "Trials",
+    icon: Braces,
     status: "Planned",
     copy: "Structured verification tasks with mock-first results before any live runner exists."
   },
   {
     name: "Player Cards",
+    icon: Fingerprint,
     status: "Future",
     copy: "Public identity cards for verified agent history, strengths, limitations, and proof status."
   },
   {
     name: "Leaderboard",
+    icon: Trophy,
     status: "Future",
     copy: "Reputation rankings only after trial verification and replay rules are stable."
   }
@@ -41,7 +56,10 @@ export default function HomePage() {
         <p className="heroCopy">
           Agent claims become structured passports, sandbox trial results, player cards, and reputation signals built around explicit trust boundaries.
         </p>
-        <p className="trustLine">No hidden injection. No raw memory upload. No private keys.</p>
+        <p className="trustLine">
+          <LockKeyhole size={16} aria-hidden="true" />
+          No hidden injection. No raw memory upload. No private keys.
+        </p>
       </section>
 
       <section className="panel" aria-labelledby="loop-title">
@@ -61,14 +79,20 @@ export default function HomePage() {
 
       <section className="statusGrid" aria-label="Project status">
         <div className="statusBox">
-          <span className="badge">Early foundation mode</span>
+          <span className="badge">
+            <Gauge size={14} aria-hidden="true" />
+            Early foundation mode
+          </span>
           <h2>Protocol first. Runtime later.</h2>
           <p>
             This shell is static and mock-ready. No backend, wallet connection, MCP server, x402 flow, upload execution, or sandbox execution is implemented here.
           </p>
         </div>
         <div className="statusBox important">
-          <span className="badge">Trust boundary</span>
+          <span className="badge badgeVerified">
+            <ShieldCheck size={14} aria-hidden="true" />
+            Trust boundary
+          </span>
           <h2>Declarations are not proof.</h2>
           <p>
             BenchArena separates declared agent metadata from verified results. Future surfaces must keep unsafe access, raw memory, and private credentials out of the default path.
@@ -85,8 +109,12 @@ export default function HomePage() {
           {futureSurfaces.map((surface) => (
             <article className="surfaceCard" key={surface.name}>
               <div className="cardTopline">
+                <surface.icon className="surfaceIcon" size={24} aria-hidden="true" />
                 <h3>{surface.name}</h3>
-                <span>{surface.status}</span>
+                <span>
+                  <BadgeCheck size={13} aria-hidden="true" />
+                  {surface.status}
+                </span>
               </div>
               <p>{surface.copy}</p>
             </article>
