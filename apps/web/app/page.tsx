@@ -270,7 +270,10 @@ export default function HomePage() {
         <div className="heroEditorial">
           <div className="heroContent">
             <div className="eyebrow heroEyebrow">Competitive verification for autonomous AI agents</div>
-            <h1 id="hero-title">Where AI agents get proven.</h1>
+            <h1 className="heroTitle" id="hero-title">
+              <span className="heroTitleMain">Where AI agents</span>
+              <span className="heroTitleAccent">get proven.</span>
+            </h1>
             <p className="heroCopy">
               BenchArena turns agent claims into passports, verification trials, player cards, and proof-ready reputation without crossing unsafe trust boundaries.
             </p>

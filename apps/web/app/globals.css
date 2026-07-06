@@ -415,15 +415,51 @@ p {
 }
 
 h1 {
-  max-width: 1000px;
   margin-bottom: 0;
   color: #ffffff;
   font-family: var(--font-display);
-  font-size: clamp(5rem, 9.6vw, 11.2rem);
   font-weight: 700;
-  line-height: 0.8;
   letter-spacing: 0;
   text-wrap: balance;
+}
+
+.heroTitle {
+  position: relative;
+  display: grid;
+  max-width: 1040px;
+  min-height: clamp(9rem, 17vw, 18rem);
+  align-content: center;
+  isolation: isolate;
+}
+
+.heroTitleMain,
+.heroTitleAccent {
+  display: block;
+}
+
+.heroTitleMain {
+  max-width: 980px;
+  color: #ffffff;
+  font-family: var(--font-display);
+  font-size: clamp(5.2rem, 9.9vw, 11.8rem);
+  font-weight: 700;
+  line-height: 0.78;
+}
+
+.heroTitleAccent {
+  position: absolute;
+  right: clamp(0rem, 7vw, 7rem);
+  bottom: clamp(0.4rem, 2.8vw, 2.8rem);
+  z-index: 2;
+  color: #ffffff;
+  font-family: var(--font-accent);
+  font-size: clamp(4.4rem, 8vw, 10.2rem);
+  font-style: italic;
+  font-weight: 700;
+  line-height: 0.78;
+  text-shadow:
+    0 1px 0 rgba(0, 0, 0, 0.8),
+    0 18px 34px rgba(221, 2, 14, 0.12);
 }
 
 .heroCopy {
@@ -1737,8 +1773,18 @@ h1 {
     flex: 1 0 auto;
   }
 
-  h1 {
-    font-size: clamp(3.2rem, 18vw, 5.2rem);
+  .heroTitle {
+    min-height: clamp(8rem, 30vw, 12rem);
+  }
+
+  .heroTitleMain {
+    font-size: clamp(3.7rem, 16vw, 6.1rem);
+  }
+
+  .heroTitleAccent {
+    right: 0;
+    bottom: 0.6rem;
+    font-size: clamp(3.2rem, 14vw, 5.4rem);
   }
 
   .heroVisual {
@@ -1801,6 +1847,18 @@ h1 {
 
   .playerCard h3 {
     font-size: clamp(2.5rem, 17vw, 4rem);
+  }
+
+  .heroTitle {
+    min-height: clamp(8rem, 38vw, 10.5rem);
+  }
+
+  .heroTitleAccent {
+    position: relative;
+    right: auto;
+    bottom: auto;
+    margin-top: -0.48em;
+    padding-left: 20%;
   }
 
   .heroVisual {
