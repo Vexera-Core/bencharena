@@ -35,6 +35,7 @@ html,
 body {
   min-height: 100%;
   margin: 0;
+  scroll-behavior: smooth;
 }
 
 body {
@@ -182,10 +183,22 @@ a {
   box-shadow: 0 0 34px rgba(255, 43, 84, 0.2);
 }
 
+.primaryButton:hover,
+.primaryButton:focus-visible {
+  transform: translateY(-1px);
+  box-shadow: 0 0 42px rgba(255, 43, 84, 0.28);
+}
+
 .ghostButton {
   border: 1px solid rgba(255, 255, 255, 0.14);
   background: rgba(255, 255, 255, 0.035);
   color: var(--soft);
+}
+
+.ghostButton:hover,
+.ghostButton:focus-visible {
+  border-color: rgba(255, 255, 255, 0.28);
+  background: rgba(255, 255, 255, 0.065);
 }
 
 .hero {
@@ -454,6 +467,15 @@ h1 {
   padding: 18px;
   color: #ffffff;
   font-weight: 800;
+}
+
+.stage:hover,
+.surfaceCard:hover,
+.trialCard:hover,
+.metricCard:hover,
+.leaderboardPanel:hover,
+.playerCard:hover {
+  border-color: rgba(255, 255, 255, 0.22);
 }
 
 .stageIndex,
@@ -993,7 +1015,7 @@ h1 {
 
   .hero {
     min-height: auto;
-    padding: 88px 0 56px;
+    padding: 64px 0 56px;
   }
 
   .heroGrid {
@@ -1040,10 +1062,24 @@ h1 {
     padding-top: 16px;
   }
 
+  .topBar {
+    top: 8px;
+    gap: 12px;
+    padding: 10px;
+  }
+
   .topBar,
   .primaryNav,
   .navActions {
     align-items: flex-start;
+  }
+
+  .primaryNav {
+    width: 100%;
+  }
+
+  .primaryNav a {
+    white-space: nowrap;
   }
 
   .primaryButton,
@@ -1051,7 +1087,65 @@ h1 {
     flex: 1 0 auto;
   }
 
+  h1 {
+    font-size: clamp(3.2rem, 18vw, 5.2rem);
+  }
+
   .heroVisual {
-    min-height: 520px;
+    min-height: 460px;
+  }
+
+  .heroOrbitalGrid {
+    inset: 24px 18px 112px;
+    grid-template-columns: 1fr;
+  }
+
+  .heroFloatCard {
+    min-height: 64px;
+    padding: 12px;
+  }
+
+  .heroFloatCard:nth-child(n + 5) {
+    display: none;
+  }
+
+  .heroTerminalMini {
+    right: 16px;
+    bottom: 16px;
+    left: 16px;
+  }
+
+  .stage,
+  .surfaceCard,
+  .statusBox,
+  .metricCard,
+  .trialCard,
+  .playerCard,
+  .leaderboardPanel {
+    padding: 18px;
+  }
+}
+
+@media (max-width: 460px) {
+  .shell {
+    width: min(100% - 18px, 1180px);
+  }
+
+  .heroActions,
+  .navActions {
+    display: grid;
+    width: 100%;
+  }
+
+  .consoleHeader,
+  .consoleFooter,
+  .trialMeta,
+  .assertionRow {
+    align-items: flex-start;
+    display: grid;
+  }
+
+  .playerCard h3 {
+    font-size: clamp(2.5rem, 17vw, 4rem);
   }
 }
