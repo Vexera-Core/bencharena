@@ -1,7 +1,20 @@
 :root {
   color-scheme: dark;
-  background: #030407;
-  color: #f8fafc;
+  --bg: #020307;
+  --bg-soft: #070a12;
+  --surface: rgba(255, 255, 255, 0.055);
+  --surface-strong: rgba(255, 255, 255, 0.085);
+  --border: rgba(255, 255, 255, 0.14);
+  --border-strong: rgba(255, 255, 255, 0.24);
+  --text: #f8fafc;
+  --muted: #a7b0c0;
+  --soft: #d8dee9;
+  --protocol: #9b8cff;
+  --verified: #47f0a5;
+  --warning: #f6d365;
+  --danger: #ff7a90;
+  background: var(--bg);
+  color: var(--text);
   font-family:
     Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
     sans-serif;
@@ -9,6 +22,11 @@
 
 * {
   box-sizing: border-box;
+}
+
+*::selection {
+  background: rgba(155, 140, 255, 0.38);
+  color: #ffffff;
 }
 
 html,
@@ -19,13 +37,28 @@ body {
 
 body {
   background:
-    radial-gradient(circle at top left, rgba(255, 255, 255, 0.11), transparent 30rem),
-    linear-gradient(135deg, rgba(255, 255, 255, 0.05), transparent 24rem),
-    #030407;
+    radial-gradient(circle at 14% 6%, rgba(155, 140, 255, 0.18), transparent 28rem),
+    radial-gradient(circle at 86% 10%, rgba(71, 240, 165, 0.1), transparent 24rem),
+    linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+    var(--bg);
+  background-size: auto, auto, 56px 56px, 56px 56px, auto;
+}
+
+a,
+button,
+input,
+select {
+  font: inherit;
+}
+
+:focus-visible {
+  outline: 2px solid var(--protocol);
+  outline-offset: 4px;
 }
 
 .shell {
-  width: min(1160px, calc(100% - 32px));
+  width: min(1180px, calc(100% - 32px));
   margin: 0 auto;
   padding: 72px 0;
 }
@@ -35,15 +68,16 @@ body {
   display: grid;
   align-content: center;
   gap: 24px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+  border-bottom: 1px solid var(--border);
 }
 
 .eyebrow,
-.sectionKicker {
+.sectionKicker,
+.microLabel {
   margin: 0;
-  color: #a7b0c0;
-  font-size: 0.78rem;
-  font-weight: 700;
+  color: var(--muted);
+  font-size: 0.76rem;
+  font-weight: 800;
   letter-spacing: 0.14em;
   text-transform: uppercase;
 }
@@ -56,18 +90,18 @@ p {
 }
 
 h1 {
-  max-width: 980px;
+  max-width: 1000px;
   margin-bottom: 0;
   color: #ffffff;
-  font-size: clamp(3.8rem, 8vw, 8.6rem);
-  line-height: 0.92;
+  font-size: clamp(3.8rem, 8vw, 8.7rem);
+  line-height: 0.9;
   letter-spacing: 0;
 }
 
 .heroCopy {
-  max-width: 780px;
+  max-width: 820px;
   margin-bottom: 0;
-  color: #d8dee9;
+  color: var(--soft);
   font-size: clamp(1.08rem, 2vw, 1.35rem);
   line-height: 1.7;
 }
@@ -76,19 +110,20 @@ h1 {
   width: fit-content;
   margin-bottom: 0;
   padding: 14px 18px;
-  border: 1px solid rgba(255, 255, 255, 0.22);
+  border: 1px solid var(--border-strong);
   background: rgba(255, 255, 255, 0.06);
   color: #ffffff;
-  font-weight: 700;
+  font-weight: 800;
 }
 
 .panel,
-.statusGrid {
+.statusGrid,
+.sectionStack {
   margin-top: 56px;
 }
 
 .panel {
-  padding: 32px 0 56px;
+  padding: 34px 0 58px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.12);
 }
 
@@ -116,10 +151,17 @@ h1 {
 
 .stage,
 .surfaceCard,
-.statusBox {
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  background: rgba(255, 255, 255, 0.055);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+.statusBox,
+.metricCard,
+.trialCard,
+.consolePanel,
+.playerCard,
+.leaderboardPanel {
+  border: 1px solid var(--border);
+  background: linear-gradient(180deg, var(--surface-strong), var(--surface));
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    0 24px 80px rgba(0, 0, 0, 0.28);
 }
 
 .stage {
@@ -128,11 +170,13 @@ h1 {
   align-content: space-between;
   padding: 18px;
   color: #ffffff;
-  font-weight: 700;
+  font-weight: 800;
 }
 
-.stageIndex {
-  color: #9aa4b5;
+.stageIndex,
+.metaText {
+  color: var(--muted);
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
   font-size: 0.76rem;
 }
 
@@ -147,34 +191,51 @@ h1 {
 }
 
 .statusBox p,
-.surfaceCard p {
+.surfaceCard p,
+.trialCard p,
+.consolePanel p,
+.playerCard p {
   margin: 16px 0 0;
   color: #c8d0dc;
   line-height: 1.65;
 }
 
 .important {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.035));
+  background: linear-gradient(135deg, rgba(155, 140, 255, 0.13), rgba(255, 255, 255, 0.04));
 }
 
 .badge,
-.cardTopline span {
+.cardTopline span,
+.statusPill,
+.rankBadge {
   display: inline-flex;
+  align-items: center;
+  gap: 7px;
   width: fit-content;
   margin-bottom: 18px;
   padding: 6px 10px;
   border: 1px solid rgba(255, 255, 255, 0.18);
   color: #ffffff;
   font-size: 0.72rem;
-  font-weight: 800;
+  font-weight: 900;
   letter-spacing: 0.1em;
   text-transform: uppercase;
 }
 
-.surfaceGrid {
+.badgeVerified {
+  border-color: rgba(71, 240, 165, 0.34);
+  color: #dcffec;
+}
+
+.surfaceGrid,
+.metricsGrid,
+.trialGrid {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 14px;
+}
+
+.surfaceGrid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
 }
 
 .surfaceCard {
@@ -198,7 +259,7 @@ h1 {
   color: #dbeafe;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 980px) {
   .protocolLoop,
   .surfaceGrid,
   .statusGrid {
@@ -208,5 +269,9 @@ h1 {
   .hero {
     min-height: auto;
     padding: 88px 0 56px;
+  }
+
+  .sectionHeader {
+    display: grid;
   }
 }
