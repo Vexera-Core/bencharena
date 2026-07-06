@@ -488,12 +488,36 @@ h1 {
     0 26px 90px rgba(0, 0, 0, 0.42);
 }
 
+.heroVisual::before {
+  position: absolute;
+  inset: 18px;
+  z-index: 1;
+  content: "";
+  pointer-events: none;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-top-color: rgba(221, 2, 14, 0.42);
+  border-radius: calc(var(--radius) - 2px);
+}
+
+.heroArenaLogo {
+  position: absolute;
+  top: 44%;
+  left: 50%;
+  z-index: 2;
+  width: clamp(170px, 26vw, 280px);
+  height: auto;
+  object-fit: contain;
+  opacity: 0.92;
+  filter: drop-shadow(0 20px 42px rgba(221, 2, 14, 0.2));
+  transform: translate(-50%, -50%);
+}
+
 .heroTerminalMini {
   position: absolute;
   right: 22px;
   bottom: 22px;
   left: 22px;
-  z-index: 3;
+  z-index: 4;
   display: grid;
   gap: 8px;
   padding: 16px;

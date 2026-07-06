@@ -291,6 +291,15 @@ export default function HomePage() {
 
           <div className="heroVisual" aria-label="BenchArena protocol preview">
             <HeroOrbitalBackground />
+            <Image
+              alt=""
+              aria-hidden="true"
+              className="heroArenaLogo"
+              height={1254}
+              priority
+              src="/brand/arena-logo-updated.png"
+              width={1254}
+            />
             <div className="heroTerminalMini">
               <span>bench://foundation/mock</span>
               <strong>passport_ready=false</strong>
