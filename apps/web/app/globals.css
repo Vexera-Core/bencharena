@@ -166,11 +166,27 @@ a {
 }
 
 .primaryNav a {
+  position: relative;
+  overflow: hidden;
   padding: 9px 12px;
   border-radius: calc(var(--radius) - 2px);
   color: var(--muted);
   font-size: 0.82rem;
   font-weight: 850;
+  transition: background 160ms ease, color 160ms ease, transform 160ms ease;
+}
+
+.primaryNav a::after {
+  position: absolute;
+  right: 10px;
+  bottom: 5px;
+  left: 10px;
+  height: 1px;
+  content: "";
+  background: linear-gradient(90deg, transparent, rgba(255, 43, 84, 0.9), transparent);
+  opacity: 0;
+  transform: translateY(6px) scaleX(0.5);
+  transition: opacity 160ms ease, transform 160ms ease;
 }
 
 .primaryNav a.active,
@@ -178,6 +194,14 @@ a {
 .primaryNav a:focus-visible {
   background: rgba(255, 255, 255, 0.08);
   color: #ffffff;
+  transform: translateY(-1px);
+}
+
+.primaryNav a.active::after,
+.primaryNav a:hover::after,
+.primaryNav a:focus-visible::after {
+  opacity: 1;
+  transform: translateY(0) scaleX(1);
 }
 
 .navActions {
@@ -196,6 +220,7 @@ a {
   font-weight: 950;
   letter-spacing: 0;
   text-transform: uppercase;
+  transition: border-color 160ms ease, background 160ms ease, box-shadow 180ms ease, transform 160ms ease;
 }
 
 .primaryButton {
@@ -261,18 +286,23 @@ a {
   font-size: 0.78rem;
   text-transform: uppercase;
   transform: translateY(var(--float-y, 0));
+  animation: editorialFloat 9s ease-in-out infinite;
+  will-change: transform;
 }
 
 .heroBackdrop span:nth-child(2) {
   --float-y: 34px;
+  animation-delay: -1.4s;
 }
 
 .heroBackdrop span:nth-child(3) {
   --float-y: 68px;
+  animation-delay: -2.8s;
 }
 
 .heroBackdrop span:nth-child(4) {
   --float-y: 18px;
+  animation-delay: -4.2s;
 }
 
 .heroEditorial {
@@ -505,6 +535,13 @@ h1 {
       0
     );
   transition: border-color 160ms ease, background 160ms ease, transform 220ms ease;
+  will-change: transform;
+}
+
+.heroVisual:hover .orbitalTile,
+.heroVisual:focus-within .orbitalTile {
+  border-color: rgba(255, 255, 255, 0.22);
+  background: rgba(8, 8, 12, 0.78);
 }
 
 .orbitalTile strong {
@@ -649,6 +686,18 @@ h1 {
 .leaderboardPanel:hover,
 .playerCard:hover {
   border-color: rgba(255, 255, 255, 0.22);
+  transform: translateY(-2px);
+}
+
+.stage,
+.surfaceCard,
+.trialCard,
+.metricCard,
+.leaderboardPanel,
+.playerCard,
+.primaryButton,
+.ghostButton {
+  transition: border-color 160ms ease, background 160ms ease, box-shadow 180ms ease, transform 160ms ease;
 }
 
 .stageIndex,
@@ -1169,6 +1218,17 @@ h1 {
   color: #dbeafe;
 }
 
+@keyframes editorialFloat {
+  0%,
+  100% {
+    transform: translateY(var(--float-y, 0));
+  }
+
+  50% {
+    transform: translateY(calc(var(--float-y, 0) - 10px));
+  }
+}
+
 @media (max-width: 980px) {
   .heroGrid,
   .heroEditorial,
@@ -1343,7 +1403,9 @@ h1 {
   .heroOrbitalBackground::before,
   .heroOrbitalBackground::after,
   .orbitalCore,
-  .orbitalTile {
+  .orbitalTile,
+  .heroBackdrop span {
+    animation: none !important;
     transform: none !important;
   }
 }
