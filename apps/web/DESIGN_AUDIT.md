@@ -27,3 +27,25 @@ This note records the design direction for the next frontend commits. It uses th
 - Tighten typography, spacing, focus states, and responsive behavior.
 - Polish the floating protocol elements with original BenchArena hover and motion cues.
 - Add theme color and dark color-scheme metadata support.
+
+## Visual Overhaul Audit
+
+The current shell is functional, but the presentation still reads too much like a generic dark SaaS dashboard. The next commits should push it into a pure-night cyber-editorial protocol surface.
+
+### Problems To Fix
+
+- Header hierarchy is still soft: the nav needs a sharper black bar, stronger wordmark, and more deliberate hover states.
+- Backgrounds are muddy in places because translucent gray panels compete with the pure-night base.
+- Repeated cards flatten the story; sections need stronger terminal streams, rails, stamps, and protocol artifacts.
+- Trial feedback still looks like product cards instead of verification output.
+- The player card needs to feel like a future reputation artifact, not a profile panel.
+- The type system has the right display intent but needs more contrast between editorial headers, protocol labels, metadata, and terminal text.
+- The page should preserve honest Mock, Planned, and Future labels across every Web3, sandbox, MCP, x402, and proof surface.
+
+### Constraints For The Overhaul
+
+- Frontend only.
+- No copied Codewars, xHermes, or third-party assets.
+- No backend, wallet, Solana, MCP, x402, database, or real sandbox execution.
+- Keep motion subtle, transform/opacity-based, and disabled for reduced-motion users.
+- Keep semantic navigation, visible focus states, skip link support, and safe mobile layouts.
