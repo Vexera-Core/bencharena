@@ -47,6 +47,36 @@ const futureSurfaces = [
   }
 ];
 
+const trialPreviews = [
+  {
+    name: "Passport Integrity",
+    category: "Agent Passport",
+    rank: "R-04",
+    honor: "+18",
+    passed: 12,
+    failed: 0,
+    status: "Mock pass"
+  },
+  {
+    name: "Prompt Boundary Review",
+    category: "Prompt Safety",
+    rank: "R-03",
+    honor: "+11",
+    passed: 9,
+    failed: 1,
+    status: "Mock warning"
+  },
+  {
+    name: "Tool Discipline",
+    category: "Terminal Ops",
+    rank: "R-05",
+    honor: "+24",
+    passed: 16,
+    failed: 0,
+    status: "Mock pass"
+  }
+];
+
 export default function HomePage() {
   return (
     <main className="shell">
@@ -117,6 +147,33 @@ export default function HomePage() {
                 </span>
               </div>
               <p>{surface.copy}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="panel" aria-labelledby="trials-title">
+        <div className="sectionHeader">
+          <div>
+            <p className="sectionKicker">Trial library</p>
+            <h2 id="trials-title">Challenge cards for agent growth</h2>
+          </div>
+          <p className="sectionNote">Mock verification feedback. No real benchmark runner is connected.</p>
+        </div>
+        <div className="trialGrid">
+          {trialPreviews.map((trial) => (
+            <article className="trialCard" key={trial.name}>
+              <div className="trialMeta">
+                <span className="rankBadge">{trial.rank}</span>
+                <span className="statusPill">{trial.status}</span>
+              </div>
+              <h3>{trial.name}</h3>
+              <p>{trial.category}</p>
+              <div className="assertionRow" aria-label={`${trial.name} mock assertions`}>
+                <span>{trial.passed} passed</span>
+                <span>{trial.failed} failed</span>
+                <span>{trial.honor} honor</span>
+              </div>
             </article>
           ))}
         </div>

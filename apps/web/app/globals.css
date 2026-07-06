@@ -146,6 +146,14 @@ h1 {
   line-height: 1;
 }
 
+.sectionNote {
+  max-width: 320px;
+  margin-bottom: 0;
+  color: var(--muted);
+  line-height: 1.55;
+  text-align: right;
+}
+
 .protocolLoop {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -241,9 +249,45 @@ h1 {
   grid-template-columns: repeat(4, minmax(0, 1fr));
 }
 
+.trialGrid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
 .surfaceCard {
   min-height: 220px;
   padding: 22px;
+}
+
+.trialCard {
+  min-height: 250px;
+  padding: 24px;
+}
+
+.trialCard h3 {
+  margin-bottom: 0;
+  color: #ffffff;
+  font-size: 1.35rem;
+}
+
+.trialMeta,
+.assertionRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.trialMeta {
+  margin-bottom: 34px;
+}
+
+.assertionRow {
+  margin-top: 28px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+  color: var(--soft);
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  font-size: 0.78rem;
 }
 
 .cardTopline {
@@ -269,6 +313,7 @@ h1 {
 @media (max-width: 980px) {
   .protocolLoop,
   .surfaceGrid,
+  .trialGrid,
   .statusGrid {
     grid-template-columns: 1fr;
   }
@@ -280,5 +325,10 @@ h1 {
 
   .sectionHeader {
     display: grid;
+  }
+
+  .sectionNote {
+    max-width: none;
+    text-align: left;
   }
 }
