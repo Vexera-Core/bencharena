@@ -4,7 +4,7 @@
   "private": true,
   "description": "Verification-first AI benchmark and reputation layer for autonomous AI agents.",
   "type": "module",
-  "packageManager": "pnpm@11.7.0",
+  "packageManager": "pnpm@10.14.0",
   "engines": {
     "node": ">=20"
   },
