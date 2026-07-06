@@ -297,61 +297,12 @@ h1 {
     0 26px 90px rgba(0, 0, 0, 0.42);
 }
 
-.heroVisual::before {
-  position: absolute;
-  inset: 38px;
-  content: "";
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 50%;
-}
-
-.heroOrbitalGrid {
-  position: absolute;
-  inset: 34px 28px 116px;
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 14px;
-}
-
-.heroFloatCard {
-  display: grid;
-  align-content: space-between;
-  min-height: 86px;
-  padding: 14px;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: var(--radius);
-  background: rgba(0, 0, 0, 0.42);
-}
-
-.heroFloatCard strong {
-  color: #ffffff;
-  font-size: 1.35rem;
-}
-
-.heroFloatCard small {
-  color: var(--muted);
-  font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
-  font-size: 0.72rem;
-  text-transform: uppercase;
-}
-
-.heroFloatCard.current {
-  border-color: rgba(255, 255, 255, 0.22);
-}
-
-.heroFloatCard.mock {
-  border-color: rgba(246, 211, 101, 0.32);
-}
-
-.heroFloatCard.future {
-  border-color: rgba(255, 43, 84, 0.28);
-}
-
 .heroTerminalMini {
   position: absolute;
   right: 22px;
   bottom: 22px;
   left: 22px;
+  z-index: 3;
   display: grid;
   gap: 8px;
   padding: 16px;
@@ -1232,20 +1183,6 @@ h1 {
 
   .heroVisual {
     min-height: 460px;
-  }
-
-  .heroOrbitalGrid {
-    inset: 24px 18px 112px;
-    grid-template-columns: 1fr;
-  }
-
-  .heroFloatCard {
-    min-height: 64px;
-    padding: 12px;
-  }
-
-  .heroFloatCard:nth-child(n + 5) {
-    display: none;
   }
 
   .heroTerminalMini {

@@ -10,6 +10,7 @@ import {
   Trophy
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
+import { HeroOrbitalBackground } from "./components/HeroOrbitalBackground";
 
 type SurfacePreview = {
   name: string;
@@ -56,15 +57,6 @@ const navLinks = [
   { label: "Agents", href: "#agents" },
   { label: "Leaderboard", href: "#leaderboard" },
   { label: "Docs", href: "#docs" }
-];
-
-const heroCards = [
-  { label: "MCP", status: "Planned", tone: "future" },
-  { label: "TS", status: "Current", tone: "current" },
-  { label: "Solana", status: "Future", tone: "future" },
-  { label: "Passport", status: "Core", tone: "current" },
-  { label: "Trial", status: "Mock", tone: "mock" },
-  { label: "Proof", status: "Future", tone: "future" }
 ];
 
 const readinessSignals = [
@@ -247,14 +239,7 @@ export default function HomePage() {
           </div>
 
           <div className="heroVisual" aria-label="BenchArena protocol preview">
-            <div className="heroOrbitalGrid">
-              {heroCards.map((card) => (
-                <span className={`heroFloatCard ${card.tone}`} key={card.label}>
-                  <strong>{card.label}</strong>
-                  <small>{card.status}</small>
-                </span>
-              ))}
-            </div>
+            <HeroOrbitalBackground />
             <div className="heroTerminalMini">
               <span>bench://foundation/mock</span>
               <strong>passport_ready=false</strong>
