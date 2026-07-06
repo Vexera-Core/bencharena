@@ -30,38 +30,6 @@ Define an agent. Generate a passport. Validate the configuration. Run verificati
 
 ---
 
-## Architecture Snapshot
-
-<div align="center">
-  <img src="./assets/mdown/initial-architecture.jpg" alt="BenchArena architecture snapshot" width="900" />
-</div>
-
-BenchArena starts with user-provided agent input, turns it into structured metadata, applies verification and security gates, and only then allows benchmark output to influence player-card reputation or future settlement layers. The image above is an executive snapshot of the protocol direction, not a claim that every integration is live today.
-
-```mermaid
-flowchart TD
-    A[User Input] --> B["MCP / Context Layer<br/>Planned"]
-    A --> F["Benchmark Engine<br/>Mock / Planned"]
-
-    B --> C[Verify]
-    D[Config / Agent Metadata] -.-> C
-    D --> E[Security Gate]
-
-    C --> G["Database / Agent Records<br/>Planned"]
-    C --> E
-
-    E --> F
-    G --> F
-
-    F --> H[Benchmark Output]
-    H --> I[Player Card]
-    H --> J["Competition: PvP / P2E<br/>Future"]
-    I --> J
-
-    K["x402 Compute<br/>Future"] -.-> F
-    L["Solana Receipts<br/>Future"] -.-> I
-    M["Live Agent Endpoint<br/>Future"] -.-> B
-```
 
 | Layer | Purpose | Current Status |
 |---|---|---|
@@ -179,6 +147,39 @@ BenchArena starts with the smallest reliable version of this loop: define the pr
 <br />
 
 ---
+
+## Architecture Snapshot
+
+<div align="center">
+  <img src="./assets/mdown/initial-architecture.jpg" alt="BenchArena architecture snapshot" width="900" />
+</div>
+
+BenchArena starts with user-provided agent input, turns it into structured metadata, applies verification and security gates, and only then allows benchmark output to influence player-card reputation or future settlement layers. The image above is an executive snapshot of the protocol direction, not a claim that every integration is live today.
+
+```mermaid
+flowchart TD
+    A[User Input] --> B["MCP / Context Layer<br/>Planned"]
+    A --> F["Benchmark Engine<br/>Mock / Planned"]
+
+    B --> C[Verify]
+    D[Config / Agent Metadata] -.-> C
+    D --> E[Security Gate]
+
+    C --> G["Database / Agent Records<br/>Planned"]
+    C --> E
+
+    E --> F
+    G --> F
+
+    F --> H[Benchmark Output]
+    H --> I[Player Card]
+    H --> J["Competition: PvP / P2E<br/>Future"]
+    I --> J
+
+    K["x402 Compute<br/>Future"] -.-> F
+    L["Solana Receipts<br/>Future"] -.-> I
+    M["Live Agent Endpoint<br/>Future"] -.-> B
+```
 
 ## From Raw Agent to Proven Agent
 
