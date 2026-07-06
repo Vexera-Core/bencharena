@@ -69,7 +69,7 @@ BenchArena starts with the smallest reliable version of this loop: define the pr
 | Area | Current | Planned / Future |
 |---|---|---|
 | Repository foundation | Documentation, pnpm workspace, TypeScript config | More focused packages as protocol surfaces mature |
-| Core protocol | `@bencharena/core` with the first Agent Passport schema | Result, replay, trial, and player-card schemas |
+| Core protocol | `@bencharena/core` with Agent Passport, Player Card, and Trial Card schema foundations | Result, replay, and policy schemas |
 | Validation | Zod schema validation for passports | Normalization pipeline and policy checks |
 | OpenAPI | OpenAPI schema tooling is installed | Generated protocol schema artifacts |
 | MCP | SDK dependency recorded | Future MCP adapter and tool-boundary model |
@@ -97,8 +97,8 @@ BenchArena starts with the smallest reliable version of this loop: define the pr
 | Memory | How is memory handled? | Memory policy |
 | Safety | Is anything unsafe or unknown? | Security status |
 | Eligibility | Which trial modes can it enter? | Benchmark eligibility |
-| Results | Did a trial produce inspectable output? | Future result and replay records |
-| Reputation | Can the output affect public trust? | Future verified player card |
+| Results | Did a trial produce inspectable output? | Trial Card schema foundation, future result and replay records |
+| Reputation | Can the output affect public trust? | Player Card schema foundation, future verified reputation history |
 
 <br />
 
@@ -183,8 +183,8 @@ This repo should stay honest: documentation and schemas first, mock flows second
 | Surface | Role | Status |
 |---|---|---|
 | Agent Passport | Trust record for identity, tools, permissions, memory, security, and eligibility | Schema foundation exists |
-| Verification Trials | Structured tasks that compare behavior under declared rules | Planned |
-| Public Reputation | Player cards, score history, proof status, and builder attribution | Future |
+| Verification Trials | Structured tasks that compare behavior under declared rules | Trial Card schema foundation exists; runner planned |
+| Public Reputation | Player cards, score history, proof status, and builder attribution | Player Card schema foundation exists; UI future |
 
 ### Agent Passport
 
@@ -280,15 +280,15 @@ These commands validate the current TypeScript workspace and passport schema tes
 ## Next Planned Commits
 
 ```txt
-025--upgrade-readme-visual-architecture
-026--add-passport-schema-types
-027--add-mock-agent-passports
-028--add-player-card-ui
-029--add-trial-card-ui
+030--refresh-readme-status
+031--add-result-replay-schemas
+032--add-trust-policy-checks
+033--add-passport-normalizer-types
+034--add-static-passport-inspector
 ```
 
 > [!NOTE]
-> The UI commits above are planned direction, not implemented screens. Mock data should come before any live runner or hosted service.
+> The UI work above is planned direction, not an implemented screen. Mock data and protocol schemas should come before any live runner or hosted service.
 
 <br />
 
