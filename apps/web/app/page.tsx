@@ -1,3 +1,4 @@
+import Image from "next/image";
 import {
   Activity,
   BadgeCheck,
@@ -222,11 +223,14 @@ export default function HomePage() {
       <main className="shell" id="main-content">
       <header className="topBar" aria-label="BenchArena navigation">
         <a className="brandMark" href="#" aria-label="BenchArena home">
-          <span className="brandSigil">BA</span>
-          <span>
-            BenchArena
-            <small>Verification arena</small>
-          </span>
+          <Image
+            alt="BenchArena"
+            className="brandLogo"
+            height={1254}
+            priority
+            src="/brand/arena-logo-updated.png"
+            width={1254}
+          />
         </a>
 
         <nav className="primaryNav" aria-label="Product sections">

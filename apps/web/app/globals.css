@@ -137,21 +137,19 @@ a {
   z-index: 1;
   display: inline-flex;
   align-items: center;
-  gap: 12px;
+  width: fit-content;
   color: #ffffff;
   font-family: var(--font-display);
   font-weight: 950;
   letter-spacing: 0;
 }
 
-.brandMark small {
+.brandLogo {
   display: block;
-  margin-top: 2px;
-  color: var(--muted);
-  font-size: 0.68rem;
-  font-weight: 800;
-  letter-spacing: 0;
-  text-transform: uppercase;
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  filter: drop-shadow(0 10px 24px rgba(255, 0, 18, 0.16));
 }
 
 .brandSigil {
