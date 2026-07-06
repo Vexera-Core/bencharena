@@ -504,6 +504,34 @@ h1 {
   line-height: 0.9;
 }
 
+.playerSignalRow {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 24px;
+}
+
+.playerSignalRow span {
+  display: grid;
+  gap: 8px;
+  padding: 12px;
+  border: 1px solid rgba(71, 240, 165, 0.16);
+  border-radius: var(--radius);
+  background: rgba(71, 240, 165, 0.045);
+}
+
+.playerSignalRow small {
+  color: var(--muted);
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  font-size: 0.68rem;
+  text-transform: uppercase;
+}
+
+.playerSignalRow strong {
+  color: #ffffff;
+  font-size: 0.9rem;
+}
+
 .playerMetaGrid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -530,6 +558,22 @@ h1 {
 .playerMeta strong {
   color: #ffffff;
   font-size: 0.95rem;
+}
+
+.trustChecklist {
+  display: grid;
+  gap: 8px;
+  margin-top: 18px;
+}
+
+.trustChecklist span {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  width: fit-content;
+  color: #dcffec;
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  font-size: 0.76rem;
 }
 
 .cardFooter {
@@ -583,6 +627,15 @@ h1 {
 
 .leaderboardRow strong {
   color: #ffffff;
+}
+
+.leaderboardFootnote {
+  margin: 18px 0 0;
+  padding-top: 18px;
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 0.92rem;
+  line-height: 1.6;
 }
 
 .trialMeta {
@@ -649,6 +702,7 @@ h1 {
   }
 
   .playerMetaGrid,
+  .playerSignalRow,
   .trialDetails,
   .leaderboardRow {
     grid-template-columns: 1fr;
