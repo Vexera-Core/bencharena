@@ -1,18 +1,23 @@
 :root {
   color-scheme: dark;
   --bg: #000000;
-  --bg-soft: #050506;
-  --surface: rgba(255, 255, 255, 0.04);
-  --surface-strong: rgba(255, 255, 255, 0.07);
+  --bg-soft: #05070d;
+  --navy: #192039;
+  --navy-soft: rgba(25, 32, 57, 0.54);
+  --surface: rgba(25, 32, 57, 0.36);
+  --surface-strong: rgba(25, 32, 57, 0.62);
   --border: rgba(255, 255, 255, 0.13);
   --border-strong: rgba(255, 255, 255, 0.28);
   --text: #ffffff;
   --muted: #a1a1aa;
   --soft: #e4e4e7;
-  --protocol: #a78bfa;
+  --protocol: #b6c1ff;
   --verified: #4ade80;
   --warning: #facc15;
-  --danger: #ff335f;
+  --arena-red: #dd020e;
+  --arena-red-hot: #ff1422;
+  --arena-red-deep: #5f0207;
+  --danger: var(--arena-red);
   --radius: 8px;
   --shadow-deep: 0 28px 92px rgba(0, 0, 0, 0.48);
   --font-body: "Inter Tight", Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
@@ -30,7 +35,7 @@
 }
 
 *::selection {
-  background: rgba(255, 51, 95, 0.44);
+  background: rgba(221, 2, 14, 0.52);
   color: #ffffff;
 }
 
@@ -48,11 +53,11 @@ html {
 
 body {
   overflow-x: hidden;
-  -webkit-tap-highlight-color: rgba(255, 51, 95, 0.18);
+  -webkit-tap-highlight-color: rgba(221, 2, 14, 0.18);
   background:
-    radial-gradient(circle at 50% -12%, rgba(255, 51, 95, 0.18), transparent 30rem),
-    linear-gradient(rgba(255, 255, 255, 0.026) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.018) 1px, transparent 1px),
+    radial-gradient(circle at 50% -12%, rgba(221, 2, 14, 0.2), transparent 30rem),
+    linear-gradient(rgba(25, 32, 57, 0.3) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(25, 32, 57, 0.2) 1px, transparent 1px),
     var(--bg);
   background-size: auto, 58px 58px, 58px 58px, auto;
 }
@@ -117,9 +122,11 @@ a {
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.14);
   border-radius: var(--radius);
-  background: rgba(0, 0, 0, 0.94);
+  background:
+    linear-gradient(180deg, rgba(25, 32, 57, 0.5), rgba(0, 0, 0, 0.96)),
+    #000000;
   box-shadow:
-    inset 0 -1px 0 rgba(255, 51, 95, 0.2),
+    inset 0 -1px 0 rgba(221, 2, 14, 0.3),
     0 20px 70px rgba(0, 0, 0, 0.64);
   backdrop-filter: blur(20px);
 }
@@ -149,7 +156,7 @@ a {
   width: 48px;
   height: 48px;
   object-fit: contain;
-  filter: drop-shadow(0 10px 24px rgba(255, 0, 18, 0.16));
+  filter: drop-shadow(0 10px 24px rgba(221, 2, 14, 0.2));
 }
 
 .brandSigil {
@@ -161,12 +168,12 @@ a {
   border: 1px solid rgba(255, 255, 255, 0.18);
   border-radius: var(--radius);
   background:
-    linear-gradient(135deg, rgba(255, 51, 95, 0.22), rgba(255, 255, 255, 0.03)),
+    linear-gradient(135deg, rgba(221, 2, 14, 0.22), rgba(25, 32, 57, 0.32)),
     #000000;
   color: #ffffff;
   font-family: var(--font-mono);
   font-size: 0.72rem;
-  box-shadow: 0 0 28px rgba(255, 43, 84, 0.18);
+  box-shadow: 0 0 28px rgba(221, 2, 14, 0.18);
 }
 
 .primaryNav,
@@ -183,7 +190,7 @@ a {
   padding: 5px;
   border: 1px solid rgba(255, 255, 255, 0.09);
   border-radius: var(--radius);
-  background: rgba(255, 255, 255, 0.035);
+  background: rgba(25, 32, 57, 0.36);
 }
 
 .primaryNav a {
@@ -204,7 +211,7 @@ a {
   left: 10px;
   height: 1px;
   content: "";
-  background: linear-gradient(90deg, transparent, rgba(255, 43, 84, 0.9), transparent);
+  background: linear-gradient(90deg, transparent, rgba(221, 2, 14, 0.95), transparent);
   opacity: 0;
   transform: translateY(6px) scaleX(0.5);
   transition: opacity 160ms ease, transform 160ms ease;
@@ -247,28 +254,28 @@ a {
 }
 
 .primaryButton {
-  border: 1px solid rgba(255, 43, 84, 0.5);
-  background: linear-gradient(135deg, #ffffff, #ff335f 55%, #4c0615);
+  border: 1px solid rgba(221, 2, 14, 0.72);
+  background: linear-gradient(135deg, var(--arena-red-hot), var(--arena-red) 54%, var(--arena-red-deep));
   color: #ffffff;
-  box-shadow: 0 0 34px rgba(255, 43, 84, 0.2);
+  box-shadow: 0 0 34px rgba(221, 2, 14, 0.18);
 }
 
 .primaryButton:hover,
 .primaryButton:focus-visible {
   transform: translateY(-1px);
-  box-shadow: 0 0 42px rgba(255, 43, 84, 0.28);
+  box-shadow: 0 0 42px rgba(221, 2, 14, 0.26);
 }
 
 .ghostButton {
   border: 1px solid rgba(255, 255, 255, 0.14);
-  background: rgba(255, 255, 255, 0.035);
+  background: rgba(25, 32, 57, 0.32);
   color: var(--soft);
 }
 
 .ghostButton:hover,
 .ghostButton:focus-visible {
   border-color: rgba(255, 255, 255, 0.28);
-  background: rgba(255, 255, 255, 0.065);
+  background: rgba(25, 32, 57, 0.52);
 }
 
 .hero {
@@ -285,7 +292,8 @@ a {
   min-height: 84vh;
   background:
     linear-gradient(180deg, rgba(0, 0, 0, 0), #000000 86%),
-    radial-gradient(circle at 78% 18%, rgba(255, 51, 95, 0.16), transparent 26rem),
+    radial-gradient(circle at 78% 18%, rgba(221, 2, 14, 0.2), transparent 26rem),
+    radial-gradient(circle at 18% 58%, rgba(25, 32, 57, 0.64), transparent 30rem),
     #000000;
 }
 
@@ -306,7 +314,7 @@ a {
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: var(--radius);
   background:
-    linear-gradient(135deg, rgba(255, 51, 95, 0.11), rgba(255, 255, 255, 0.018)),
+    linear-gradient(135deg, rgba(221, 2, 14, 0.12), rgba(25, 32, 57, 0.28)),
     rgba(0, 0, 0, 0.68);
   color: rgba(255, 255, 255, 0.42);
   font-family: var(--font-mono);
@@ -371,7 +379,7 @@ a {
   width: fit-content;
   padding: 7px 10px;
   border: 1px solid rgba(255, 255, 255, 0.14);
-  border-left-color: rgba(255, 51, 95, 0.76);
+  border-left-color: rgba(221, 2, 14, 0.78);
   background: rgba(0, 0, 0, 0.58);
 }
 
@@ -447,7 +455,7 @@ h1 {
   border: 1px solid rgba(255, 255, 255, 0.14);
   border-left-color: rgba(74, 222, 128, 0.55);
   border-radius: var(--radius);
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(25, 32, 57, 0.34);
 }
 
 .heroProtocolStamp span,
@@ -472,7 +480,8 @@ h1 {
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: var(--radius);
   background:
-    linear-gradient(135deg, rgba(255, 51, 95, 0.13), transparent 42%),
+    linear-gradient(135deg, rgba(221, 2, 14, 0.14), transparent 42%),
+    linear-gradient(180deg, rgba(25, 32, 57, 0.46), transparent 58%),
     #000000;
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.1),
@@ -529,7 +538,7 @@ h1 {
   position: absolute;
   inset: 20%;
   content: "";
-  border: 1px dashed rgba(255, 43, 84, 0.16);
+  border: 1px dashed rgba(221, 2, 14, 0.18);
   border-radius: 999px;
   transform:
     translate3d(calc(var(--orbital-x) * 20px), calc(var(--orbital-y) * 16px), 0)
@@ -548,9 +557,9 @@ h1 {
   border: 1px solid rgba(255, 255, 255, 0.16);
   border-radius: 999px;
   background:
-    radial-gradient(circle, rgba(255, 43, 84, 0.2), transparent 68%),
-    rgba(0, 0, 0, 0.46);
-  box-shadow: 0 0 56px rgba(255, 43, 84, 0.16);
+    radial-gradient(circle, rgba(221, 2, 14, 0.24), transparent 68%),
+    rgba(25, 32, 57, 0.36);
+  box-shadow: 0 0 56px rgba(221, 2, 14, 0.16);
   transform:
     translate(-50%, -50%)
     translate3d(calc(var(--orbital-x) * 10px), calc(var(--orbital-y) * 8px), 0);
@@ -648,7 +657,7 @@ h1 {
 
 .orbitalTile.planned,
 .orbitalTile.future {
-  border-color: rgba(255, 43, 84, 0.28);
+  border-color: rgba(221, 2, 14, 0.34);
 }
 
 .heroProofStrip {
@@ -853,7 +862,7 @@ h1 {
 }
 
 .important {
-  background: linear-gradient(135deg, rgba(155, 140, 255, 0.13), rgba(255, 255, 255, 0.04));
+  background: linear-gradient(135deg, rgba(25, 32, 57, 0.62), rgba(221, 2, 14, 0.055));
 }
 
 .protocolAlert.important {
@@ -1014,14 +1023,14 @@ h1 {
 }
 
 .verificationRow.blocked span:nth-child(2) {
-  border-color: rgba(255, 51, 95, 0.42);
+  border-color: rgba(221, 2, 14, 0.46);
   color: var(--danger);
 }
 
 .verificationRow.mock span:nth-child(2),
 .verificationRow.planned span:nth-child(2),
 .verificationRow.future span:nth-child(2) {
-  border-color: rgba(167, 139, 250, 0.28);
+  border-color: rgba(25, 32, 57, 0.82);
   color: var(--protocol);
 }
 
@@ -1090,7 +1099,7 @@ h1 {
   pointer-events: none;
   content: "";
   border-radius: var(--radius);
-  background: linear-gradient(135deg, rgba(255, 43, 84, 0.11), transparent 46%);
+  background: linear-gradient(135deg, rgba(221, 2, 14, 0.11), transparent 46%);
   opacity: 0.8;
 }
 
@@ -1117,7 +1126,7 @@ h1 {
   display: block;
   height: 100%;
   border-radius: inherit;
-  background: linear-gradient(90deg, #ff2b54, #47f0a5);
+  background: linear-gradient(90deg, var(--arena-red), var(--verified));
 }
 
 .trialDetails {
@@ -1156,9 +1165,9 @@ h1 {
 
 .consolePanel {
   overflow: hidden;
-  border-color: rgba(255, 43, 84, 0.18);
+  border-color: rgba(221, 2, 14, 0.24);
   background:
-    linear-gradient(180deg, rgba(255, 43, 84, 0.055), rgba(255, 255, 255, 0.035)),
+    linear-gradient(180deg, rgba(25, 32, 57, 0.5), rgba(221, 2, 14, 0.035)),
     #040407;
 }
 
@@ -1189,7 +1198,7 @@ h1 {
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: var(--radius);
   background:
-    linear-gradient(135deg, rgba(255, 43, 84, 0.08), rgba(255, 255, 255, 0.035)),
+    linear-gradient(135deg, rgba(25, 32, 57, 0.58), rgba(221, 2, 14, 0.055)),
     rgba(0, 0, 0, 0.2);
 }
 
@@ -1257,7 +1266,7 @@ h1 {
 }
 
 .consoleRow.planned span:nth-child(2) {
-  color: #ff8ca1;
+  color: var(--arena-red-hot);
 }
 
 .consoleRow.blocked span:nth-child(2) {
@@ -1317,7 +1326,8 @@ h1 {
   min-height: 540px;
   overflow: hidden;
   background:
-    linear-gradient(135deg, rgba(255, 51, 95, 0.08), transparent 42%),
+    linear-gradient(135deg, rgba(221, 2, 14, 0.1), transparent 42%),
+    linear-gradient(180deg, rgba(25, 32, 57, 0.42), transparent 54%),
     #000000;
 }
 
@@ -1332,7 +1342,7 @@ h1 {
   inset: 14px;
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-top-color: rgba(255, 255, 255, 0.34);
-  border-right-color: rgba(255, 51, 95, 0.32);
+  border-right-color: rgba(221, 2, 14, 0.34);
 }
 
 .playerCard::after {
@@ -1376,7 +1386,7 @@ h1 {
 .protocolStampRail span {
   padding: 7px 9px;
   border: 1px solid rgba(255, 255, 255, 0.12);
-  border-left-color: rgba(255, 51, 95, 0.55);
+  border-left-color: rgba(221, 2, 14, 0.58);
   border-radius: calc(var(--radius) - 2px);
   background: rgba(255, 255, 255, 0.026);
   color: #ffffff;
