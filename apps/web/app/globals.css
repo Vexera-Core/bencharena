@@ -1,25 +1,28 @@
 :root {
   color-scheme: dark;
-  --bg: #020307;
-  --bg-soft: #070a12;
-  --surface: rgba(255, 255, 255, 0.055);
-  --surface-strong: rgba(255, 255, 255, 0.085);
-  --border: rgba(255, 255, 255, 0.14);
-  --border-strong: rgba(255, 255, 255, 0.24);
-  --text: #f8fafc;
-  --muted: #b2bac8;
-  --soft: #d8dee9;
-  --protocol: #9b8cff;
-  --verified: #47f0a5;
-  --warning: #f6d365;
-  --danger: #ff7a90;
+  --bg: #000000;
+  --bg-soft: #050506;
+  --surface: rgba(255, 255, 255, 0.04);
+  --surface-strong: rgba(255, 255, 255, 0.07);
+  --border: rgba(255, 255, 255, 0.13);
+  --border-strong: rgba(255, 255, 255, 0.28);
+  --text: #ffffff;
+  --muted: #a1a1aa;
+  --soft: #e4e4e7;
+  --protocol: #a78bfa;
+  --verified: #4ade80;
+  --warning: #facc15;
+  --danger: #ff335f;
   --radius: 8px;
-  --shadow-deep: 0 24px 80px rgba(0, 0, 0, 0.28);
-  --font-body: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --shadow-deep: 0 28px 92px rgba(0, 0, 0, 0.48);
+  --font-body: "Inter Tight", Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --font-display: "Montenegrin Gothic One", Inter, Satoshi, "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-technical: "Space Grotesk", "Inter Tight", Inter, ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "SFMono-Regular", "Cascadia Code", Consolas, "Liberation Mono", monospace;
   background: var(--bg);
   color: var(--text);
   font-family: var(--font-body);
+  font-variant-numeric: tabular-nums;
 }
 
 * {
@@ -27,7 +30,7 @@
 }
 
 *::selection {
-  background: rgba(155, 140, 255, 0.38);
+  background: rgba(255, 51, 95, 0.44);
   color: #ffffff;
 }
 
@@ -45,12 +48,11 @@ html {
 body {
   overflow-x: hidden;
   background:
-    radial-gradient(circle at 50% -10%, rgba(255, 43, 84, 0.2), transparent 34rem),
-    linear-gradient(180deg, rgba(255, 43, 84, 0.08), transparent 36rem),
-    linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+    radial-gradient(circle at 50% -12%, rgba(255, 51, 95, 0.18), transparent 30rem),
+    linear-gradient(rgba(255, 255, 255, 0.026) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.018) 1px, transparent 1px),
     var(--bg);
-  background-size: auto, auto, 56px 56px, 56px 56px, auto;
+  background-size: auto, 58px 58px, 58px 58px, auto;
 }
 
 a,
@@ -153,7 +155,7 @@ a {
     linear-gradient(135deg, rgba(255, 43, 84, 0.34), rgba(255, 255, 255, 0.04)),
     #08080d;
   color: #ffffff;
-  font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  font-family: var(--font-mono);
   font-size: 0.72rem;
   box-shadow: 0 0 28px rgba(255, 43, 84, 0.18);
 }
@@ -290,7 +292,7 @@ a {
     linear-gradient(135deg, rgba(255, 43, 84, 0.12), rgba(255, 255, 255, 0.025)),
     rgba(0, 0, 0, 0.18);
   color: rgba(255, 255, 255, 0.34);
-  font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  font-family: var(--font-mono);
   font-size: 0.78rem;
   text-transform: uppercase;
   transform: translateY(var(--float-y, 0));
@@ -419,7 +421,7 @@ h1 {
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: var(--radius);
   background: rgba(0, 0, 0, 0.66);
-  font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  font-family: var(--font-mono);
 }
 
 .heroTerminalMini span,
@@ -486,7 +488,7 @@ h1 {
 
 .orbitalCore span,
 .orbitalCore strong {
-  font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  font-family: var(--font-mono);
   text-transform: uppercase;
 }
 
@@ -554,14 +556,14 @@ h1 {
 
 .orbitalTile strong {
   color: #ffffff;
-  font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  font-family: var(--font-mono);
   font-size: 0.94rem;
   letter-spacing: 0;
 }
 
 .orbitalTile small {
   color: var(--muted);
-  font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  font-family: var(--font-mono);
   font-size: 0.62rem;
   text-transform: uppercase;
 }
@@ -601,7 +603,7 @@ h1 {
 .readinessItem span,
 .readinessItem small {
   color: var(--muted);
-  font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  font-family: var(--font-mono);
   font-size: 0.72rem;
   text-transform: uppercase;
 }
@@ -711,7 +713,7 @@ h1 {
 .stageIndex,
 .metaText {
   color: var(--muted);
-  font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  font-family: var(--font-mono);
   font-size: 0.76rem;
 }
 
@@ -867,16 +869,14 @@ h1 {
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: var(--radius);
   color: var(--muted);
-  font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  font-family: var(--font-mono);
   font-size: 0.7rem;
   text-transform: uppercase;
 }
 
 .trialDetails strong {
   color: #ffffff;
-  font-family:
-    Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-    sans-serif;
+  font-family: var(--font-technical);
   font-size: 0.86rem;
   text-transform: none;
 }
@@ -906,7 +906,7 @@ h1 {
   border-bottom: 1px solid var(--border);
   background: rgba(0, 0, 0, 0.38);
   color: var(--muted);
-  font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  font-family: var(--font-mono);
   font-size: 0.78rem;
 }
 
@@ -936,7 +936,7 @@ h1 {
 .rankStep span,
 .rankStep small {
   color: var(--muted);
-  font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  font-family: var(--font-mono);
   font-size: 0.74rem;
   text-transform: uppercase;
 }
@@ -958,7 +958,7 @@ h1 {
   padding: 12px 0;
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
   color: #f8fafc;
-  font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  font-family: var(--font-mono);
   font-size: 0.82rem;
 }
 
@@ -1014,7 +1014,7 @@ h1 {
   border: 1px solid rgba(71, 240, 165, 0.2);
   border-radius: calc(var(--radius) - 2px);
   color: #dcffec;
-  font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  font-family: var(--font-mono);
   font-size: 0.7rem;
   text-transform: uppercase;
 }
@@ -1077,7 +1077,7 @@ h1 {
 
 .playerSignalRow small {
   color: var(--muted);
-  font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  font-family: var(--font-mono);
   font-size: 0.68rem;
   text-transform: uppercase;
 }
@@ -1106,7 +1106,7 @@ h1 {
 .playerMeta span,
 .leaderboardRow small {
   color: var(--muted);
-  font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  font-family: var(--font-mono);
   font-size: 0.74rem;
 }
 
@@ -1127,7 +1127,7 @@ h1 {
   gap: 8px;
   width: fit-content;
   color: #dcffec;
-  font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  font-family: var(--font-mono);
   font-size: 0.76rem;
 }
 
@@ -1137,7 +1137,7 @@ h1 {
   padding-top: 18px;
   border-top: 1px solid var(--border);
   color: var(--soft);
-  font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  font-family: var(--font-mono);
   font-size: 0.78rem;
 }
 
@@ -1171,7 +1171,7 @@ h1 {
 
 .leaderboardRank {
   color: var(--verified);
-  font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  font-family: var(--font-mono);
   font-weight: 900;
 }
 
@@ -1202,7 +1202,7 @@ h1 {
   padding-top: 16px;
   border-top: 1px solid var(--border);
   color: var(--soft);
-  font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  font-family: var(--font-mono);
   font-size: 0.78rem;
 }
 
