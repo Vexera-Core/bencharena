@@ -353,6 +353,125 @@ h1 {
   color: var(--protocol);
 }
 
+.showcasePanel {
+  border-bottom: 0;
+}
+
+.showcaseGrid {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 16px;
+}
+
+.playerCard,
+.leaderboardPanel {
+  padding: 26px;
+}
+
+.playerCard {
+  min-height: 470px;
+  background:
+    linear-gradient(135deg, rgba(155, 140, 255, 0.18), rgba(71, 240, 165, 0.055)),
+    linear-gradient(180deg, var(--surface-strong), var(--surface));
+}
+
+.playerCardHeader,
+.cardFooter,
+.leaderboardHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.playerCard h3 {
+  max-width: 520px;
+  margin: 42px 0 0;
+  color: #ffffff;
+  font-size: clamp(2.6rem, 5vw, 5.1rem);
+  line-height: 0.9;
+}
+
+.playerMetaGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 34px;
+}
+
+.playerMeta {
+  display: grid;
+  gap: 8px;
+  padding: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(0, 0, 0, 0.22);
+}
+
+.playerMeta span,
+.leaderboardRow small {
+  color: var(--muted);
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  font-size: 0.74rem;
+}
+
+.playerMeta strong {
+  color: #ffffff;
+  font-size: 0.95rem;
+}
+
+.cardFooter {
+  flex-wrap: wrap;
+  margin-top: 26px;
+  padding-top: 18px;
+  border-top: 1px solid var(--border);
+  color: var(--soft);
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  font-size: 0.78rem;
+}
+
+.leaderboardHeader {
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--border);
+}
+
+.leaderboardHeader h3 {
+  margin-bottom: 0;
+  color: #ffffff;
+  font-size: 1.45rem;
+}
+
+.leaderboardRows {
+  display: grid;
+}
+
+.leaderboardRow {
+  display: grid;
+  grid-template-columns: 42px 1fr auto auto;
+  align-items: center;
+  gap: 14px;
+  padding: 18px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.leaderboardRow:last-child {
+  border-bottom: 0;
+}
+
+.leaderboardRank {
+  color: var(--verified);
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  font-weight: 900;
+}
+
+.leaderboardRow strong,
+.leaderboardRow small {
+  display: block;
+}
+
+.leaderboardRow strong {
+  color: #ffffff;
+}
+
 .trialMeta {
   margin-bottom: 34px;
 }
@@ -391,6 +510,7 @@ h1 {
   .surfaceGrid,
   .trialGrid,
   .metricsGrid,
+  .showcaseGrid,
   .statusGrid {
     grid-template-columns: 1fr;
   }
@@ -412,5 +532,17 @@ h1 {
   .sectionNote {
     max-width: none;
     text-align: left;
+  }
+
+  .playerMetaGrid,
+  .leaderboardRow {
+    grid-template-columns: 1fr;
+  }
+
+  .playerCardHeader,
+  .cardFooter,
+  .leaderboardHeader {
+    align-items: flex-start;
+    display: grid;
   }
 }

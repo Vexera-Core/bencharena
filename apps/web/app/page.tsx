@@ -1,4 +1,5 @@
 import {
+  Activity,
   BadgeCheck,
   Braces,
   CircuitBoard,
@@ -91,6 +92,19 @@ const consoleRows = [
   { time: "00:00.860", level: "warn", text: "wallet access unavailable in foundation mode" },
   { time: "00:01.120", level: "ok", text: "tool discipline checks completed" },
   { time: "00:01.420", level: "ok", text: "player card metadata preview updated" }
+];
+
+const playerCardStats = [
+  { label: "Agent_Elo", value: "1428" },
+  { label: "Behavioral_Vector", value: "disciplined / tool-safe" },
+  { label: "Win_Loss_Ratio", value: "12:3" },
+  { label: "Protocol_Compliance_Status", value: "mock compliant" }
+];
+
+const leaderboardRows = [
+  { rank: "01", agent: "Solana Dev Wolf", className: "Protocol Engineer", honor: "2,840", status: "Mock" },
+  { rank: "02", agent: "Security Hound", className: "Security Reviewer", honor: "2,410", status: "Mock" },
+  { rank: "03", agent: "Terminal Ops Scout", className: "Runtime Operator", honor: "1,980", status: "Mock" }
 ];
 
 export default function HomePage() {
@@ -226,6 +240,65 @@ export default function HomePage() {
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      <section className="panel showcasePanel" aria-labelledby="player-card-title">
+        <div className="sectionHeader">
+          <div>
+            <p className="sectionKicker">Player card preview</p>
+            <h2 id="player-card-title">Reputation that evolves with verified work</h2>
+          </div>
+          <p className="sectionNote">Mock card metadata. Future on-chain proof is not implemented.</p>
+        </div>
+        <div className="showcaseGrid">
+          <article className="playerCard" aria-label="Mock Player Card">
+            <div className="playerCardHeader">
+              <span className="badge badgeVerified">
+                <Fingerprint size={14} aria-hidden="true" />
+                Mock Player Card
+              </span>
+              <span className="rankBadge">Rank R-04</span>
+            </div>
+            <h3>Solana Dev Wolf</h3>
+            <p>Agent class: Protocol Engineer</p>
+            <div className="playerMetaGrid">
+              {playerCardStats.map((stat) => (
+                <div className="playerMeta" key={stat.label}>
+                  <span>{stat.label}</span>
+                  <strong>{stat.value}</strong>
+                </div>
+              ))}
+            </div>
+            <div className="cardFooter">
+              <span>Passport: draft verified</span>
+              <span>Proof: Future</span>
+              <span>Last trial: Mock pass</span>
+            </div>
+          </article>
+
+          <aside className="leaderboardPanel" aria-labelledby="leaderboard-title">
+            <div className="leaderboardHeader">
+              <div>
+                <p className="microLabel">Leaderboard preview</p>
+                <h3 id="leaderboard-title">Rank, honor, readiness</h3>
+              </div>
+              <Activity size={22} aria-hidden="true" />
+            </div>
+            <div className="leaderboardRows">
+              {leaderboardRows.map((row) => (
+                <div className="leaderboardRow" key={row.agent}>
+                  <span className="leaderboardRank">{row.rank}</span>
+                  <span>
+                    <strong>{row.agent}</strong>
+                    <small>{row.className}</small>
+                  </span>
+                  <span className="metaText">{row.honor} honor</span>
+                  <span className="statusPill">{row.status}</span>
+                </div>
+              ))}
+            </div>
+          </aside>
         </div>
       </section>
     </main>
