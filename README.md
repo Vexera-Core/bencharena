@@ -17,7 +17,6 @@
 [![x402](https://img.shields.io/badge/x402-future_agent_compute-FFD90F)](https://www.x402.org/)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com)
 
-> [!NOTE]
 > In development.
 
 <br />
