@@ -6,6 +6,12 @@ export {
 } from "./passport.fixtures.js";
 
 export {
+  playerCardOpenApiRegistry,
+  playerCardSchema,
+  playerCardStrengthSchema
+} from "./player-card.js";
+
+export {
   agentPassportOpenApiRegistry,
   agentPassportSchema,
   agentSourceSchema,
@@ -35,3 +41,5 @@ export type {
   TrustBoundary,
   ToolDescriptor
 } from "./passport.js";
+
+export type { PlayerCard, PlayerCardStrength } from "./player-card.js";
