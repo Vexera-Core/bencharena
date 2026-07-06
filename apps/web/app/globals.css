@@ -1702,6 +1702,31 @@ h1 {
   color: #dbeafe;
 }
 
+.footerPanel {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 56px;
+  padding-top: 28px;
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+}
+
+.footerPanel span,
+.footerPanel a {
+  color: #ffffff;
+}
+
+.footerPanel p {
+  max-width: 680px;
+  margin: 0;
+  line-height: 1.55;
+}
+
 @keyframes editorialFloat {
   0%,
   100% {
