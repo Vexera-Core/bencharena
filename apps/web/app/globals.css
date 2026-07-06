@@ -851,6 +851,13 @@ h1 {
   gap: 14px;
 }
 
+.terminalStreamGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(360px, 0.95fr);
+  gap: 16px;
+  align-items: stretch;
+}
+
 .surfaceGrid {
   grid-template-columns: repeat(4, minmax(0, 1fr));
 }
@@ -886,6 +893,145 @@ h1 {
   min-height: 250px;
   padding: 24px;
   position: relative;
+}
+
+.trialStreamPanel,
+.assertionCase {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: #000000;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.07),
+    var(--shadow-deep);
+}
+
+.trialStreamPanel {
+  overflow: hidden;
+}
+
+.verificationRows {
+  display: grid;
+  padding: 12px 18px;
+  background:
+    linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+    #000000;
+  background-size: 100% 40px;
+}
+
+.verificationRow {
+  display: grid;
+  grid-template-columns: 88px 82px minmax(130px, 0.8fr) 1fr;
+  gap: 14px;
+  align-items: center;
+  min-width: 0;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.075);
+  color: #ffffff;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+}
+
+.verificationRow:last-child {
+  border-bottom: 0;
+}
+
+.verificationRow span,
+.verificationRow strong {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.verificationRow span:first-child,
+.verificationRow span:last-child {
+  color: var(--muted);
+}
+
+.verificationRow span:nth-child(2) {
+  width: fit-content;
+  padding: 4px 7px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: calc(var(--radius) - 2px);
+}
+
+.verificationRow.pass span:nth-child(2) {
+  border-color: rgba(74, 222, 128, 0.32);
+  color: var(--verified);
+}
+
+.verificationRow.warn span:nth-child(2) {
+  border-color: rgba(250, 204, 21, 0.34);
+  color: var(--warning);
+}
+
+.verificationRow.blocked span:nth-child(2) {
+  border-color: rgba(255, 51, 95, 0.42);
+  color: var(--danger);
+}
+
+.verificationRow.mock span:nth-child(2),
+.verificationRow.planned span:nth-child(2),
+.verificationRow.future span:nth-child(2) {
+  border-color: rgba(167, 139, 250, 0.28);
+  color: var(--protocol);
+}
+
+.assertionMatrix {
+  display: grid;
+  gap: 10px;
+}
+
+.assertionCase {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 18px;
+  align-items: center;
+  padding: 18px;
+  position: relative;
+  overflow: hidden;
+}
+
+.assertionCase::before {
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 2px;
+  content: "";
+  background: linear-gradient(180deg, var(--danger), transparent);
+}
+
+.assertionCase h3 {
+  margin-bottom: 6px;
+  color: #ffffff;
+  font-family: var(--font-technical);
+  font-size: 1.08rem;
+}
+
+.assertionCase p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.assertionStats {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(74px, 1fr));
+  gap: 8px;
+  grid-column: 1 / -1;
+}
+
+.assertionStats span {
+  display: grid;
+  gap: 4px;
+  padding: 9px;
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: calc(var(--radius) - 2px);
+  background: rgba(255, 255, 255, 0.025);
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+}
+
+.assertionStats strong {
+  color: #ffffff;
+  font-size: 0.9rem;
 }
 
 .trialCard::before {
@@ -1048,6 +1194,10 @@ h1 {
   color: var(--verified);
 }
 
+.consoleRow.pass span:nth-child(2) {
+  color: var(--verified);
+}
+
 .consoleRow.warn span:nth-child(2) {
   color: var(--warning);
 }
@@ -1058,6 +1208,15 @@ h1 {
 
 .consoleRow.planned span:nth-child(2) {
   color: #ff8ca1;
+}
+
+.consoleRow.blocked span:nth-child(2) {
+  color: var(--danger);
+}
+
+.consoleRow.mock span:nth-child(2),
+.consoleRow.future span:nth-child(2) {
+  color: var(--protocol);
 }
 
 .consoleRow span:nth-child(3) {
@@ -1313,6 +1472,7 @@ h1 {
   .heroProofStrip,
   .surfaceGrid,
   .trialGrid,
+  .terminalStreamGrid,
   .rankLadder,
   .metricsGrid,
   .showcaseGrid,
@@ -1323,6 +1483,12 @@ h1 {
   .consoleRow {
     grid-template-columns: 1fr;
     gap: 5px;
+  }
+
+  .verificationRow,
+  .assertionCase,
+  .assertionStats {
+    grid-template-columns: 1fr;
   }
 
   .hero {
@@ -1375,6 +1541,7 @@ h1 {
   }
 
   .surfaceCard,
+  .assertionCase,
   .trialCard,
   .metricCard,
   .playerCard,

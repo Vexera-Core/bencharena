@@ -36,9 +36,16 @@ type TrialPreview = {
 
 type ConsoleRow = {
   time: string;
-  level: "info" | "ok" | "warn" | "planned";
+  level: "info" | "ok" | "warn" | "planned" | "pass" | "blocked" | "mock" | "future";
   status: string;
   text: string;
+};
+
+type VerificationEvent = {
+  time: string;
+  state: "PASS" | "WARN" | "BLOCKED" | "MOCK" | "PLANNED" | "FUTURE";
+  target: string;
+  detail: string;
 };
 
 const protocolStages = [
@@ -153,12 +160,27 @@ const runtimeMetrics = [
 ];
 
 const consoleRows: ConsoleRow[] = [
-  { time: "00:00.000", level: "info", status: "Mock", text: "agent source received" },
-  { time: "00:00.164", level: "ok", status: "Mock", text: "passport normalized from declared metadata" },
-  { time: "00:00.338", level: "ok", status: "Mock", text: "security gate checked trust boundary" },
-  { time: "00:00.612", level: "info", status: "Mock", text: "trial queued for verification feedback" },
-  { time: "00:00.904", level: "planned", status: "Planned", text: "sandbox spin-up reserved for future runner" },
-  { time: "00:01.220", level: "warn", status: "Mock", text: "result ready as static demo output only" }
+  { time: "00:00.000", level: "info", status: "MOCK", text: "source received from declared agent metadata" },
+  { time: "00:00.164", level: "ok", status: "PASS", text: "config normalized into passport draft" },
+  { time: "00:00.338", level: "pass", status: "PASS", text: "security gate checked trust boundary" },
+  { time: "00:00.512", level: "mock", status: "MOCK", text: "passport draft created for review surface" },
+  { time: "00:00.712", level: "info", status: "MOCK", text: "trial queued for verification feedback" },
+  { time: "00:00.904", level: "planned", status: "PLANNED", text: "sandbox planned; no real execution started" },
+  { time: "00:01.060", level: "warn", status: "WARN", text: "evaluator running as static mock output" },
+  { time: "00:01.220", level: "mock", status: "MOCK", text: "mock result ready for interface preview" },
+  { time: "00:01.360", level: "future", status: "FUTURE", text: "player card update waits for future reputation storage" }
+];
+
+const verificationEvents: VerificationEvent[] = [
+  { time: "00:00.000", state: "MOCK", target: "agent.source", detail: "source received" },
+  { time: "00:00.164", state: "PASS", target: "config.normalize", detail: "config normalized" },
+  { time: "00:00.338", state: "PASS", target: "security.gate", detail: "private-key and raw-memory paths blocked" },
+  { time: "00:00.512", state: "MOCK", target: "passport.draft", detail: "passport draft created" },
+  { time: "00:00.712", state: "PLANNED", target: "trial.queue", detail: "verification trial queued" },
+  { time: "00:00.904", state: "PLANNED", target: "sandbox.runner", detail: "sandbox planned, not live" },
+  { time: "00:01.060", state: "WARN", target: "evaluator.mock", detail: "static evaluator output only" },
+  { time: "00:01.220", state: "MOCK", target: "result.output", detail: "mock result ready" },
+  { time: "00:01.360", state: "FUTURE", target: "player.card", detail: "future reputation update surface" }
 ];
 
 const playerCardStats = [
@@ -352,39 +374,54 @@ export default function HomePage() {
           </div>
           <p className="sectionNote">Mock verification feedback. No real benchmark runner is connected.</p>
         </div>
-        <div className="trialGrid">
-          {trialPreviews.map((trial) => (
-            <article className="trialCard" key={trial.name}>
-              <div className="trialMeta">
-                <span className="rankBadge">{trial.rank}</span>
+        <div className="terminalStreamGrid">
+          <div className="trialStreamPanel" role="log" aria-label="Mock verification event stream">
+            <div className="consoleHeader">
+              <span>trial://mock-verification-stream</span>
+              <span>MOCK / PLANNED</span>
+            </div>
+            <div className="verificationRows">
+              {verificationEvents.map((event) => (
+                <div className={`verificationRow ${event.state.toLowerCase()}`} key={`${event.time}-${event.target}`}>
+                  <span>{event.time}</span>
+                  <span>{event.state}</span>
+                  <strong>{event.target}</strong>
+                  <span>{event.detail}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="assertionMatrix" aria-label="Mock assertion matrix">
+            {trialPreviews.map((trial) => (
+              <article className="assertionCase" key={trial.name}>
+                <div>
+                  <span className="rankBadge">{trial.rank}</span>
+                  <h3>{trial.name}</h3>
+                  <p>{trial.category}</p>
+                </div>
+                <div className="assertionStats">
+                  <span>
+                    <strong>{trial.passed}</strong>
+                    PASS
+                  </span>
+                  <span>
+                    <strong>{trial.failed}</strong>
+                    WARN
+                  </span>
+                  <span>
+                    <strong>{trial.latency}</strong>
+                    LATENCY
+                  </span>
+                  <span>
+                    <strong>{trial.honor}</strong>
+                    HONOR
+                  </span>
+                </div>
                 <span className={`statusPill ${trial.tone}`}>{trial.status}</span>
-              </div>
-              <h3>{trial.name}</h3>
-              <p>{trial.category}</p>
-              <div className="trialProgress" aria-label={`${trial.name} mock completion ${trial.progress}%`}>
-                <span style={{ width: `${trial.progress}%` }} />
-              </div>
-              <div className="trialDetails" aria-label={`${trial.name} mock trial details`}>
-                <span>
-                  <strong>{trial.difficulty}</strong>
-                  Difficulty
-                </span>
-                <span>
-                  <strong>{trial.latency}</strong>
-                  Latency
-                </span>
-                <span>
-                  <strong>{trial.lastRun}</strong>
-                  Last run
-                </span>
-              </div>
-              <div className="assertionRow" aria-label={`${trial.name} mock assertions`}>
-                <span>{trial.passed} passed</span>
-                <span>{trial.failed} failed</span>
-                <span>{trial.honor} honor</span>
-              </div>
-            </article>
-          ))}
+              </article>
+            ))}
+          </div>
         </div>
         <div className="rankLadder" aria-label="Mock rank progression ladder">
           {rankLadder.map((item) => (
