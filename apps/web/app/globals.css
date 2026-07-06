@@ -608,6 +608,10 @@ h1 {
 
 .consolePanel {
   overflow: hidden;
+  border-color: rgba(255, 43, 84, 0.18);
+  background:
+    linear-gradient(180deg, rgba(255, 43, 84, 0.055), rgba(255, 255, 255, 0.035)),
+    #040407;
 }
 
 .consoleHeader {
@@ -626,14 +630,18 @@ h1 {
 .consoleRows {
   display: grid;
   padding: 16px 18px 18px;
-  background: rgba(0, 0, 0, 0.28);
+  background:
+    linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+    rgba(0, 0, 0, 0.28);
+  background-size: 100% 42px;
 }
 
 .consoleRow {
   display: grid;
-  grid-template-columns: 88px 74px 1fr;
+  grid-template-columns: 88px 78px 92px 1fr;
   gap: 14px;
-  padding: 10px 0;
+  align-items: center;
+  padding: 12px 0;
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
   color: #f8fafc;
   font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
@@ -648,7 +656,8 @@ h1 {
   color: var(--muted);
 }
 
-.consoleRow span:nth-child(2) {
+.consoleRow span:nth-child(2),
+.consoleRow span:nth-child(3) {
   text-transform: uppercase;
 }
 
@@ -662,6 +671,38 @@ h1 {
 
 .consoleRow.info span:nth-child(2) {
   color: var(--protocol);
+}
+
+.consoleRow.planned span:nth-child(2) {
+  color: #ff8ca1;
+}
+
+.consoleRow span:nth-child(3) {
+  width: fit-content;
+  padding: 4px 7px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: calc(var(--radius) - 2px);
+  color: var(--soft);
+  font-size: 0.68rem;
+}
+
+.consoleFooter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 14px 18px;
+  border-top: 1px solid var(--border);
+  background: rgba(0, 0, 0, 0.38);
+}
+
+.consoleFooter span {
+  padding: 6px 9px;
+  border: 1px solid rgba(71, 240, 165, 0.2);
+  border-radius: calc(var(--radius) - 2px);
+  color: #dcffec;
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  font-size: 0.7rem;
+  text-transform: uppercase;
 }
 
 .showcasePanel {
