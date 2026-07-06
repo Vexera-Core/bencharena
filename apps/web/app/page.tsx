@@ -18,6 +18,20 @@ type SurfacePreview = {
   copy: string;
 };
 
+type TrialPreview = {
+  name: string;
+  category: string;
+  rank: string;
+  difficulty: string;
+  honor: string;
+  passed: number;
+  failed: number;
+  latency: string;
+  lastRun: string;
+  status: string;
+  tone: "pass" | "warning";
+};
+
 const protocolStages = [
   "Agent Source",
   "Normalize",
@@ -63,33 +77,45 @@ const futureSurfaces: SurfacePreview[] = [
   }
 ];
 
-const trialPreviews = [
+const trialPreviews: TrialPreview[] = [
   {
     name: "Passport Integrity",
     category: "Agent Passport",
     rank: "R-04",
+    difficulty: "Intermediate",
     honor: "+18",
     passed: 12,
     failed: 0,
-    status: "Mock pass"
+    latency: "184ms",
+    lastRun: "Mock session",
+    status: "Mock pass",
+    tone: "pass"
   },
   {
     name: "Prompt Boundary Review",
     category: "Prompt Safety",
     rank: "R-03",
+    difficulty: "Core",
     honor: "+11",
     passed: 9,
     failed: 1,
-    status: "Mock warning"
+    latency: "231ms",
+    lastRun: "Mock session",
+    status: "Mock warning",
+    tone: "warning"
   },
   {
     name: "Tool Discipline",
     category: "Terminal Ops",
     rank: "R-05",
+    difficulty: "Advanced",
     honor: "+24",
     passed: 16,
     failed: 0,
-    status: "Mock pass"
+    latency: "206ms",
+    lastRun: "Mock session",
+    status: "Mock pass",
+    tone: "pass"
   }
 ];
 
@@ -231,10 +257,24 @@ export default function HomePage() {
             <article className="trialCard" key={trial.name}>
               <div className="trialMeta">
                 <span className="rankBadge">{trial.rank}</span>
-                <span className="statusPill">{trial.status}</span>
+                <span className={`statusPill ${trial.tone}`}>{trial.status}</span>
               </div>
               <h3>{trial.name}</h3>
               <p>{trial.category}</p>
+              <div className="trialDetails" aria-label={`${trial.name} mock trial details`}>
+                <span>
+                  <strong>{trial.difficulty}</strong>
+                  Difficulty
+                </span>
+                <span>
+                  <strong>{trial.latency}</strong>
+                  Latency
+                </span>
+                <span>
+                  <strong>{trial.lastRun}</strong>
+                  Last run
+                </span>
+              </div>
               <div className="assertionRow" aria-label={`${trial.name} mock assertions`}>
                 <span>{trial.passed} passed</span>
                 <span>{trial.failed} failed</span>

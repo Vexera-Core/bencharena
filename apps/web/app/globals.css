@@ -307,6 +307,16 @@ h1 {
   text-transform: uppercase;
 }
 
+.statusPill.pass {
+  border-color: rgba(71, 240, 165, 0.34);
+  color: #dcffec;
+}
+
+.statusPill.warning {
+  border-color: rgba(246, 211, 101, 0.34);
+  color: #fff4bd;
+}
+
 .badgeVerified {
   border-color: rgba(71, 240, 165, 0.34);
   color: #dcffec;
@@ -359,6 +369,34 @@ h1 {
   margin-bottom: 0;
   color: #ffffff;
   font-size: 1.35rem;
+}
+
+.trialDetails {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 22px;
+}
+
+.trialDetails span {
+  display: grid;
+  gap: 6px;
+  padding: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius);
+  color: var(--muted);
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+}
+
+.trialDetails strong {
+  color: #ffffff;
+  font-family:
+    Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+  font-size: 0.86rem;
+  text-transform: none;
 }
 
 .trialMeta,
@@ -611,6 +649,7 @@ h1 {
   }
 
   .playerMetaGrid,
+  .trialDetails,
   .leaderboardRow {
     grid-template-columns: 1fr;
   }
