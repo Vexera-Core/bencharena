@@ -11,6 +11,7 @@ import {
   Trophy
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
+import { HeroMotionSection } from "./components/HeroMotionSection";
 import { HeroOrbitalBackground } from "./components/HeroOrbitalBackground";
 
 type SurfacePreview = {
@@ -255,7 +256,7 @@ export default function HomePage() {
         </div>
       </header>
 
-      <section className="hero editorialHero" aria-labelledby="hero-title">
+      <HeroMotionSection>
         <div className="heroBackdrop" aria-hidden="true">
           <span>Passport</span>
           <span>Trial</span>
@@ -324,7 +325,7 @@ export default function HomePage() {
             </div>
           ))}
         </div>
-      </section>
+      </HeroMotionSection>
 
       <section className="panel protocolPanel" aria-labelledby="loop-title">
         <div className="sectionHeader">

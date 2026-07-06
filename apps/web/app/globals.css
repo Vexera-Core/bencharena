@@ -317,6 +317,11 @@ a {
   gap: 14px;
   pointer-events: none;
   opacity: 0.72;
+  transform: translate3d(
+    calc(var(--hero-field-x, 0) * -18px),
+    calc(var(--hero-field-y, 0) * -14px),
+    0
+  );
 }
 
 .heroBackdrop span {
@@ -430,6 +435,8 @@ h1 {
   min-height: clamp(9rem, 17vw, 18rem);
   align-content: center;
   isolation: isolate;
+  transform: translate3d(0, calc(var(--hero-title-y, 0) * 1px), 0);
+  will-change: transform;
 }
 
 .heroTitleMain,
@@ -460,6 +467,8 @@ h1 {
   text-shadow:
     0 1px 0 rgba(0, 0, 0, 0.8),
     0 18px 34px rgba(221, 2, 14, 0.12);
+  transform: translate3d(0, calc(var(--hero-accent-y, 0) * 1px), 0);
+  will-change: transform;
 }
 
 .heroCopy {
@@ -558,7 +567,13 @@ h1 {
   object-fit: contain;
   opacity: 0.92;
   filter: drop-shadow(0 20px 42px rgba(221, 2, 14, 0.2));
-  transform: translate(-50%, -50%);
+  transform:
+    translate(-50%, -50%)
+    translate3d(
+      calc(var(--hero-field-x, 0) * 20px),
+      calc(var(--hero-field-y, 0) * 16px),
+      0
+    );
 }
 
 .heroTerminalMini {
@@ -574,6 +589,9 @@ h1 {
   border-radius: var(--radius);
   background: rgba(0, 0, 0, 0.66);
   font-family: var(--font-mono);
+  opacity: var(--hero-terminal-opacity, 1);
+  transform: translate3d(0, calc(var(--hero-terminal-y, 0) * 1px), 0);
+  will-change: opacity, transform;
 }
 
 .heroTerminalMini span,
