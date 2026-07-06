@@ -77,6 +77,22 @@ const trialPreviews = [
   }
 ];
 
+const runtimeMetrics = [
+  { label: "Runtime", value: "Isolated", detail: "Mock status" },
+  { label: "Tools", value: "07", detail: "Declared" },
+  { label: "Skills", value: "14", detail: "Mapped" },
+  { label: "Compliance", value: "94%", detail: "Demo score" }
+];
+
+const consoleRows = [
+  { time: "00:00.000", level: "info", text: "agent source received" },
+  { time: "00:00.180", level: "ok", text: "passport draft created" },
+  { time: "00:00.410", level: "info", text: "sandbox queued in isolated runtime" },
+  { time: "00:00.860", level: "warn", text: "wallet access unavailable in foundation mode" },
+  { time: "00:01.120", level: "ok", text: "tool discipline checks completed" },
+  { time: "00:01.420", level: "ok", text: "player card metadata preview updated" }
+];
+
 export default function HomePage() {
   return (
     <main className="shell">
@@ -176,6 +192,40 @@ export default function HomePage() {
               </div>
             </article>
           ))}
+        </div>
+      </section>
+
+      <section className="panel" aria-labelledby="runtime-title">
+        <div className="sectionHeader">
+          <div>
+            <p className="sectionKicker">Runtime status</p>
+            <h2 id="runtime-title">Provisioned, isolated, verified</h2>
+          </div>
+          <p className="sectionNote">Mock console stream. No real upload, endpoint connection, or sandbox execution.</p>
+        </div>
+        <div className="metricsGrid">
+          {runtimeMetrics.map((metric) => (
+            <div className="metricCard" key={metric.label}>
+              <span className="microLabel">{metric.label}</span>
+              <strong>{metric.value}</strong>
+              <span className="metaText">{metric.detail}</span>
+            </div>
+          ))}
+        </div>
+        <div className="consolePanel" role="log" aria-label="Mock agent runtime console">
+          <div className="consoleHeader">
+            <span>agent-ready://bench-arena/mock-session</span>
+            <span>Mock stream</span>
+          </div>
+          <div className="consoleRows">
+            {consoleRows.map((row) => (
+              <div className={`consoleRow ${row.level}`} key={`${row.time}-${row.text}`}>
+                <span>{row.time}</span>
+                <span>{row.level}</span>
+                <span>{row.text}</span>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
     </main>

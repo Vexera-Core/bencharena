@@ -253,6 +253,24 @@ h1 {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
+.metricsGrid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin-bottom: 16px;
+}
+
+.metricCard {
+  min-height: 150px;
+  display: grid;
+  align-content: space-between;
+  padding: 20px;
+}
+
+.metricCard strong {
+  color: #ffffff;
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  line-height: 1;
+}
+
 .surfaceCard {
   min-height: 220px;
   padding: 22px;
@@ -275,6 +293,64 @@ h1 {
   align-items: center;
   justify-content: space-between;
   gap: 10px;
+}
+
+.consolePanel {
+  overflow: hidden;
+}
+
+.consoleHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--border);
+  background: rgba(0, 0, 0, 0.38);
+  color: var(--muted);
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  font-size: 0.78rem;
+}
+
+.consoleRows {
+  display: grid;
+  padding: 16px 18px 18px;
+  background: rgba(0, 0, 0, 0.28);
+}
+
+.consoleRow {
+  display: grid;
+  grid-template-columns: 88px 74px 1fr;
+  gap: 14px;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  color: #f8fafc;
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  font-size: 0.82rem;
+}
+
+.consoleRow:last-child {
+  border-bottom: 0;
+}
+
+.consoleRow span:first-child {
+  color: var(--muted);
+}
+
+.consoleRow span:nth-child(2) {
+  text-transform: uppercase;
+}
+
+.consoleRow.ok span:nth-child(2) {
+  color: var(--verified);
+}
+
+.consoleRow.warn span:nth-child(2) {
+  color: var(--warning);
+}
+
+.consoleRow.info span:nth-child(2) {
+  color: var(--protocol);
 }
 
 .trialMeta {
@@ -314,8 +390,14 @@ h1 {
   .protocolLoop,
   .surfaceGrid,
   .trialGrid,
+  .metricsGrid,
   .statusGrid {
     grid-template-columns: 1fr;
+  }
+
+  .consoleRow {
+    grid-template-columns: 1fr;
+    gap: 5px;
   }
 
   .hero {

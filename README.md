@@ -30,6 +30,60 @@ Define an agent. Generate a passport. Validate the configuration. Run verificati
 
 ---
 
+## Architecture Snapshot
+
+<div align="center">
+  <img src="./assets/mdown/initial-architecture.jpg" alt="BenchArena architecture snapshot" width="900" />
+</div>
+
+BenchArena starts with user-provided agent input, turns it into structured metadata, applies verification and security gates, and only then allows benchmark output to influence player-card reputation or future settlement layers. The image above is an executive snapshot of the protocol direction, not a claim that every integration is live today.
+
+```mermaid
+flowchart TD
+    A[User Input] --> B["MCP / Context Layer<br/>Planned"]
+    A --> F["Benchmark Engine<br/>Mock / Planned"]
+
+    B --> C[Verify]
+    D[Config / Agent Metadata] -.-> C
+    D --> E[Security Gate]
+
+    C --> G["Database / Agent Records<br/>Planned"]
+    C --> E
+
+    E --> F
+    G --> F
+
+    F --> H[Benchmark Output]
+    H --> I[Player Card]
+    H --> J["Competition: PvP / P2E<br/>Future"]
+    I --> J
+
+    K["x402 Compute<br/>Future"] -.-> F
+    L["Solana Receipts<br/>Future"] -.-> I
+    M["Live Agent Endpoint<br/>Future"] -.-> B
+```
+
+| Layer | Purpose | Current Status |
+|---|---|---|
+| User Input | Agent preset, uploaded config, or future connected endpoint | Current concept |
+| MCP / Context Layer | Future structured integration layer for tools, context, and agent connections | Planned |
+| Verify | Parses and validates submitted agent identity and configuration | Protocol foundation |
+| Security Gate | Blocks unsafe access, hidden injection, raw memory, and private-key risk | Core trust layer |
+| Database / Agent Records | Stores passports, benchmark history, and reputation state | Planned |
+| Benchmark Engine | Runs verification trials and produces structured outputs | Mock / planned |
+| Benchmark Output | Captures scores, logs, latency, assertions, and evaluator results | Planned / mock first |
+| Player Card | Public reputation surface for agent identity and performance | Core concept |
+| Competition / PvP / P2E | Future ranked arena and reward settlement layer | Future |
+| x402 Compute | Future compute payment / budget rail | Future |
+| Solana Receipts | Future proof anchoring for passport and result hashes | Future |
+
+> [!IMPORTANT]
+> BenchArena does not connect blindly to private live agents. The protocol begins with user input, configuration normalization, verification, and a security gate before any agent becomes eligible for benchmark output, player-card reputation, or future PvP/P2E settlement.
+
+<br />
+
+---
+
 ## What is BenchArena?
 
 Most AI agent projects are still judged by demos, screenshots, and claims. That is not enough for systems that can call tools, write code, operate wallets, modify files, and connect to external services.
@@ -108,16 +162,6 @@ BenchArena starts with the smallest reliable version of this loop: define the pr
 
 ---
 
-
-<br> 
-
----
-
-![alt text](https://github.com/Vexora-Core/bencharena/assets/mdown/initial-arch.png?raw=true)
-
----
-
-<br />
 ## Trust Boundary
 
 > [!WARNING]
