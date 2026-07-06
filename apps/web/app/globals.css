@@ -431,6 +431,7 @@ a {
 .heroContent {
   display: grid;
   gap: 24px;
+  min-width: 0;
 }
 
 .heroEyebrow {
@@ -472,6 +473,7 @@ h1 {
 .heroTitle {
   position: relative;
   display: grid;
+  width: 100%;
   max-width: 1040px;
   min-height: clamp(9rem, 17vw, 18rem);
   align-content: center;
@@ -483,6 +485,7 @@ h1 {
 .heroTitleMain,
 .heroTitleAccent {
   display: block;
+  max-width: 100%;
 }
 
 .heroTitleMain {
@@ -510,6 +513,7 @@ h1 {
     0 18px 34px rgba(221, 2, 14, 0.12);
   transform: translate3d(0, calc(var(--hero-accent-y, 0) * 1px), 0);
   will-change: transform;
+  pointer-events: none;
 }
 
 .heroCopy {
@@ -1718,7 +1722,6 @@ h1 {
 }
 
 @media (max-width: 980px) {
-  .heroGrid,
   .heroEditorial,
   .protocolLoop,
   .heroProofStrip,
@@ -1773,6 +1776,10 @@ h1 {
     top: 0;
   }
 
+  .brandMark {
+    max-width: max-content;
+  }
+
   .primaryNav,
   .navActions {
     justify-content: flex-start;
@@ -1816,6 +1823,14 @@ h1 {
     padding: 10px;
   }
 
+  .brandText strong {
+    font-size: 0.9rem;
+  }
+
+  .brandText small {
+    display: none;
+  }
+
   .brandLogo {
     width: 44px;
     height: 44px;
@@ -1846,12 +1861,14 @@ h1 {
 
   .heroTitleMain {
     font-size: clamp(3.7rem, 16vw, 6.1rem);
+    line-height: 0.82;
   }
 
   .heroTitleAccent {
     right: 0;
     bottom: 0.6rem;
     font-size: clamp(3.2rem, 14vw, 5.4rem);
+    line-height: 0.82;
   }
 
   .heroVisual {
@@ -1926,6 +1943,10 @@ h1 {
     bottom: auto;
     margin-top: -0.48em;
     padding-left: 20%;
+  }
+
+  .heroCopy {
+    font-size: 1rem;
   }
 
   .heroVisual {
