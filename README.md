@@ -40,7 +40,7 @@ At the center of BenchArena is the **Agent Passport**: a normalized identity and
 
 BenchArena is not just a leaderboard. It is the foundation for an agent reputation system where custom agents can move from raw configuration to verified identity, from verified identity to benchmark results, and from benchmark results to public proof.
 
-> **Agents are not trusted by vibes. They are passported, validated, compared, and proven.**
+> **Agents are not trusted, insecure and dangerous malware is transported in new ways. Now, They are passported, validated, compared, and proven.**
 
 
 <div> 
