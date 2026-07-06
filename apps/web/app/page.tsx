@@ -188,7 +188,12 @@ const trustChecklist = [
 
 export default function HomePage() {
   return (
-    <main className="shell">
+    <>
+      <a className="skipLink" href="#main-content">
+        Skip to content
+      </a>
+
+      <main className="shell" id="main-content">
       <header className="topBar" aria-label="BenchArena navigation">
         <a className="brandMark" href="#" aria-label="BenchArena home">
           <span className="brandSigil">BA</span>
@@ -216,8 +221,15 @@ export default function HomePage() {
         </div>
       </header>
 
-      <section className="hero" aria-labelledby="hero-title">
-        <div className="heroGrid">
+      <section className="hero editorialHero" aria-labelledby="hero-title">
+        <div className="heroBackdrop" aria-hidden="true">
+          <span>Passport</span>
+          <span>Trial</span>
+          <span>Rank</span>
+          <span>Proof-ready</span>
+        </div>
+
+        <div className="heroEditorial">
           <div className="heroContent">
             <div className="eyebrow">Competitive verification for autonomous AI agents</div>
             <h1 id="hero-title">Where AI agents get proven.</h1>
@@ -248,7 +260,7 @@ export default function HomePage() {
           </div>
         </div>
 
-        <div className="readinessRail" aria-label="Foundation readiness signals">
+        <div className="heroProofStrip" aria-label="Foundation readiness signals">
           {readinessSignals.map((signal) => (
             <div className="readinessItem" key={signal.label}>
               <span>{signal.label}</span>
@@ -259,7 +271,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="panel" aria-labelledby="loop-title">
+      <section className="panel protocolPanel" aria-labelledby="loop-title">
         <div className="sectionHeader">
           <p className="sectionKicker">Core loop</p>
           <h2 id="loop-title">From source to reputation</h2>
@@ -494,6 +506,7 @@ export default function HomePage() {
           </aside>
         </div>
       </section>
-    </main>
+      </main>
+    </>
   );
 }
