@@ -12,6 +12,7 @@
     "packages/*"
   ],
   "scripts": {
+    "dev": "pnpm --filter @bencharena/web dev",
     "build": "pnpm -r build",
     "check": "pnpm typecheck && pnpm test",
     "test": "pnpm -r test",

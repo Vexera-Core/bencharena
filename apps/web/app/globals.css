@@ -1,0 +1,212 @@
+:root {
+  color-scheme: dark;
+  background: #030407;
+  color: #f8fafc;
+  font-family:
+    Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  min-height: 100%;
+  margin: 0;
+}
+
+body {
+  background:
+    radial-gradient(circle at top left, rgba(255, 255, 255, 0.11), transparent 30rem),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.05), transparent 24rem),
+    #030407;
+}
+
+.shell {
+  width: min(1160px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 72px 0;
+}
+
+.hero {
+  min-height: 76vh;
+  display: grid;
+  align-content: center;
+  gap: 24px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.eyebrow,
+.sectionKicker {
+  margin: 0;
+  color: #a7b0c0;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin-top: 0;
+}
+
+h1 {
+  max-width: 980px;
+  margin-bottom: 0;
+  color: #ffffff;
+  font-size: clamp(3.8rem, 8vw, 8.6rem);
+  line-height: 0.92;
+  letter-spacing: 0;
+}
+
+.heroCopy {
+  max-width: 780px;
+  margin-bottom: 0;
+  color: #d8dee9;
+  font-size: clamp(1.08rem, 2vw, 1.35rem);
+  line-height: 1.7;
+}
+
+.trustLine {
+  width: fit-content;
+  margin-bottom: 0;
+  padding: 14px 18px;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  background: rgba(255, 255, 255, 0.06);
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.panel,
+.statusGrid {
+  margin-top: 56px;
+}
+
+.panel {
+  padding: 32px 0 56px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.sectionHeader {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+.sectionHeader h2,
+.statusBox h2 {
+  margin-bottom: 0;
+  color: #ffffff;
+  font-size: clamp(1.8rem, 3vw, 3rem);
+  line-height: 1;
+}
+
+.protocolLoop {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.stage,
+.surfaceCard,
+.statusBox {
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.055);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.stage {
+  min-height: 116px;
+  display: grid;
+  align-content: space-between;
+  padding: 18px;
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.stageIndex {
+  color: #9aa4b5;
+  font-size: 0.76rem;
+}
+
+.statusGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.statusBox {
+  padding: 26px;
+}
+
+.statusBox p,
+.surfaceCard p {
+  margin: 16px 0 0;
+  color: #c8d0dc;
+  line-height: 1.65;
+}
+
+.important {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.035));
+}
+
+.badge,
+.cardTopline span {
+  display: inline-flex;
+  width: fit-content;
+  margin-bottom: 18px;
+  padding: 6px 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: #ffffff;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.surfaceGrid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.surfaceCard {
+  min-height: 220px;
+  padding: 22px;
+}
+
+.cardTopline {
+  display: grid;
+  gap: 12px;
+}
+
+.cardTopline h3 {
+  margin-bottom: 0;
+  color: #ffffff;
+  font-size: 1.2rem;
+}
+
+.cardTopline span {
+  margin-bottom: 0;
+  color: #dbeafe;
+}
+
+@media (max-width: 900px) {
+  .protocolLoop,
+  .surfaceGrid,
+  .statusGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero {
+    min-height: auto;
+    padding: 88px 0 56px;
+  }
+}
