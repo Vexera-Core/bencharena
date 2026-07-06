@@ -344,6 +344,21 @@ export default function HomePage() {
         </div>
       </section>
 
+      <section className="calloutGrid" aria-label="Protocol notes">
+        <div className="protocolAlert note">
+          <strong>NOTE</strong>
+          <p>This stream is simulated until the sandbox runner is implemented.</p>
+        </div>
+        <div className="protocolAlert important">
+          <strong>IMPORTANT</strong>
+          <p>BenchArena does not connect blindly to private live agents.</p>
+        </div>
+        <div className="protocolAlert warning">
+          <strong>WARNING</strong>
+          <p>On-chain player-card mutation is planned for devnet later and is not live yet.</p>
+        </div>
+      </section>
+
       <section className="panel" id="agents" aria-labelledby="surfaces-title">
         <div className="sectionHeader">
           <p className="sectionKicker">Future surfaces</p>

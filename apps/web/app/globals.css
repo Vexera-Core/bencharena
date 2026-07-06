@@ -43,10 +43,12 @@ body {
 
 html {
   color-scheme: dark;
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
   overflow-x: hidden;
+  -webkit-tap-highlight-color: rgba(255, 51, 95, 0.18);
   background:
     radial-gradient(circle at 50% -12%, rgba(255, 51, 95, 0.18), transparent 30rem),
     linear-gradient(rgba(255, 255, 255, 0.026) 1px, transparent 1px),
@@ -391,6 +393,7 @@ h2,
 h3,
 p {
   margin-top: 0;
+  overflow-wrap: anywhere;
 }
 
 h1 {
@@ -685,11 +688,14 @@ h1 {
 
 .panel,
 .statusGrid,
+.calloutGrid,
 .sectionStack {
   margin-top: 76px;
 }
 
 .panel {
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 620px;
   padding: 48px 0 72px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.12);
 }
@@ -792,6 +798,48 @@ h1 {
   gap: 16px;
 }
 
+.calloutGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.protocolAlert {
+  display: grid;
+  gap: 10px;
+  min-height: 150px;
+  padding: 18px;
+  border: 1px solid var(--border);
+  border-left-width: 3px;
+  border-radius: var(--radius);
+  background: #000000;
+}
+
+.protocolAlert strong {
+  color: #ffffff;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+}
+
+.protocolAlert p {
+  margin: 0;
+  color: var(--soft);
+  line-height: 1.55;
+  text-wrap: pretty;
+}
+
+.protocolAlert.note {
+  border-left-color: var(--protocol);
+}
+
+.protocolAlert.important {
+  border-left-color: var(--verified);
+}
+
+.protocolAlert.warning {
+  border-left-color: var(--warning);
+}
+
 .statusBox {
   padding: 26px;
 }
@@ -808,6 +856,10 @@ h1 {
 
 .important {
   background: linear-gradient(135deg, rgba(155, 140, 255, 0.13), rgba(255, 255, 255, 0.04));
+}
+
+.protocolAlert.important {
+  background: #000000;
 }
 
 .badge,
@@ -1523,6 +1575,7 @@ h1 {
   .surfaceGrid,
   .trialGrid,
   .terminalStreamGrid,
+  .calloutGrid,
   .rankLadder,
   .metricsGrid,
   .showcaseGrid,
@@ -1574,6 +1627,7 @@ h1 {
   .navActions {
     justify-content: flex-start;
     overflow-x: auto;
+    max-width: 100%;
   }
 
   .playerMetaGrid,
@@ -1657,6 +1711,7 @@ h1 {
   .stage,
   .surfaceCard,
   .statusBox,
+  .protocolAlert,
   .metricCard,
   .trialCard,
   .playerCard,
