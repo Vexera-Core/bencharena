@@ -1,10 +1,21 @@
 # BenchArena Architecture
 
-## Architecture Goal
+BenchArena is a verification protocol for autonomous AI agents. The architecture starts with a small protocol core, then adds product surfaces and integrations only when the trust boundary is clear.
 
-BenchArena should be a small, verification-first protocol core with optional product and integration layers around it. The core must remain useful before any hosted backend, wallet flow, MCP firewall, database, or benchmark runner exists.
+> [!IMPORTANT]
+> No hidden injection. No raw memory upload. No private keys.
 
-## Executive Schema
+## Architecture Intent
+
+The core should remain useful before any hosted backend, wallet flow, MCP firewall, database, live endpoint, or benchmark runner exists. Product layers can present the protocol, but they should not imply unfinished integrations are live.
+
+## Core Protocol Loop
+
+```txt
+Agent Source -> Normalize -> Security Gate -> Agent Passport -> Trial -> Result -> Player Card -> Reputation
+```
+
+## Executive Flow
 
 ```mermaid
 flowchart TD
@@ -31,6 +42,9 @@ flowchart TD
     M["Live Agent Endpoint<br/>Future"] -.-> B
 ```
 
+> [!NOTE]
+> Dashed edges represent future integration paths. Current protocol work should prefer typed schemas, mock fixtures, and clear security language over live infrastructure.
+
 | Layer | Purpose | Current Status |
 |---|---|---|
 | User Input | Agent preset, uploaded config, or future connected endpoint | Current concept |
@@ -45,9 +59,9 @@ flowchart TD
 | x402 Compute | Future compute payment / budget rail | Future |
 | Solana Receipts | Future proof anchoring for passport and result hashes | Future |
 
-## Current Repository State
+## Repository State
 
-The implemented foundation is intentionally minimal:
+The implemented foundation is intentionally minimal and protocol-first:
 
 ```txt
 bencharena/
@@ -63,11 +77,11 @@ bencharena/
 
 `@bencharena/core` currently owns the first Agent Passport schema and related TypeScript types. It should stay focused on protocol data shapes, validation rules, and testable trust assumptions.
 
-## Conceptual Layers
+## Layer Responsibilities
 
-### 1. Protocol Core
+### Protocol Core
 
-Owns shared schemas and types.
+Owns shared schemas and protocol vocabulary.
 
 Responsibilities:
 
@@ -80,9 +94,9 @@ Responsibilities:
 
 This layer should not depend on a live database, wallet, hosted API, MCP server, or benchmark engine.
 
-### 2. Normalization Layer
+### Normalization Layer
 
-Future layer that converts agent sources into passport candidates.
+Planned layer that converts agent sources into passport candidates.
 
 Possible sources:
 
@@ -94,9 +108,9 @@ Possible sources:
 
 All normalized output should be treated as untrusted until validated by the protocol core and security gate.
 
-### 3. Security Gate
+### Security Gate
 
-Future layer that decides whether a passport candidate can move into trials.
+Core trust layer that decides whether a passport candidate can become trial-eligible.
 
 Responsibilities:
 
@@ -106,9 +120,9 @@ Responsibilities:
 - Block hidden tool injection.
 - Prevent secrets, private keys, and wallet files from entering the system.
 
-### 4. Verification Trial Layer
+### Verification Trial Layer
 
-Future layer for local and hosted benchmark tasks.
+Mock/planned layer for local and hosted benchmark tasks.
 
 Responsibilities:
 
@@ -117,9 +131,9 @@ Responsibilities:
 - Produce replayable result records.
 - Keep unverified output from affecting reputation.
 
-### 5. Reputation Layer
+### Reputation Layer
 
-Future layer that presents verified output as public trust signals.
+Core concept that presents verified output as public trust signals once result records exist.
 
 Responsibilities:
 
@@ -142,6 +156,9 @@ Agent Source
   -> Publish Player Card / Reputation
 ```
 
+> [!WARNING]
+> Live MCP connections, Solana receipts, x402 compute, persistent databases, and unrestricted agent endpoints are future integrations. They should not be wired in until the security gate, audit trail, and replay model are explicit.
+
 ## Dependency Direction
 
 Dependencies should point inward:
@@ -160,7 +177,7 @@ The protocol core should not import product apps, databases, wallet SDK logic, h
 - Do not make unimplemented infrastructure look production-ready.
 - Treat execution, wallets, external tools, and memory import as trust-boundary crossings.
 
-## Near-Term Architecture Work
+## Near-Term Work
 
 - Add passport fixtures.
 - Add result and replay schemas.
