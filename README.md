@@ -23,6 +23,9 @@ Define an agent. Generate a passport. Validate the configuration. Run verificati
 
 **No hidden injection. No raw memory upload. No private keys.**
 
+> [!NOTE]
+> In development.
+
 </div>
 
 ---
