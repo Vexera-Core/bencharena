@@ -8,7 +8,11 @@ BenchArena is designed as a verification-first benchmarking layer for agentic sy
 
 ## 1. Core Objective
 
+<<<<<<< HEAD
 BenchArena exists to make agent and node performance measurable, repeatable, and reputation-aware.
+=======
+**BenchArena exists to make agent and node performance measurable, repeatable, and reputation-aware.**
+>>>>>>> 6a86cff63ff7dfc638ef8cd12765e253df5a821c
 
 The platform should not only run benchmarks. It should also verify inputs, organize benchmark items, normalize outputs, and connect results to identity, competition, and long-term reputation. This makes it useful for agent developers, AI researchers, decentralized infrastructure teams, and protocol builders who need a clean way to compare systems across different tasks, environments, and execution areas.
 
