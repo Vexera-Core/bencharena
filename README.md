@@ -1,30 +1,26 @@
-<div align="center"> 
-  
+<div align="center">
+
 # BenchArena
 
 ### Passport. Verify. Compare. Prove.
 
-**The verification protocol for autonomous AI agents. BenchArena gives every custom agent a passport — a structured way to validate what it is, compare what it can do, and prove why it can be trusted.**
+**A verification protocol for autonomous AI agents. BenchArena turns an agent from a claim into a passported, inspectable system with declared tools, permissions, benchmark eligibility, and proof-ready results.**
 
-<div align="center">
-  
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.4-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![Node.js](https://img.shields.io/badge/Node.js-20+-339933?logo=nodedotjs&logoColor=white)](https://nodejs.org/)
-[![pnpm](https://img.shields.io/badge/pnpm-9-F69220?logo=pnpm&logoColor=white)](https://pnpm.io/)
-[![MCP](https://img.shields.io/badge/MCP-Compatible-7C3AED)](https://modelcontextprotocol.io/)
+[![pnpm](https://img.shields.io/badge/pnpm-11-F69220?logo=pnpm&logoColor=white)](https://pnpm.io/)
+[![MCP](https://img.shields.io/badge/MCP-ready-7C3AED)](https://modelcontextprotocol.io/)
 [![OpenAPI](https://img.shields.io/badge/OpenAPI-3.1-6BA539?logo=openapiinitiative&logoColor=white)](https://www.openapis.org/)
-[![Solana](https://img.shields.io/badge/Solana-Devnet-9945FF?logo=solana&logoColor=white)](https://solana.com/)
-[![x402](https://img.shields.io/badge/x402-Agent_Compute-FFD90F)](#)
+[![Solana](https://img.shields.io/badge/Solana-proof_ready-9945FF?logo=solana&logoColor=white)](https://solana.com/)
+[![x402](https://img.shields.io/badge/x402-agent_compute-FFD90F)](https://www.x402.org/)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com)
 
 <br />
 
-Create an agent. Generate a passport. Validate its configuration. Compare its capabilities. Build toward public proof.
+Define an agent. Generate a passport. Validate the configuration. Run verification trials. Publish replayable results. Build toward public proof.
 
 **No hidden injection. No raw memory upload. No private keys.**
-
-[Website](#) · [Docs](#) · [X](#) · [GitHub](#)
 
 </div>
 
@@ -32,112 +28,147 @@ Create an agent. Generate a passport. Validate its configuration. Compare its ca
 
 ## What is BenchArena?
 
-Most AI agent projects are judged by demos, screenshots, or claims. That is not enough for a world where autonomous agents can use tools, write code, call APIs, operate wallets, modify files, and connect to external systems.
+Most AI agent projects are still judged by demos, screenshots, and claims. That is not enough for systems that can call tools, write code, operate wallets, modify files, and connect to external services.
 
-**BenchArena is a verification protocol and benchmark layer for autonomous AI agents.** It gives open-source builders, vibe coders, AI developers, researchers, and infrastructure teams a structured way to describe, validate, compare, and eventually prove the agents they create.
+**BenchArena is a verification-first protocol and benchmark layer for autonomous AI agents.** It gives builders a structured way to describe what an agent is, what it can do, which permissions it requests, which tools it expects, and whether its behavior can be compared or proven.
 
-At the center of BenchArena is the **Agent Passport**: a normalized identity and verification record for an agent. A passport describes what the agent is, what it can do, what tools it expects, what permissions it requests, what benchmark modes it is eligible for, and what trust boundaries it must respect.
+At the center of BenchArena is the **Agent Passport**: a normalized identity and verification record for an agent. A passport can be validated, hashed, stored, compared, displayed, and later connected to benchmark receipts or on-chain proof.
 
-BenchArena is not just a leaderboard. It is the foundation for an agent reputation system where custom agents can move from raw configuration to verified identity, from verified identity to benchmark results, and from benchmark results to public proof.
+> Agents are not trusted by default. They are passported, validated, compared, and proven.
 
-> **Agents are not trusted, insecure and dangerous malware is transported in new ways. Now, They are passported, validated, compared, and proven.**
+## Current Status
 
-<br />
+BenchArena is in early protocol foundation mode.
 
-<div> 
+What exists today:
 
-## 2. High-Level Flow
+- Repository documentation for the protocol direction.
+- A pnpm workspace foundation.
+- `@bencharena/core` with the first Agent Passport schema.
+- TypeScript, Vitest, Zod, OpenAPI schema tooling, MCP SDK, Solana Web3.js, and x402 dependencies recorded in the lockfile.
 
-```mermaid
-flowchart TD
-    A[User Input] --> B[MCP / Context Layer]
-    A --> F[Benchmark Engine]
+What does not exist yet:
 
-    B --> C[Verify]
-    D[Config] -.-> C
-    D --> E[Secure]
+- No live benchmark runner.
+- No hosted API.
+- No production MCP firewall.
+- No wallet signing flow.
+- No public leaderboard.
+- No on-chain receipts.
 
-    C --> G[Database / Items]
-    C --> E
-
-    E --> F
-    G --> F
-
-    F --> H[Bench Output]
-    H --> I[Player Card]
-    H --> J[Competition: PvP / P2E]
-    I --> J
-```
-
-</div>
-
-## Why BenchArena Exists
-
-AI agents are becoming easier to create but harder to trust. A developer can build an agent with a prompt, a tool list, an MCP server, a memory file, a local runtime, and a few scripts. That agent may look impressive in a demo, but the important questions remain unanswered.
-
-What does the agent actually claim to be?  
-What permissions does it need?  
-Can its configuration be normalized?  
-Does it request unsafe access?  
-Can it be compared against another agent?  
-Can its results be reproduced?  
-Can a user inspect why one agent should be trusted more than another?
-
-BenchArena exists to answer those questions with infrastructure instead of marketing. The protocol turns agent development into a repeatable verification flow: define the agent, normalize the configuration, apply a security gate, generate a passport, run trials, produce results, and build reputation over time.
-
-<br />
-
-## Three Surfaces, One Protocol
-
-BenchArena is organized around three connected surfaces. Each surface is useful on its own, but together they form a full verification and reputation loop for autonomous agents.
-
-``` ### Agent Passport
-
-The Agent Passport is the trust layer of BenchArena. It converts messy, inconsistent agent definitions into a normalized verification record. A builder may start with a preset, a local configuration, an `AGENTS.md` file, or a future export from an agent runtime. BenchArena reads that source, classifies it, normalizes it, and checks whether the agent can safely participate in verification flows.
-
-A passport is not only a profile card. It is a structured object that can be hashed, stored, compared, displayed, and later connected to benchmark receipts or on-chain proof. It captures identity, runtime assumptions, declared tools, permission boundaries, memory policy, security status, and benchmark eligibility. This makes it possible for agents to become inspectable systems instead of anonymous black boxes. 
-
-```
-
-<br />
-
-### Verification Trials
-
-Verification trials are the comparison layer. A trial is a structured task or benchmark mode designed to test a specific capability of an autonomous agent. In the early protocol, trials may begin as mock flows, static fixtures, and local development scenarios. Over time, they become executable benchmark environments with scoring, replay logs, evaluator outputs, and proof receipts.
-
-The purpose of a trial is not only to say whether an agent “won” or “lost.” The purpose is to expose what the agent did, what tools it used, what limits it respected, where it failed, and how its behavior compares to other agents in the same category. This is how BenchArena turns agent performance into measurable reputation.
-
-<br />
-
-### Public Reputation
-
-Public reputation is the result layer. Once an agent has a passport and trial history, it can have a public profile: rank, honor, verification level, score history, strengths, weaknesses, proof status, and builder attribution. This creates a shared language for agent quality.
-
-Instead of saying “my agent is good,” a builder can point to a passport, a trial result, a replay, a score breakdown, and eventually a cryptographic receipt. That is the difference between a demo and a reputation system.
-
-<br />
-
-## Core Loop
+## Core Product Loop
 
 ```txt
 Agent Source
-    ↓
-Configuration Normalization
-    ↓
-Security Gate
-    ↓
-Agent Passport
-    ↓
-Verification Trial
-    ↓
-Result + Replay
-    ↓
-Player Card
-    ↓
-Reputation
+  -> Configuration Normalization
+  -> Security Gate
+  -> Agent Passport
+  -> Verification Trial
+  -> Result + Replay
+  -> Player Card
+  -> Reputation
 ```
 
-BenchArena begins with the simplest possible version of this loop and expands carefully. The first goal is not to connect every live agent runtime. The first goal is to define the protocol shape, the data model, the user flow, and the public reputation surface.
+BenchArena starts with the smallest reliable version of this loop: define the protocol shape, validate the data model, protect the trust boundaries, and make future benchmark results reproducible.
 
-<br />
+## Three Surfaces, One Protocol
 
+### Agent Passport
+
+The Agent Passport is the trust layer. It turns messy agent definitions into a structured record that can be inspected by humans and validated by code.
+
+It captures:
+
+- Agent identity and source.
+- Runtime assumptions.
+- Declared tools.
+- Permission boundaries.
+- Memory policy.
+- Security status.
+- Benchmark eligibility.
+
+### Verification Trials
+
+Verification trials are the comparison layer. A trial is a structured task or benchmark mode that evaluates a specific capability under declared rules.
+
+Early trials can be local fixtures and mock flows. Later trials can become executable environments with scoring, replay logs, evaluator output, and proof receipts.
+
+### Public Reputation
+
+Public reputation is the result layer. Once an agent has a passport and trial history, it can have a public profile with verification level, score history, strengths, weaknesses, proof status, and builder attribution.
+
+## High-Level Flow
+
+```mermaid
+flowchart TD
+    A[Agent Source] --> B[Normalize Config]
+    B --> C[Security Gate]
+    C --> D[Agent Passport]
+    D --> E[Verification Trial]
+    E --> F[Result + Replay]
+    F --> G[Player Card]
+    G --> H[Reputation]
+
+    I[MCP / Tool Context] --> C
+    J[Policy Config] --> C
+    J --> E
+    K[Proof / Receipt Layer] -. future .-> F
+```
+
+## Trust Boundaries
+
+BenchArena should stay strict about boundaries from the beginning:
+
+- **Agent input boundary:** external prompts, configs, exports, and `AGENTS.md` files are untrusted until normalized and validated.
+- **Tool boundary:** MCP tools and external APIs must be declared before they affect benchmark eligibility.
+- **Filesystem boundary:** unrestricted host filesystem access is not a valid default.
+- **Memory boundary:** raw memory upload is blocked by default; scoped summaries or approved exports are safer.
+- **Wallet boundary:** private keys, seed phrases, and wallet files must never be uploaded or required.
+- **Result boundary:** benchmark output should not affect reputation until it passes verification.
+
+## Repository Shape
+
+```txt
+bencharena/
+  package.json
+  pnpm-workspace.yaml
+  tsconfig.base.json
+  packages/
+    core/
+      src/
+        passport.ts
+        passport.test.ts
+  README.md
+  ARCHITECTURE.md
+  CONTRIBUTING.MD
+  SECURITY.MD
+```
+
+## Getting Started
+
+```bash
+pnpm install
+pnpm check
+pnpm build
+```
+
+## Design Principles
+
+- **Passport-first:** every agent starts as a structured identity and capability record.
+- **Sandboxed by default:** no unrestricted execution path should be treated as normal.
+- **Proof-ready:** schemas and outputs should be designed so receipts can be added later.
+- **Engine-agnostic:** benchmark engines should connect through adapters, not dominate the core protocol.
+- **Reproducible:** results should be replayable, inspectable, and explainable.
+- **Developer-friendly:** the foundation should be small enough to understand and strict enough to trust.
+
+## License
+
+BenchArena is released under the MIT License. See `LICENSE` for details.
+
+---
+
+<div align="center">
+
+**BenchArena** - Passport. Verify. Compare. Prove.
+
+</div>
