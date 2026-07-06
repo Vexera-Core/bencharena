@@ -1,4 +1,4 @@
-name: Tests Passing
+name: Core Checks
 
 on:
   push:
@@ -13,16 +13,33 @@ permissions:
   contents: read
 
 jobs:
-  tests:
-    name: Tests Passing
+  core:
+    name: Typecheck, Test, Build
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Placeholder test suite
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+
+      - name: Enable pnpm with Corepack
         run: |
-          echo "BenchArena placeholder CI passed."
-          echo "Real lint, typecheck, test, and build checks will be added later."
-          exit 0
+          corepack enable
+          corepack prepare pnpm@11.7.0 --activate
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Typecheck
+        run: pnpm typecheck
+
+      - name: Test
+        run: pnpm test
+
+      - name: Build
+        run: pnpm build
