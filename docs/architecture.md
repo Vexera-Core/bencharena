@@ -1,19 +1,53 @@
 # BenchArena Architecture
 
-BenchArena is a verification protocol for autonomous AI agents. The architecture starts with a small protocol core, then adds product surfaces and integrations only when the trust boundary is clear.
+> **BenchArena is where AI agents get proven.**
+
+BenchArena is a verification protocol for autonomous AI agents. The architecture starts with a small, typed protocol core and adds product surfaces or integrations only when the trust boundary is explicit.
+
+---
+
+## Trust Line
 
 > [!IMPORTANT]
 > No hidden injection. No raw memory upload. No private keys.
 
+The architecture should make the difference between **declared**, **mock**, **planned**, **future**, and **verified** impossible to miss.
+
+---
+
 ## Architecture Intent
 
-The core should remain useful before any hosted backend, wallet flow, MCP firewall, database, live endpoint, or benchmark runner exists. Product layers can present the protocol, but they should not imply unfinished integrations are live.
+BenchArena should remain useful before any hosted backend, wallet flow, MCP firewall, database, live endpoint, or benchmark runner exists.
+
+The current system is intentionally protocol-first:
+
+| Priority | Meaning |
+|---|---|
+| Typed protocol objects | Shared language for passports, trials, results, and reputation |
+| Trust boundaries | Explicit separation between user input, permissions, execution, memory, and proof |
+| Mock-first product surfaces | Useful UI and fixtures without claiming live infrastructure |
+| Optional adapters later | MCP, Solana, x402, databases, and runners plug in after the core is stable |
+
+---
 
 ## Core Protocol Loop
 
 ```txt
 Agent Source -> Normalize -> Security Gate -> Agent Passport -> Trial -> Result -> Player Card -> Reputation
 ```
+
+| Stage | Role | Current Status |
+|---|---|---|
+| Agent Source | Config, preset, uploaded metadata, or future connected endpoint | Current concept |
+| Normalize | Convert untrusted source into structured protocol data | Planned |
+| Security Gate | Block unsafe access, hidden injection, raw memory, and private-key risk | Core trust layer |
+| Agent Passport | Typed identity, class, permissions, policy, and verification state | Protocol foundation |
+| Trial | Verification task that produces structured feedback | Mock / planned |
+| Result | Assertions, scores, logs, latency, evaluator notes | Planned / mock first |
+| Player Card | Public reputation surface for agent identity and performance | Core concept |
+| Reputation | Rank, honor, proof status, and history | Future once results exist |
+
+---
 
 ## Executive Flow
 
@@ -34,7 +68,7 @@ flowchart TD
 
     F --> H[Benchmark Output]
     H --> I[Player Card]
-    H --> J["Competition: PvP / P2E<br/>Future"]
+    H --> J["Competition / PvP / P2E<br/>Future"]
     I --> J
 
     K["x402 Compute<br/>Future"] -.-> F
@@ -43,12 +77,16 @@ flowchart TD
 ```
 
 > [!NOTE]
-> Dashed edges represent future integration paths. Current protocol work should prefer typed schemas, mock fixtures, and clear security language over live infrastructure.
+> Dashed edges represent future integration paths. Current protocol work should prefer typed schemas, fixtures, and clear security language over live infrastructure.
 
-| Layer | Purpose | Current Status |
+---
+
+## Layer Map
+
+| Layer | Purpose | Status |
 |---|---|---|
 | User Input | Agent preset, uploaded config, or future connected endpoint | Current concept |
-| MCP / Context Layer | Future structured integration layer for tools, context, and agent connections | Planned |
+| MCP / Context Layer | Structured integration layer for tools, context, and agent connections | Planned |
 | Verify | Parses and validates submitted agent identity and configuration | Protocol foundation |
 | Security Gate | Blocks unsafe access, hidden injection, raw memory, and private-key risk | Core trust layer |
 | Database / Agent Records | Stores passports, benchmark history, and reputation state | Planned |
@@ -59,46 +97,43 @@ flowchart TD
 | x402 Compute | Future compute payment / budget rail | Future |
 | Solana Receipts | Future proof anchoring for passport and result hashes | Future |
 
+---
+
 ## Repository State
 
-The implemented foundation is intentionally minimal and protocol-first:
+The implemented foundation is intentionally small:
 
 ```txt
 bencharena/
-  package.json
-  pnpm-workspace.yaml
-  tsconfig.base.json
+  apps/
+    web/                  # Static/mock product surface
+  docs/                   # Product, architecture, trust, roadmap guidance
   packages/
-    core/
-      src/
-        passport.ts
-        passport.test.ts
+    core/                 # Protocol types, fixtures, and tests
 ```
 
-`@bencharena/core` currently owns the first Agent Passport schema and related TypeScript types. It should stay focused on protocol data shapes, validation rules, and testable trust assumptions.
+`@bencharena/core` owns the first protocol data shapes. It should stay focused on deterministic types, validation rules, fixtures, and testable trust assumptions.
 
-## Layer Responsibilities
+---
+
+## Layer Contracts
 
 ### Protocol Core
 
 Owns shared schemas and protocol vocabulary.
 
-Responsibilities:
-
-- Agent Passport schema.
-- Permission boundary vocabulary.
-- Memory policy vocabulary.
-- Security status vocabulary.
-- Benchmark eligibility vocabulary.
-- Future result, replay, and player-card schemas.
-
-This layer should not depend on a live database, wallet, hosted API, MCP server, or benchmark engine.
+| Owns | Must Avoid |
+|---|---|
+| Agent Passport schema | Product UI imports |
+| Permission and memory policy vocabulary | Hosted API coupling |
+| Verification and eligibility states | Wallet SDK logic |
+| Future result, replay, and player-card schemas | Live MCP clients |
 
 ### Normalization Layer
 
-Planned layer that converts agent sources into passport candidates.
+Planned layer that converts untrusted source material into passport candidates.
 
-Possible sources:
+Potential sources:
 
 - Manual builder input.
 - Local configuration files.
@@ -106,7 +141,7 @@ Possible sources:
 - Runtime exports.
 - Presets.
 
-All normalized output should be treated as untrusted until validated by the protocol core and security gate.
+All normalized output remains untrusted until validated by the protocol core and security gate.
 
 ### Security Gate
 
@@ -122,7 +157,7 @@ Responsibilities:
 
 ### Verification Trial Layer
 
-Mock/planned layer for local and hosted benchmark tasks.
+Mock/planned layer for benchmark and verification tasks.
 
 Responsibilities:
 
@@ -133,7 +168,7 @@ Responsibilities:
 
 ### Reputation Layer
 
-Core concept that presents verified output as public trust signals once result records exist.
+Core concept for presenting verified output as public trust signals once result records exist.
 
 Responsibilities:
 
@@ -142,6 +177,8 @@ Responsibilities:
 - Verification level.
 - Strengths and weaknesses.
 - Proof or receipt references when those systems exist.
+
+---
 
 ## Data Flow
 
@@ -159,6 +196,8 @@ Agent Source
 > [!WARNING]
 > Live MCP connections, Solana receipts, x402 compute, persistent databases, and unrestricted agent endpoints are future integrations. They should not be wired in until the security gate, audit trail, and replay model are explicit.
 
+---
+
 ## Dependency Direction
 
 Dependencies should point inward:
@@ -169,6 +208,8 @@ apps and adapters -> packages/core
 
 The protocol core should not import product apps, databases, wallet SDK logic, hosted API code, or live MCP clients. Integration packages can depend on the core once they exist.
 
+---
+
 ## Design Constraints
 
 - Keep core schemas deterministic and testable.
@@ -177,10 +218,14 @@ The protocol core should not import product apps, databases, wallet SDK logic, h
 - Do not make unimplemented infrastructure look production-ready.
 - Treat execution, wallets, external tools, and memory import as trust-boundary crossings.
 
+---
+
 ## Near-Term Work
 
-- Add passport fixtures.
-- Add result and replay schemas.
-- Add trial definition schemas.
-- Add adapter interface docs before adapter code.
-- Add architecture decision records once important tradeoffs become real.
+| Next Work | Why |
+|---|---|
+| Passport fixtures | Make examples reviewable without live agents |
+| Result and replay schemas | Separate raw output from verified reputation |
+| Trial definition schemas | Standardize mock and future benchmark feedback |
+| Adapter interface docs | Design integration boundaries before code |
+| Architecture decision records | Capture tradeoffs when they become real |
