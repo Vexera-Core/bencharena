@@ -1,0 +1,35 @@
+.panel {
+  composes: leaderboardPanel from global;
+}
+
+.header {
+  composes: leaderboardHeader from global;
+}
+
+.microLabel {
+  composes: microLabel from global;
+}
+
+.rows {
+  composes: leaderboardRows from global;
+}
+
+.row {
+  composes: leaderboardRow from global;
+}
+
+.rank {
+  composes: leaderboardRank from global;
+}
+
+.metaText {
+  composes: metaText from global;
+}
+
+.statusPill {
+  composes: statusPill from global;
+}
+
+.footnote {
+  composes: leaderboardFootnote from global;
+}

@@ -2,6 +2,7 @@
 
 import type { CSSProperties } from "react";
 import { useEffect, useRef, useState } from "react";
+import styles from "./FloatingArenaBackground.module.css";
 
 type OrbitalTile = {
   label: string;
@@ -64,7 +65,7 @@ export function FloatingArenaBackground() {
   return (
     <div
       aria-hidden="true"
-      className="heroOrbitalBackground"
+      className={styles.background}
       style={
         {
           "--orbital-x": motion.x.toFixed(3),
@@ -72,15 +73,15 @@ export function FloatingArenaBackground() {
         } as CSSProperties
       }
     >
-      <div className="orbitalCore">
+      <div className={styles.core}>
         <span>BENCH</span>
         <strong>verify</strong>
       </div>
-      <div className="orbitalGridLine horizontal" />
-      <div className="orbitalGridLine vertical" />
+      <div className={`${styles.gridLine} ${styles.horizontal}`} />
+      <div className={`${styles.gridLine} ${styles.vertical}`} />
       {orbitalTiles.map((tile) => (
         <span
-          className={`orbitalTile ${tile.tone}`}
+          className={`${styles.tile} ${styles[tile.tone === "core" ? "coreTone" : tile.tone]}`}
           key={tile.label}
           style={
             {

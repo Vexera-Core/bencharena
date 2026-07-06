@@ -1,0 +1,91 @@
+.panel {
+  composes: panel from global;
+}
+
+.sectionHeader {
+  composes: sectionHeader from global;
+}
+
+.sectionKicker {
+  composes: sectionKicker from global;
+}
+
+.sectionNote {
+  composes: sectionNote from global;
+}
+
+.streamGrid {
+  composes: terminalStreamGrid from global;
+}
+
+.streamPanel {
+  composes: trialStreamPanel from global;
+}
+
+.consoleHeader {
+  composes: consoleHeader from global;
+}
+
+.rows {
+  composes: verificationRows from global;
+}
+
+.row {
+  composes: verificationRow from global;
+}
+
+.pass {
+  composes: pass from global;
+}
+
+.warn {
+  composes: warn from global;
+}
+
+.blocked {
+  composes: blocked from global;
+}
+
+.mock {
+  composes: mock from global;
+}
+
+.planned {
+  composes: planned from global;
+}
+
+.future {
+  composes: future from global;
+}
+
+.assertionMatrix {
+  composes: assertionMatrix from global;
+}
+
+.assertionCase {
+  composes: assertionCase from global;
+}
+
+.assertionStats {
+  composes: assertionStats from global;
+}
+
+.rankBadge {
+  composes: rankBadge from global;
+}
+
+.statusPill {
+  composes: statusPill from global;
+}
+
+.warning {
+  composes: warning from global;
+}
+
+.rankLadder {
+  composes: rankLadder from global;
+}
+
+.rankStep {
+  composes: rankStep from global;
+}

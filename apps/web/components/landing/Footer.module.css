@@ -1,0 +1,3 @@
+.footer {
+  composes: footerPanel from global;
+}

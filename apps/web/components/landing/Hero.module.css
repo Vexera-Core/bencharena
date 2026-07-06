@@ -1,0 +1,71 @@
+.backdrop {
+  composes: heroBackdrop from global;
+}
+
+.editorial {
+  composes: heroEditorial from global;
+}
+
+.content {
+  composes: heroContent from global;
+}
+
+.eyebrow {
+  composes: eyebrow heroEyebrow from global;
+}
+
+.title {
+  composes: heroTitle from global;
+}
+
+.titleMain {
+  composes: heroTitleMain from global;
+}
+
+.titleAccent {
+  composes: heroTitleAccent from global;
+}
+
+.copy {
+  composes: heroCopy from global;
+}
+
+.actions {
+  composes: heroActions from global;
+}
+
+.primaryButton {
+  composes: primaryButton heroButton from global;
+}
+
+.ghostButton {
+  composes: ghostButton heroButton from global;
+}
+
+.trustLine {
+  composes: trustLine from global;
+}
+
+.stamp {
+  composes: heroProtocolStamp from global;
+}
+
+.visual {
+  composes: heroVisual from global;
+}
+
+.arenaLogo {
+  composes: heroArenaLogo from global;
+}
+
+.terminalMini {
+  composes: heroTerminalMini from global;
+}
+
+.proofStrip {
+  composes: heroProofStrip from global;
+}
+
+.readinessItem {
+  composes: readinessItem from global;
+}

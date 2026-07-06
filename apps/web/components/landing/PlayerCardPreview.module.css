@@ -1,0 +1,39 @@
+.card {
+  composes: playerCard from global;
+}
+
+.header {
+  composes: playerCardHeader from global;
+}
+
+.badge {
+  composes: badge badgeVerified from global;
+}
+
+.rankBadge {
+  composes: rankBadge from global;
+}
+
+.stampRail {
+  composes: protocolStampRail from global;
+}
+
+.signalRow {
+  composes: playerSignalRow from global;
+}
+
+.metaGrid {
+  composes: playerMetaGrid from global;
+}
+
+.meta {
+  composes: playerMeta from global;
+}
+
+.trustChecklist {
+  composes: trustChecklist from global;
+}
+
+.footer {
+  composes: cardFooter from global;
+}
