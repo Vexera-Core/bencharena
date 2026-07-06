@@ -26,14 +26,13 @@ jobs:
         with:
           node-version: 20
 
-      - name: Enable pnpm with Corepack
+      - name: Install pnpm
         run: |
-          corepack enable
-          corepack prepare pnpm@11.7.0 --activate
+          npm install --global pnpm@11.7.0
           pnpm --version
 
       - name: Install dependencies
-        run: pnpm install --frozen-lockfile
+        run: pnpm install
 
       - name: Typecheck
         run: pnpm typecheck
