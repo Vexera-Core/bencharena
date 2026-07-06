@@ -372,6 +372,145 @@ h1 {
   font-size: 0.92rem;
 }
 
+.heroOrbitalBackground {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  --orbital-x: 0;
+  --orbital-y: 0;
+}
+
+.heroOrbitalBackground::before {
+  position: absolute;
+  inset: 12%;
+  content: "";
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 999px;
+  transform:
+    translate3d(calc(var(--orbital-x) * -16px), calc(var(--orbital-y) * -14px), 0)
+    rotate(-12deg);
+}
+
+.heroOrbitalBackground::after {
+  position: absolute;
+  inset: 20%;
+  content: "";
+  border: 1px dashed rgba(255, 43, 84, 0.16);
+  border-radius: 999px;
+  transform:
+    translate3d(calc(var(--orbital-x) * 20px), calc(var(--orbital-y) * 16px), 0)
+    rotate(18deg);
+}
+
+.orbitalCore {
+  position: absolute;
+  top: 44%;
+  left: 50%;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: 116px;
+  height: 116px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 999px;
+  background:
+    radial-gradient(circle, rgba(255, 43, 84, 0.2), transparent 68%),
+    rgba(0, 0, 0, 0.46);
+  box-shadow: 0 0 56px rgba(255, 43, 84, 0.16);
+  transform:
+    translate(-50%, -50%)
+    translate3d(calc(var(--orbital-x) * 10px), calc(var(--orbital-y) * 8px), 0);
+}
+
+.orbitalCore span,
+.orbitalCore strong {
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  text-transform: uppercase;
+}
+
+.orbitalCore span {
+  color: var(--muted);
+  font-size: 0.66rem;
+}
+
+.orbitalCore strong {
+  color: #ffffff;
+  font-size: 0.9rem;
+}
+
+.orbitalGridLine {
+  position: absolute;
+  z-index: 0;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.orbitalGridLine.horizontal {
+  top: 44%;
+  right: 8%;
+  left: 8%;
+  height: 1px;
+}
+
+.orbitalGridLine.vertical {
+  top: 8%;
+  bottom: 8%;
+  left: 50%;
+  width: 1px;
+}
+
+.orbitalTile {
+  position: absolute;
+  left: var(--tile-x);
+  top: var(--tile-y);
+  z-index: 2;
+  display: grid;
+  gap: 5px;
+  min-width: 78px;
+  padding: 10px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--radius);
+  background: rgba(5, 5, 8, 0.68);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    0 18px 48px rgba(0, 0, 0, 0.34);
+  transform:
+    translate(-50%, -50%)
+    translate3d(
+      calc(var(--orbital-x) * var(--tile-depth) * 32px),
+      calc(var(--orbital-y) * var(--tile-depth) * 28px),
+      0
+    );
+  transition: border-color 160ms ease, background 160ms ease, transform 220ms ease;
+}
+
+.orbitalTile strong {
+  color: #ffffff;
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  font-size: 0.94rem;
+  letter-spacing: 0.02em;
+}
+
+.orbitalTile small {
+  color: var(--muted);
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  font-size: 0.62rem;
+  text-transform: uppercase;
+}
+
+.orbitalTile.core {
+  border-color: rgba(255, 255, 255, 0.22);
+}
+
+.orbitalTile.mock {
+  border-color: rgba(246, 211, 101, 0.3);
+}
+
+.orbitalTile.planned,
+.orbitalTile.future {
+  border-color: rgba(255, 43, 84, 0.28);
+}
+
 .readinessRail {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
