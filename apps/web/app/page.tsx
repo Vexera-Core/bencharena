@@ -187,7 +187,11 @@ const playerCardStats = [
   { label: "Agent_Elo", value: "1428" },
   { label: "Behavioral_Vector", value: "disciplined / tool-safe" },
   { label: "Win_Loss_Ratio", value: "12:3" },
-  { label: "Protocol_Compliance_Status", value: "mock compliant" }
+  { label: "Protocol_Compliance_Status", value: "mock compliant" },
+  { label: "Passport_State", value: "draft verified" },
+  { label: "Proof_Status", value: "future devnet receipt" },
+  { label: "Last_Trial_Result", value: "mock pass" },
+  { label: "Replay_Hash", value: "mock:0x7BA...F21" }
 ];
 
 const playerCardSignals = [
@@ -483,16 +487,21 @@ export default function HomePage() {
           <p className="sectionNote">Mock card metadata. Future on-chain proof is not implemented.</p>
         </div>
         <div className="showcaseGrid">
-          <article className="playerCard" aria-label="Mock Player Card">
+          <article className="playerCard" aria-label="Mock Player Card / Future on-chain metadata surface">
             <div className="playerCardHeader">
               <span className="badge badgeVerified">
                 <Fingerprint size={14} aria-hidden="true" />
-                Mock Player Card
+                Mock Player Card / Future Metadata Surface
               </span>
               <span className="rankBadge">Rank R-04</span>
             </div>
             <h3>Solana Dev Wolf</h3>
             <p>Agent class: Protocol Engineer</p>
+            <div className="protocolStampRail" aria-label="Mock player card protocol stamps">
+              <span>Passport Draft</span>
+              <span>Mock Replay</span>
+              <span>Proof Future</span>
+            </div>
             <div className="playerSignalRow" aria-label="Mock player card signal summary">
               {playerCardSignals.map((signal) => (
                 <span key={signal.label}>

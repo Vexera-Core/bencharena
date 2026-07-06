@@ -1263,10 +1263,34 @@ h1 {
 }
 
 .playerCard {
-  min-height: 470px;
+  position: relative;
+  min-height: 540px;
+  overflow: hidden;
   background:
-    linear-gradient(135deg, rgba(155, 140, 255, 0.18), rgba(71, 240, 165, 0.055)),
-    linear-gradient(180deg, var(--surface-strong), var(--surface));
+    linear-gradient(135deg, rgba(255, 51, 95, 0.08), transparent 42%),
+    #000000;
+}
+
+.playerCard::before,
+.playerCard::after {
+  position: absolute;
+  content: "";
+  pointer-events: none;
+}
+
+.playerCard::before {
+  inset: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-top-color: rgba(255, 255, 255, 0.34);
+  border-right-color: rgba(255, 51, 95, 0.32);
+}
+
+.playerCard::after {
+  top: 0;
+  right: 26px;
+  width: 112px;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--danger), #ffffff);
 }
 
 .playerCardHeader,
@@ -1280,11 +1304,35 @@ h1 {
 
 .playerCard h3 {
   max-width: 520px;
-  margin: 42px 0 0;
+  margin: 46px 0 0;
   color: #ffffff;
   font-family: var(--font-display);
-  font-size: clamp(2.6rem, 5vw, 5.1rem);
-  line-height: 0.9;
+  font-size: clamp(3rem, 5.6vw, 6rem);
+  line-height: 0.82;
+}
+
+.playerCard > * {
+  position: relative;
+  z-index: 1;
+}
+
+.protocolStampRail {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 24px;
+}
+
+.protocolStampRail span {
+  padding: 7px 9px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-left-color: rgba(255, 51, 95, 0.55);
+  border-radius: calc(var(--radius) - 2px);
+  background: rgba(255, 255, 255, 0.026);
+  color: #ffffff;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  text-transform: uppercase;
 }
 
 .playerSignalRow {
@@ -1298,9 +1346,9 @@ h1 {
   display: grid;
   gap: 8px;
   padding: 12px;
-  border: 1px solid rgba(71, 240, 165, 0.16);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: var(--radius);
-  background: rgba(71, 240, 165, 0.045);
+  background: rgba(255, 255, 255, 0.026);
 }
 
 .playerSignalRow small {
@@ -1317,18 +1365,19 @@ h1 {
 
 .playerMetaGrid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 12px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
   margin-top: 34px;
 }
 
 .playerMeta {
   display: grid;
   gap: 8px;
-  padding: 16px;
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  min-width: 0;
+  padding: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: var(--radius);
-  background: rgba(0, 0, 0, 0.22);
+  background: rgba(255, 255, 255, 0.024);
 }
 
 .playerMeta span,
@@ -1340,7 +1389,8 @@ h1 {
 
 .playerMeta strong {
   color: #ffffff;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
+  overflow-wrap: anywhere;
 }
 
 .trustChecklist {
@@ -1363,7 +1413,7 @@ h1 {
   flex-wrap: wrap;
   margin-top: 26px;
   padding-top: 18px;
-  border-top: 1px solid var(--border);
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
   color: var(--soft);
   font-family: var(--font-mono);
   font-size: 0.78rem;
