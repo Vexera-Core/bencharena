@@ -639,7 +639,7 @@
 .leaderboardPanel {
   border-radius: var(--radius);
   background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.044), rgba(255, 255, 255, 0.016)),
+    linear-gradient(160deg, rgba(255, 255, 255, 0.052), rgba(255, 255, 255, 0.012) 48%, rgba(221, 2, 14, 0.028)),
     var(--surface);
   box-shadow:
     var(--glass-ring),
@@ -649,6 +649,7 @@
 }
 
 .stage {
+  position: relative;
   min-height: 128px;
   display: grid;
   align-content: space-between;
@@ -656,6 +657,15 @@
   color: #ffffff;
   font-family: var(--font-secondary);
   font-weight: 800;
+  overflow: hidden;
+}
+
+.stage::after {
+  position: absolute;
+  inset: auto 24px 0;
+  height: 1px;
+  content: "";
+  background: linear-gradient(90deg, transparent, rgba(221, 2, 14, 0.78), transparent);
 }
 
 .stageIndex,
@@ -665,15 +675,31 @@
   font-size: 0.76rem;
 }
 
+.stageIndex {
+  color: rgba(255, 255, 255, 0.72);
+}
+
 .protocolAlert {
+  position: relative;
   display: grid;
   gap: var(--space-card);
   min-height: 190px;
   padding: var(--space-card);
   border-radius: var(--radius);
-  background: rgba(0, 0, 0, 0.28);
+  overflow: hidden;
+  background:
+    linear-gradient(150deg, rgba(25, 32, 57, 0.34), rgba(0, 0, 0, 0.18)),
+    rgba(0, 0, 0, 0.28);
   box-shadow: var(--glass-ring);
   backdrop-filter: blur(var(--glass-blur));
+}
+
+.protocolAlert::before {
+  position: absolute;
+  inset: 0 18% auto;
+  height: 1px;
+  content: "";
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.36), transparent);
 }
 
 .protocolAlert strong {
@@ -703,7 +729,17 @@
 }
 
 .statusBox {
+  position: relative;
+  overflow: hidden;
   padding: var(--space-block);
+}
+
+.statusBox::before {
+  position: absolute;
+  inset: 0 20% auto;
+  height: 1px;
+  content: "";
+  background: linear-gradient(90deg, transparent, rgba(221, 2, 14, 0.72), transparent);
 }
 
 .statusBox p,
@@ -731,8 +767,18 @@
 }
 
 .surfaceCard {
+  position: relative;
   min-height: 220px;
   padding: var(--space-card);
+  overflow: hidden;
+}
+
+.surfaceCard::after {
+  position: absolute;
+  inset: auto 24px 0;
+  height: 1px;
+  content: "";
+  background: linear-gradient(90deg, transparent, rgba(221, 2, 14, 0.58), transparent);
 }
 
 .trialCard {
