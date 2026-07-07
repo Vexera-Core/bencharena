@@ -170,6 +170,8 @@
 }
 
 .heroContent {
+  position: relative;
+  z-index: 3;
   display: grid;
   gap: var(--space-card);
   min-width: 0;
@@ -210,6 +212,8 @@
 }
 
 .heroBrandStack {
+  position: relative;
+  z-index: 0;
   display: grid;
   max-width: min(100%, 980px);
   color: #ffffff;
@@ -219,7 +223,7 @@
   line-height: 0.62;
   text-transform: none;
   text-wrap: balance;
-  transform: translate3d(0, calc(var(--hero-accent-y, 0) * 0.28px), 0);
+  transform: translate3d(0, calc(var(--hero-accent-y, 0) * 0.18px), 0);
   will-change: transform;
 }
 
@@ -234,14 +238,17 @@
 
 .heroTitleThesis {
   display: block;
-  max-width: 640px;
+  position: relative;
+  z-index: 2;
+  max-width: 620px;
   color: #ffffff;
   font-family: var(--font-accent);
   font-size: clamp(2rem, 4vw, 4.6rem);
   font-weight: 400;
   line-height: 0.94;
   text-shadow:
-    0 1px 0 rgba(0, 0, 0, 0.8),
+    0 1px 0 rgba(0, 0, 0, 0.92),
+    0 18px 34px rgba(0, 0, 0, 0.4),
     0 18px 34px rgba(221, 2, 14, 0.12);
 }
 
@@ -1332,8 +1339,9 @@
   }
 
   .heroBackdrop {
-    inset: 34px 0 auto;
+    inset: 24px 0 auto;
     grid-template-columns: repeat(2, minmax(0, 1fr));
+    opacity: 0.16;
   }
 
   .sectionHeader {
@@ -1431,7 +1439,7 @@
   }
 
   .heroTitle {
-    min-height: clamp(12rem, 42vw, 20rem);
+    min-height: clamp(14rem, 48vw, 22rem);
   }
 
   .heroBrandStack {
@@ -1444,7 +1452,7 @@
   }
 
   .heroTitleThesis {
-    max-width: 440px;
+    max-width: min(100%, 440px);
     font-size: clamp(1.7rem, 8.4vw, 3rem);
     line-height: 1;
   }
@@ -1512,11 +1520,21 @@
   }
 
   .heroTitle {
-    min-height: clamp(13rem, 54vw, 18rem);
+    min-height: clamp(13rem, 66vw, 19rem);
   }
 
   .heroBrandStack {
-    font-size: clamp(4.1rem, 21vw, 7rem);
+    max-width: min(100%, 22rem);
+    font-size: clamp(3.9rem, 20vw, 6.8rem);
+  }
+
+  .heroBrandStack span + span {
+    margin-top: -0.08em;
+    padding-left: clamp(1rem, 10vw, 3rem);
+  }
+
+  .heroTitleThesis {
+    font-size: clamp(1.6rem, 9.6vw, 2.65rem);
   }
 
   .heroCopy {

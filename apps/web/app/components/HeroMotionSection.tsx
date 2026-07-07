@@ -39,8 +39,8 @@ export function HeroMotionSection({ children }: HeroMotionSectionProps) {
     target: sectionRef
   });
 
-  const titleY = useTransform(scrollYProgress, [0, 1], [0, -34]);
-  const accentY = useTransform(scrollYProgress, [0, 1], [0, -58]);
+  const titleY = useTransform(scrollYProgress, [0, 1], [0, -22]);
+  const accentY = useTransform(scrollYProgress, [0, 1], [0, -36]);
   const terminalY = useTransform(scrollYProgress, [0, 0.7], [18, 0]);
   const terminalOpacity = useTransform(scrollYProgress, [0, 0.38], [0.78, 1]);
 

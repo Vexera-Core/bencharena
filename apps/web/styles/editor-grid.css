@@ -14,14 +14,14 @@ body {
 
 .heroBackdrop {
   position: absolute;
-  inset: 150px 0 auto;
+  inset: 90px 0 auto;
   display: grid;
   grid-template-columns: repeat(5, minmax(128px, 1fr));
-  gap: 22px;
-  max-width: min(1040px, 100%);
+  gap: clamp(24px, 4vw, 56px);
+  max-width: min(1180px, 100%);
   margin-inline: auto;
   pointer-events: none;
-  opacity: 0.42;
+  opacity: 0.24;
   z-index: 0;
   transform: translate3d(
     calc(var(--hero-field-x, 0) * -10px),
@@ -45,15 +45,15 @@ body {
 }
 
 .heroBackdrop span {
-  min-height: 58px;
+  min-height: 52px;
   display: grid;
   place-items: center;
-  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: var(--radius);
   background:
-    linear-gradient(135deg, rgba(221, 2, 14, 0.08), rgba(25, 32, 57, 0.16)),
-    rgba(0, 0, 0, 0.3);
-  color: rgba(255, 255, 255, 0.64);
+    linear-gradient(135deg, rgba(221, 2, 14, 0.045), rgba(25, 32, 57, 0.12)),
+    rgba(0, 0, 0, 0.18);
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.055);
+  color: rgba(255, 255, 255, 0.42);
   font-family: var(--font-mono);
   font-size: 0.68rem;
   text-transform: uppercase;
