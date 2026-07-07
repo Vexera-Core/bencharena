@@ -3,26 +3,41 @@
 @font-face {
   font-family: "Mileast";
   font-display: swap;
-  src: url("/fonts/Mileast.otf") format("opentype");
+  font-style: normal;
+  font-weight: 400;
+  src:
+    local("Mileast"),
+    url("/fonts/Mileast.otf") format("opentype");
 }
 
 @font-face {
   font-family: "Alphacorsa";
   font-display: swap;
-  src: url("/fonts/Alphacorsa-Personal-Use.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 400;
+  src:
+    local("Alphacorsa Personal Use"),
+    url("/fonts/Alphacorsa-Personal-Use.ttf") format("truetype");
 }
 
 @font-face {
   font-family: "Armelia";
   font-display: swap;
-  src: url("/fonts/Armelie-Regular.otf") format("opentype");
+  font-style: normal;
+  font-weight: 400;
+  src:
+    local("Armelie Regular"),
+    url("/fonts/Armelie-Regular.otf") format("opentype");
 }
 
 @font-face {
   font-family: "CurovaSemibold";
   font-display: swap;
+  font-style: normal;
   font-weight: 700;
-  src: url("/fonts/QurovaDEMO-SemiBold.otf") format("opentype");
+  src:
+    local("QurovaDEMO SemiBold"),
+    url("/fonts/QurovaDEMO-SemiBold.otf") format("opentype");
 }
 
 :root {
@@ -48,11 +63,22 @@
   --arena-red-deep: #5f0207;
   --danger: var(--arena-red);
   --radius: 8px;
-  --shadow-deep: 0 28px 92px rgba(0, 0, 0, 0.28);
+  --shadow-deep: 0 28px 72px rgba(0, 0, 0, 0.22);
+  --glass-blur: 18px;
+  --glass-ring: 0 0 0 1px rgba(255, 255, 255, 0.1);
+  --space-section: clamp(7rem, 13vw, 14rem);
+  --space-section-compact: clamp(4.5rem, 9vw, 9rem);
+  --space-block: clamp(2.5rem, 6vw, 6rem);
+  --space-card: clamp(1.5rem, 3vw, 3rem);
+  --motion-ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --motion-fast: 180ms;
+  --motion-medium: 420ms;
+  --motion-slow: 900ms;
   --font-body: "Mileast", var(--font-space-grotesk), ui-sans-serif, system-ui, sans-serif;
   --font-display: "Armelia", var(--font-bodoni), "Bodoni 72", Didot, Georgia, serif;
   --font-accent: "Alphacorsa", var(--font-cormorant), "Cormorant Garamond", Georgia, serif;
-  --font-secondary: "Warband", var(--font-bodoni), "Bodoni 72", Didot, Georgia, serif;
+  /* Warband is not present in the repo yet; secondary headings use a real local fallback. */
+  --font-secondary: "CurovaSemibold", var(--font-bodoni), "Bodoni 72", Didot, Georgia, serif;
   --font-emphasis: "CurovaSemibold", var(--font-space-grotesk), ui-sans-serif, system-ui, sans-serif;
   --font-technical: "CurovaSemibold", var(--font-space-grotesk), ui-sans-serif, system-ui, sans-serif;
   --font-mono: "SFMono-Regular", "Cascadia Code", Consolas, "Liberation Mono", monospace;
