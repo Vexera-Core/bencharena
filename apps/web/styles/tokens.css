@@ -74,13 +74,15 @@
   --motion-fast: 180ms;
   --motion-medium: 420ms;
   --motion-slow: 900ms;
-  --font-body: "Mileast", var(--font-space-grotesk), ui-sans-serif, system-ui, sans-serif;
+  --font-ui: "Aptos", "Segoe UI Variable", "Segoe UI", ui-sans-serif, system-ui, sans-serif;
+  --font-editorial-serif: var(--font-bodoni), "Bodoni 72", Didot, Georgia, serif;
+  --font-body: "Mileast", var(--font-ui);
   --font-display: "Armelia", var(--font-bodoni), "Bodoni 72", Didot, Georgia, serif;
   --font-accent: "Alphacorsa", var(--font-cormorant), "Cormorant Garamond", Georgia, serif;
-  /* Warband is not present in the repo yet; secondary headings use a real local fallback. */
-  --font-secondary: "CurovaSemibold", var(--font-bodoni), "Bodoni 72", Didot, Georgia, serif;
-  --font-emphasis: "CurovaSemibold", var(--font-space-grotesk), ui-sans-serif, system-ui, sans-serif;
-  --font-technical: "CurovaSemibold", var(--font-space-grotesk), ui-sans-serif, system-ui, sans-serif;
+  /* Warband is not present in the repo yet; secondary headings use a crisp local fallback. */
+  --font-secondary: "CurovaSemibold", var(--font-ui);
+  --font-emphasis: "CurovaSemibold", var(--font-ui);
+  --font-technical: "CurovaSemibold", var(--font-ui);
   --font-mono: "SFMono-Regular", "Cascadia Code", Consolas, "Liberation Mono", monospace;
   background: var(--bg);
   color: var(--text);
