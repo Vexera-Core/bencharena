@@ -123,6 +123,7 @@
   background: rgba(25, 32, 57, 0.32);
   box-shadow: var(--glass-ring);
   color: #ffffff;
+  font-family: var(--font-technical);
   font-size: 0.72rem;
   font-weight: 900;
   letter-spacing: 0;

@@ -191,7 +191,7 @@
 .microLabel {
   margin: 0;
   color: var(--muted);
-  font-family: var(--font-accent);
+  font-family: var(--font-technical);
   font-size: 0.76rem;
   font-weight: 800;
   letter-spacing: 0;
@@ -571,14 +571,23 @@
 .readinessItem span,
 .readinessItem small {
   color: var(--muted);
-  font-family: var(--font-mono);
   font-size: 0.72rem;
   text-transform: uppercase;
+}
+
+.readinessItem span {
+  font-family: var(--font-mono);
+}
+
+.readinessItem small {
+  font-family: var(--font-ui);
+  text-transform: none;
 }
 
 .readinessItem strong {
   align-self: end;
   color: #ffffff;
+  font-family: var(--font-secondary);
   font-size: 1.24rem;
 }
 
@@ -611,7 +620,6 @@
 }
 
 .heroProtocolStamp small,
-.protocolAlert p,
 .leaderboardFootnote {
   font-family: var(--font-accent);
 }
@@ -641,6 +649,7 @@
   align-content: space-between;
   padding: var(--space-card);
   color: #ffffff;
+  font-family: var(--font-secondary);
   font-weight: 800;
 }
 
@@ -664,13 +673,14 @@
 
 .protocolAlert strong {
   color: #ffffff;
-  font-family: var(--font-mono);
+  font-family: var(--font-emphasis);
   font-size: 0.72rem;
 }
 
 .protocolAlert p {
   margin: 0;
   color: var(--soft);
+  font-family: var(--font-ui);
   line-height: 1.55;
   text-wrap: pretty;
 }
@@ -698,6 +708,7 @@
 .playerCard p {
   margin: 32px 0 0;
   color: #c8d0dc;
+  font-family: var(--font-ui);
   line-height: 1.85;
 }
 
@@ -1291,6 +1302,7 @@
 .cardTopline h3 {
   margin-bottom: 0;
   color: #ffffff;
+  font-family: var(--font-secondary);
   font-size: 1.2rem;
 }
 
