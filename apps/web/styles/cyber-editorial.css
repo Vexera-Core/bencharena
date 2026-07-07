@@ -198,53 +198,57 @@
 .heroTitle {
   position: relative;
   display: grid;
+  gap: clamp(0.8rem, 1.8vw, 1.4rem);
   width: 100%;
   max-width: 1040px;
-  min-height: clamp(9rem, 17vw, 18rem);
+  min-height: clamp(13rem, 22vw, 23rem);
   align-content: center;
   isolation: isolate;
   transform: translate3d(0, calc(var(--hero-title-y, 0) * 1px), 0);
   will-change: transform;
 }
 
-.heroTitleMain,
-.heroTitleAccent {
-  display: block;
-  max-width: 100%;
-}
-
-.heroTitleMain {
-  max-width: 980px;
+.heroBrandStack {
+  display: grid;
+  max-width: min(100%, 980px);
   color: #ffffff;
   font-family: var(--font-display);
-  font-size: clamp(5.2rem, 9.9vw, 11.8rem);
-  font-weight: 700;
-  line-height: 0.78;
+  font-size: clamp(6rem, 11.5vw, 13.6rem);
+  font-weight: 400;
+  line-height: 0.62;
+  text-transform: none;
+  text-wrap: balance;
+  transform: translate3d(0, calc(var(--hero-accent-y, 0) * 0.28px), 0);
+  will-change: transform;
 }
 
-.heroTitleAccent {
-  position: absolute;
-  right: clamp(0rem, 7vw, 7rem);
-  bottom: clamp(0.4rem, 2.8vw, 2.8rem);
-  z-index: 2;
+.heroBrandStack span {
+  display: block;
+}
+
+.heroBrandStack span + span {
+  margin-top: -0.12em;
+  padding-left: clamp(2.5rem, 8vw, 9.5rem);
+}
+
+.heroTitleThesis {
+  display: block;
+  max-width: 640px;
   color: #ffffff;
   font-family: var(--font-accent);
-  font-size: clamp(4.4rem, 8vw, 10.2rem);
-  font-style: italic;
-  font-weight: 700;
-  line-height: 0.78;
+  font-size: clamp(2rem, 4vw, 4.6rem);
+  font-weight: 400;
+  line-height: 0.94;
   text-shadow:
     0 1px 0 rgba(0, 0, 0, 0.8),
     0 18px 34px rgba(221, 2, 14, 0.12);
-  transform: translate3d(0, calc(var(--hero-accent-y, 0) * 1px), 0);
-  will-change: transform;
-  pointer-events: none;
 }
 
 .heroCopy {
   max-width: 760px;
   margin-bottom: 0;
   color: var(--soft);
+  font-family: var(--font-body);
   font-size: clamp(1.14rem, 2vw, 1.42rem);
   line-height: 1.86;
   text-wrap: pretty;
@@ -272,6 +276,7 @@
   display: inline-flex;
   align-items: center;
   gap: 10px;
+  font-family: var(--font-emphasis);
   font-weight: 800;
 }
 
@@ -563,7 +568,7 @@
   color: #ffffff;
   font-family: var(--font-secondary);
   font-size: clamp(1.8rem, 3vw, 3rem);
-  font-weight: 700;
+  font-weight: 800;
   line-height: 0.96;
   letter-spacing: 0;
   text-wrap: balance;
@@ -571,7 +576,8 @@
 
 .sectionNote {
   font-family: var(--font-accent);
-  font-size: 1.08rem;
+  font-size: 1.2rem;
+  font-weight: 400;
 }
 
 .heroProtocolStamp strong,
@@ -848,6 +854,7 @@
 .trialCard h3 {
   margin-bottom: 0;
   color: #ffffff;
+  font-family: var(--font-secondary);
   font-size: 1.35rem;
 }
 
@@ -1190,6 +1197,7 @@
 .leaderboardHeader h3 {
   margin-bottom: 0;
   color: #ffffff;
+  font-family: var(--font-secondary);
   font-size: 1.45rem;
 }
 
@@ -1402,19 +1410,22 @@
   }
 
   .heroTitle {
-    min-height: clamp(8rem, 30vw, 12rem);
+    min-height: clamp(12rem, 42vw, 20rem);
   }
 
-  .heroTitleMain {
-    font-size: clamp(3.7rem, 16vw, 6.1rem);
-    line-height: 0.82;
+  .heroBrandStack {
+    font-size: clamp(4.8rem, 18vw, 8.4rem);
+    line-height: 0.66;
   }
 
-  .heroTitleAccent {
-    right: 0;
-    bottom: 0.6rem;
-    font-size: clamp(3.2rem, 14vw, 5.4rem);
-    line-height: 0.82;
+  .heroBrandStack span + span {
+    padding-left: clamp(1.3rem, 12vw, 4rem);
+  }
+
+  .heroTitleThesis {
+    max-width: 440px;
+    font-size: clamp(1.7rem, 8.4vw, 3rem);
+    line-height: 1;
   }
 
   .heroVisual {
@@ -1480,15 +1491,11 @@
   }
 
   .heroTitle {
-    min-height: clamp(8rem, 38vw, 10.5rem);
+    min-height: clamp(13rem, 54vw, 18rem);
   }
 
-  .heroTitleAccent {
-    position: relative;
-    right: auto;
-    bottom: auto;
-    margin-top: -0.48em;
-    padding-left: 20%;
+  .heroBrandStack {
+    font-size: clamp(4.1rem, 21vw, 7rem);
   }
 
   .heroCopy {

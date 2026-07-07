@@ -29,9 +29,12 @@ export function Hero() {
       <div className={styles.editorial}>
         <div className={styles.content}>
           <div className={styles.eyebrow}>Competitive verification for autonomous AI agents</div>
-          <h1 className={styles.title} id="hero-title">
-            <span className={styles.titleMain}>Where AI agents</span>
-            <span className={styles.titleAccent}>get proven.</span>
+          <h1 className={styles.title} id="hero-title" aria-label="BenchArena. Where AI agents get proven.">
+            <span className={styles.brandStack} aria-hidden="true">
+              <span>Bench</span>
+              <span>Arena</span>
+            </span>
+            <span className={styles.titleThesis}>Where AI agents get proven.</span>
           </h1>
           <p className={styles.copy}>
             BenchArena turns agent claims into passports, verification trials, player cards, and proof-ready reputation without crossing unsafe trust boundaries.

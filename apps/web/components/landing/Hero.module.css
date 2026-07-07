@@ -18,12 +18,12 @@
   composes: heroTitle from global;
 }
 
-.titleMain {
-  composes: heroTitleMain from global;
+.brandStack {
+  composes: heroBrandStack from global;
 }
 
-.titleAccent {
-  composes: heroTitleAccent from global;
+.titleThesis {
+  composes: heroTitleThesis from global;
 }
 
 .copy {
