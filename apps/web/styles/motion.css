@@ -1,1 +1,41 @@
-/* Motion keyframes and reduced-motion primitives live here. */
+/* Motion primitives and reduced-motion safeguards. */
+
+@keyframes editorialFloat {
+  0%,
+  100% {
+    transform: translate3d(
+      calc(var(--hero-field-x, 0) * var(--field-depth-x, 18px)),
+      calc(var(--float-y, 0px) + (var(--hero-field-y, 0) * var(--field-depth-y, 12px))),
+      0
+    );
+  }
+
+  50% {
+    transform: translate3d(
+      calc(var(--hero-field-x, 0) * var(--field-depth-x, 18px)),
+      calc(var(--float-y, 0px) - 10px + (var(--hero-field-y, 0) * var(--field-depth-y, 12px))),
+      0
+    );
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+
+  .heroOrbitalBackground,
+  .heroOrbitalBackground::before,
+  .heroOrbitalBackground::after,
+  .orbitalCore,
+  .orbitalTile,
+  .heroBackdrop span {
+    animation: none !important;
+    transform: none !important;
+  }
+}

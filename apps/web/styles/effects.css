@@ -1,1 +1,132 @@
-/* Shared effects, focus, and interaction primitives live here. */
+/* Shared controls, focus, and surface interaction effects. */
+
+:focus-visible {
+  outline: 2px solid var(--danger);
+  outline-offset: 4px;
+}
+
+.skipLink {
+  position: fixed;
+  top: 14px;
+  left: 14px;
+  z-index: 100;
+  padding: 10px 12px;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius);
+  background: #09090d;
+  color: #ffffff;
+  font-weight: 900;
+  transform: translateY(-140%);
+  transition: transform 160ms ease;
+}
+
+.skipLink:focus-visible {
+  transform: translateY(0);
+}
+
+.primaryButton,
+.ghostButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 38px;
+  padding: 0 13px;
+  border-radius: var(--radius);
+  font-size: 0.74rem;
+  font-weight: 950;
+  letter-spacing: 0;
+  text-transform: uppercase;
+  transition: border-color 160ms ease, background 160ms ease, box-shadow 180ms ease, transform 160ms ease;
+}
+
+.primaryButton {
+  border: 1px solid rgba(221, 2, 14, 0.72);
+  background: linear-gradient(135deg, var(--arena-red-hot), var(--arena-red) 54%, var(--arena-red-deep));
+  color: #ffffff;
+  box-shadow: 0 0 34px rgba(221, 2, 14, 0.18);
+}
+
+.primaryButton:hover,
+.primaryButton:focus-visible {
+  transform: translateY(-1px);
+  box-shadow: 0 0 42px rgba(221, 2, 14, 0.26);
+}
+
+.ghostButton {
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(25, 32, 57, 0.32);
+  color: var(--soft);
+}
+
+.ghostButton:hover,
+.ghostButton:focus-visible {
+  border-color: rgba(255, 255, 255, 0.28);
+  background: rgba(25, 32, 57, 0.52);
+}
+
+.stage:hover,
+.surfaceCard:hover,
+.trialCard:hover,
+.metricCard:hover,
+.leaderboardPanel:hover,
+.playerCard:hover {
+  border-color: rgba(255, 255, 255, 0.22);
+  transform: translateY(-2px);
+}
+
+.stage,
+.surfaceCard,
+.trialCard,
+.metricCard,
+.leaderboardPanel,
+.playerCard,
+.primaryButton,
+.ghostButton {
+  transition: border-color 160ms ease, background 160ms ease, box-shadow 180ms ease, transform 160ms ease;
+}
+
+.protocolAlert.important {
+  border-left-color: var(--verified);
+}
+
+.important {
+  background: linear-gradient(135deg, rgba(25, 32, 57, 0.62), rgba(221, 2, 14, 0.055));
+}
+
+.protocolAlert.important {
+  background: #000000;
+}
+
+.badge,
+.cardTopline span,
+.statusPill,
+.rankBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  width: fit-content;
+  margin-bottom: 18px;
+  padding: 6px 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: var(--radius);
+  color: #ffffff;
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.statusPill.pass {
+  border-color: rgba(71, 240, 165, 0.34);
+  color: #dcffec;
+}
+
+.statusPill.warning {
+  border-color: rgba(246, 211, 101, 0.34);
+  color: #fff4bd;
+}
+
+.badgeVerified {
+  border-color: rgba(71, 240, 165, 0.34);
+  color: #dcffec;
+}

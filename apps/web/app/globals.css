@@ -3,9 +3,5 @@
 @import "../styles/layout.css";
 @import "../styles/effects.css";
 @import "../styles/motion.css";
-@import "../styles/cyber-editorial.css";
 @import "../styles/editor-grid.css";
-
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "../styles/cyber-editorial.css";

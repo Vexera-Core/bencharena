@@ -1,1 +1,152 @@
-/* Shared layout primitives live here as the landing page blocks are refined. */
+/* Shared layout primitives used by the landing composition. */
+
+.shell {
+  width: min(1240px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: calc(30px + env(safe-area-inset-top)) 0 calc(88px + env(safe-area-inset-bottom));
+}
+
+.panel,
+.statusGrid,
+.calloutGrid,
+.sectionStack {
+  margin-top: 76px;
+}
+
+.panel {
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 620px;
+  padding: 48px 0 72px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.protocolPanel {
+  padding-top: 72px;
+}
+
+.sectionHeader {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+.sectionNote {
+  max-width: 360px;
+  margin-bottom: 0;
+  color: var(--muted);
+  line-height: 1.55;
+  text-align: right;
+  text-wrap: pretty;
+}
+
+.protocolLoop {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.statusGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.calloutGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.surfaceGrid,
+.metricsGrid,
+.trialGrid {
+  display: grid;
+  gap: 14px;
+}
+
+.terminalStreamGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(360px, 0.95fr);
+  gap: 16px;
+  align-items: stretch;
+}
+
+.surfaceGrid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.trialGrid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.metricsGrid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin-bottom: 16px;
+}
+
+.rankLadder {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.showcaseGrid {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 16px;
+}
+
+.protocolStampRail {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 24px;
+}
+
+.playerSignalRow {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 24px;
+}
+
+.playerMetaGrid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+  margin-top: 34px;
+}
+
+.trustChecklist {
+  display: grid;
+  gap: 8px;
+  margin-top: 18px;
+}
+
+.footerPanel {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 56px;
+  padding-top: 28px;
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+}
+
+.footerPanel span,
+.footerPanel a {
+  color: #ffffff;
+}
+
+.footerPanel p {
+  max-width: 680px;
+  margin: 0;
+  line-height: 1.55;
+}
