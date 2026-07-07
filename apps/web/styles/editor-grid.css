@@ -4,24 +4,28 @@ body {
   overflow-x: hidden;
   -webkit-tap-highlight-color: rgba(221, 2, 14, 0.18);
   background:
-    radial-gradient(circle at 50% -12%, rgba(221, 2, 14, 0.2), transparent 30rem),
-    linear-gradient(rgba(25, 32, 57, 0.3) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(25, 32, 57, 0.2) 1px, transparent 1px),
+    radial-gradient(circle at 48% -18%, rgba(221, 2, 14, 0.17), transparent 38rem),
+    radial-gradient(circle at 92% 28%, rgba(25, 32, 57, 0.34), transparent 44rem),
+    linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.026) 1px, transparent 1px),
     var(--bg);
-  background-size: auto, 58px 58px, 58px 58px, auto;
+  background-size: auto, auto, 76px 76px, 76px 76px, auto;
 }
 
 .heroBackdrop {
   position: absolute;
-  inset: 70px 0 auto;
+  inset: 150px 0 auto;
   display: grid;
-  grid-template-columns: repeat(9, minmax(88px, 1fr));
-  gap: 14px;
+  grid-template-columns: repeat(5, minmax(128px, 1fr));
+  gap: 22px;
+  max-width: min(1040px, 100%);
+  margin-inline: auto;
   pointer-events: none;
-  opacity: 0.72;
+  opacity: 0.42;
+  z-index: 0;
   transform: translate3d(
-    calc(var(--hero-field-x, 0) * -18px),
-    calc(var(--hero-field-y, 0) * -14px),
+    calc(var(--hero-field-x, 0) * -10px),
+    calc(var(--hero-field-y, 0) * -8px),
     0
   );
 }
@@ -41,20 +45,21 @@ body {
 }
 
 .heroBackdrop span {
-  min-height: 74px;
+  min-height: 58px;
   display: grid;
   place-items: center;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: var(--radius);
   background:
-    linear-gradient(135deg, rgba(221, 2, 14, 0.12), rgba(25, 32, 57, 0.28)),
-    rgba(0, 0, 0, 0.68);
-  color: rgba(255, 255, 255, 0.42);
+    linear-gradient(135deg, rgba(221, 2, 14, 0.08), rgba(25, 32, 57, 0.16)),
+    rgba(0, 0, 0, 0.3);
+  color: rgba(255, 255, 255, 0.64);
   font-family: var(--font-mono);
-  font-size: 0.78rem;
+  font-size: 0.68rem;
   text-transform: uppercase;
-  --field-depth-x: 18px;
-  --field-depth-y: 12px;
+  white-space: nowrap;
+  --field-depth-x: 10px;
+  --field-depth-y: 8px;
   transform: translate3d(
     calc(var(--hero-field-x, 0) * var(--field-depth-x)),
     calc(var(--float-y, 0px) + (var(--hero-field-y, 0) * var(--field-depth-y))),
@@ -65,57 +70,57 @@ body {
 }
 
 .heroBackdrop span:nth-child(2) {
-  --float-y: 34px;
-  --field-depth-x: -14px;
-  --field-depth-y: 18px;
+  --float-y: 28px;
+  --field-depth-x: -8px;
+  --field-depth-y: 12px;
   animation-delay: -1.4s;
 }
 
 .heroBackdrop span:nth-child(3) {
-  --float-y: 68px;
-  --field-depth-x: 26px;
-  --field-depth-y: -10px;
+  --float-y: 56px;
+  --field-depth-x: 14px;
+  --field-depth-y: -6px;
   animation-delay: -2.8s;
 }
 
 .heroBackdrop span:nth-child(4) {
-  --float-y: 18px;
-  --field-depth-x: -22px;
-  --field-depth-y: 14px;
+  --float-y: 16px;
+  --field-depth-x: -12px;
+  --field-depth-y: 10px;
   animation-delay: -4.2s;
 }
 
 .heroBackdrop span:nth-child(5) {
-  --float-y: 52px;
-  --field-depth-x: 16px;
-  --field-depth-y: 22px;
+  --float-y: 42px;
+  --field-depth-x: 10px;
+  --field-depth-y: 14px;
   animation-delay: -5.6s;
 }
 
 .heroBackdrop span:nth-child(6) {
-  --float-y: 22px;
-  --field-depth-x: -18px;
-  --field-depth-y: -16px;
+  --float-y: 18px;
+  --field-depth-x: -10px;
+  --field-depth-y: -10px;
   animation-delay: -7s;
 }
 
 .heroBackdrop span:nth-child(7) {
-  --float-y: 78px;
-  --field-depth-x: 28px;
-  --field-depth-y: 12px;
+  --float-y: 64px;
+  --field-depth-x: 16px;
+  --field-depth-y: 8px;
   animation-delay: -8.4s;
 }
 
 .heroBackdrop span:nth-child(8) {
-  --float-y: 8px;
-  --field-depth-x: -10px;
-  --field-depth-y: 26px;
+  --float-y: 6px;
+  --field-depth-x: -6px;
+  --field-depth-y: 16px;
   animation-delay: -9.8s;
 }
 
 .heroBackdrop span:nth-child(9) {
-  --float-y: 46px;
-  --field-depth-x: 32px;
-  --field-depth-y: -18px;
+  --float-y: 38px;
+  --field-depth-x: 18px;
+  --field-depth-y: -12px;
   animation-delay: -11.2s;
 }

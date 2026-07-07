@@ -70,8 +70,9 @@
 .metricCard:hover,
 .leaderboardPanel:hover,
 .playerCard:hover {
-  border-color: rgba(255, 255, 255, 0.22);
-  transform: translateY(-2px);
+  border-color: rgba(255, 255, 255, 0.28);
+  background-color: rgba(255, 255, 255, 0.055);
+  transform: translateY(-4px);
 }
 
 .stage,
@@ -83,6 +84,7 @@
 .primaryButton,
 .ghostButton {
   transition: border-color 160ms ease, background 160ms ease, box-shadow 180ms ease, transform 160ms ease;
+  backdrop-filter: blur(22px);
 }
 
 .protocolAlert.important {
@@ -90,7 +92,7 @@
 }
 
 .important {
-  background: linear-gradient(135deg, rgba(25, 32, 57, 0.62), rgba(221, 2, 14, 0.055));
+  background: linear-gradient(135deg, rgba(25, 32, 57, 0.34), rgba(221, 2, 14, 0.045));
 }
 
 .protocolAlert.important {

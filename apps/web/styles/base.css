@@ -54,3 +54,9 @@ h1 {
   letter-spacing: 0;
   text-wrap: balance;
 }
+
+strong,
+b {
+  font-family: var(--font-emphasis);
+  font-weight: 700;
+}
