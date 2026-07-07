@@ -1,17 +1,5 @@
 /* Atmospheric grid and floating hero field primitives. */
 
-body {
-  overflow-x: hidden;
-  -webkit-tap-highlight-color: rgba(221, 2, 14, 0.18);
-  background:
-    radial-gradient(circle at 48% -18%, rgba(221, 2, 14, 0.17), transparent 38rem),
-    radial-gradient(circle at 92% 28%, rgba(25, 32, 57, 0.34), transparent 44rem),
-    linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.026) 1px, transparent 1px),
-    var(--bg);
-  background-size: auto, auto, 76px 76px, 76px 76px, auto;
-}
-
 .heroBackdrop {
   position: absolute;
   inset: 90px 0 auto;

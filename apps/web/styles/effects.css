@@ -101,14 +101,11 @@
   box-shadow:
     var(--glass-ring),
     inset 0 1px 0 rgba(74, 222, 128, 0.24);
+  background: #000000;
 }
 
 .important {
   background: linear-gradient(135deg, rgba(25, 32, 57, 0.34), rgba(221, 2, 14, 0.045));
-}
-
-.protocolAlert.important {
-  background: #000000;
 }
 
 .badge,
