@@ -75,7 +75,6 @@
   --motion-medium: 420ms;
   --motion-slow: 900ms;
   --font-ui: "Aptos", "Segoe UI Variable", "Segoe UI", ui-sans-serif, system-ui, sans-serif;
-  --font-editorial-serif: var(--font-bodoni), "Bodoni 72", Didot, Georgia, serif;
   --font-body: "Mileast", var(--font-ui);
   --font-display: "Armelia", var(--font-bodoni), "Bodoni 72", Didot, Georgia, serif;
   --font-accent: "Alphacorsa", var(--font-cormorant), "Cormorant Garamond", Georgia, serif;
