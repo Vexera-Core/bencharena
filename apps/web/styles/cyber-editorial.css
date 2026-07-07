@@ -148,6 +148,7 @@
   gap: var(--space-block);
   overflow: hidden;
   border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+  isolation: isolate;
 }
 
 .editorialHero {
@@ -316,9 +317,11 @@
 
 .heroVisual {
   position: relative;
+  z-index: 1;
   isolation: isolate;
   min-height: 470px;
   overflow: hidden;
+  contain: paint;
   border-radius: var(--radius);
   background:
     linear-gradient(135deg, rgba(221, 2, 14, 0.08), transparent 44%),
@@ -348,9 +351,11 @@
   left: 50%;
   z-index: 2;
   width: clamp(170px, 26vw, 280px);
+  max-width: 62%;
   height: auto;
   object-fit: contain;
   opacity: 0.92;
+  pointer-events: none;
   filter: drop-shadow(0 20px 42px rgba(221, 2, 14, 0.2));
   transform:
     translate(-50%, -50%)
@@ -553,7 +558,7 @@
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: var(--space-card);
   position: relative;
-  z-index: 2;
+  z-index: 4;
   margin-top: 6px;
 }
 
@@ -1474,7 +1479,8 @@
   }
 
   .heroArenaLogo {
-    width: clamp(138px, 46vw, 210px);
+    width: clamp(118px, 38vw, 190px);
+    max-width: 52%;
   }
 
   .heroTerminalMini {
@@ -1554,7 +1560,7 @@
   }
 
   .heroVisual {
-    min-height: 380px;
+    min-height: 340px;
   }
 
   .brandLogo {
