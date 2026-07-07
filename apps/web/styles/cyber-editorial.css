@@ -145,7 +145,7 @@
   min-height: 96vh;
   display: grid;
   align-content: center;
-  gap: 56px;
+  gap: var(--space-block);
   overflow: hidden;
   border-bottom: 1px solid rgba(255, 255, 255, 0.14);
 }
@@ -165,13 +165,13 @@
   display: grid;
   grid-template-columns: minmax(0, 1.12fr) minmax(340px, 0.88fr);
   align-items: center;
-  gap: clamp(60px, 10vw, 144px);
-  padding-top: 140px;
+  gap: clamp(80px, 12vw, 176px);
+  padding-top: clamp(9rem, 16vw, 13rem);
 }
 
 .heroContent {
   display: grid;
-  gap: 48px;
+  gap: var(--space-card);
   min-width: 0;
 }
 
@@ -257,7 +257,7 @@
 .heroActions {
   display: flex;
   flex-wrap: wrap;
-  gap: 12px;
+  gap: 18px;
 }
 
 .heroButton {
@@ -530,7 +530,7 @@
 .heroProofStrip {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 20px;
+  gap: var(--space-card);
   position: relative;
   z-index: 2;
   margin-top: 6px;
@@ -618,7 +618,7 @@
   min-height: 128px;
   display: grid;
   align-content: space-between;
-  padding: 28px;
+  padding: var(--space-card);
   color: #ffffff;
   font-weight: 800;
 }
@@ -632,9 +632,9 @@
 
 .protocolAlert {
   display: grid;
-  gap: 20px;
+  gap: var(--space-card);
   min-height: 190px;
-  padding: 28px;
+  padding: var(--space-card);
   border: 1px solid var(--border);
   border-left-width: 3px;
   border-radius: var(--radius);
@@ -664,7 +664,7 @@
 }
 
 .statusBox {
-  padding: 48px;
+  padding: var(--space-block);
 }
 
 .statusBox p,
@@ -681,7 +681,7 @@
   min-height: 150px;
   display: grid;
   align-content: space-between;
-  padding: 34px;
+  padding: var(--space-card);
 }
 
 .metricCard strong {
@@ -692,12 +692,12 @@
 
 .surfaceCard {
   min-height: 220px;
-  padding: 38px;
+  padding: var(--space-card);
 }
 
 .trialCard {
   min-height: 250px;
-  padding: 24px;
+  padding: var(--space-card);
   position: relative;
 }
 
@@ -790,9 +790,9 @@
 .assertionCase {
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
-  gap: 36px;
+  gap: var(--space-card);
   align-items: center;
-  padding: 34px;
+  padding: var(--space-card);
   position: relative;
   overflow: hidden;
 }
@@ -936,7 +936,7 @@
 .rankStep {
   display: grid;
   gap: 8px;
-  padding: 16px;
+  padding: clamp(1.2rem, 2.6vw, 2rem);
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: var(--radius);
   background:
@@ -1054,7 +1054,7 @@
 
 .playerCard,
 .leaderboardPanel {
-  padding: 52px;
+  padding: var(--space-block);
 }
 
 .playerCard {
@@ -1100,7 +1100,7 @@
 
 .playerCard h3 {
   max-width: 520px;
-  margin: 46px 0 0;
+  margin: var(--space-card) 0 0;
   color: #ffffff;
   font-family: var(--font-display);
   font-size: clamp(3rem, 5.6vw, 6rem);
@@ -1181,8 +1181,8 @@
 
 .cardFooter {
   flex-wrap: wrap;
-  margin-top: 26px;
-  padding-top: 18px;
+  margin-top: var(--space-card);
+  padding-top: clamp(1.2rem, 2.4vw, 2rem);
   border-top: 1px solid rgba(255, 255, 255, 0.14);
   color: var(--soft);
   font-family: var(--font-mono);
@@ -1190,7 +1190,7 @@
 }
 
 .leaderboardHeader {
-  padding-bottom: 20px;
+  padding-bottom: clamp(1.3rem, 2.6vw, 2rem);
   border-bottom: 1px solid var(--border);
 }
 
@@ -1210,7 +1210,7 @@
   grid-template-columns: 42px 1fr auto auto auto;
   align-items: center;
   gap: 14px;
-  padding: 18px 0;
+  padding: clamp(1.2rem, 2.4vw, 2rem) 0;
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
@@ -1243,7 +1243,7 @@
 }
 
 .trialMeta {
-  margin-bottom: 34px;
+  margin-bottom: var(--space-card);
 }
 
 .assertionRow {
@@ -1303,11 +1303,11 @@
 
   .hero {
     min-height: auto;
-    padding: 64px 0 56px;
+    padding: var(--space-section-compact) 0 var(--space-section-compact);
   }
 
   .heroEditorial {
-    padding-top: 28px;
+    padding-top: var(--space-card);
   }
 
   .heroBackdrop {
