@@ -11,23 +11,23 @@
   margin: 0;
   padding: 14px 16px;
   overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: var(--radius);
   background:
     linear-gradient(180deg, rgba(25, 32, 57, 0.42), rgba(0, 0, 0, 0.72)),
     rgba(0, 0, 0, 0.54);
   box-shadow:
+    var(--glass-ring),
     inset 0 -1px 0 rgba(221, 2, 14, 0.3),
-    0 18px 60px rgba(0, 0, 0, 0.34);
-  backdrop-filter: blur(26px) saturate(145%);
+    0 14px 34px rgba(0, 0, 0, 0.22);
+  backdrop-filter: blur(calc(var(--glass-blur) + 8px)) saturate(145%);
 }
 
 .topBar::before {
   position: absolute;
-  inset: 0 auto 0 0;
-  width: 3px;
+  inset: 0 18% auto;
+  height: 1px;
   content: "";
-  background: var(--danger);
+  background: linear-gradient(90deg, transparent, var(--danger), transparent);
 }
 
 .brandMark {
@@ -90,9 +90,9 @@
   z-index: 1;
   justify-content: center;
   padding: 4px;
-  border: 1px solid rgba(255, 255, 255, 0.09);
   border-radius: var(--radius);
   background: rgba(25, 32, 57, 0.36);
+  box-shadow: var(--glass-ring);
 }
 
 .primaryNav a {
@@ -178,9 +178,10 @@
 .heroEyebrow {
   width: fit-content;
   padding: 7px 10px;
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  border-left-color: rgba(221, 2, 14, 0.78);
   background: rgba(0, 0, 0, 0.58);
+  box-shadow:
+    var(--glass-ring),
+    inset 1px 0 0 rgba(221, 2, 14, 0.78);
 }
 
 .eyebrow,
@@ -269,9 +270,9 @@
   width: fit-content;
   margin-bottom: 0;
   padding: 14px 18px;
-  border: 1px solid var(--border-strong);
   border-radius: var(--radius);
   background: rgba(255, 255, 255, 0.06);
+  box-shadow: var(--glass-ring);
   color: #ffffff;
   display: inline-flex;
   align-items: center;
@@ -285,10 +286,11 @@
   gap: 6px;
   max-width: 560px;
   padding: 16px 18px;
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  border-left-color: rgba(74, 222, 128, 0.55);
   border-radius: var(--radius);
   background: rgba(25, 32, 57, 0.34);
+  box-shadow:
+    var(--glass-ring),
+    inset 0 1px 0 rgba(74, 222, 128, 0.28);
 }
 
 .heroProtocolStamp span,
@@ -310,16 +312,16 @@
   isolation: isolate;
   min-height: 470px;
   overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: var(--radius);
   background:
     linear-gradient(135deg, rgba(221, 2, 14, 0.08), transparent 44%),
     linear-gradient(180deg, rgba(25, 32, 57, 0.24), transparent 62%),
     rgba(0, 0, 0, 0.28);
   box-shadow:
+    var(--glass-ring),
     inset 0 1px 0 rgba(255, 255, 255, 0.08),
-    0 22px 80px rgba(0, 0, 0, 0.24);
-  backdrop-filter: blur(18px) saturate(130%);
+    0 16px 42px rgba(0, 0, 0, 0.18);
+  backdrop-filter: blur(var(--glass-blur)) saturate(130%);
 }
 
 .heroVisual::before {
@@ -361,9 +363,9 @@
   display: grid;
   gap: 8px;
   padding: 16px;
-  border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: var(--radius);
   background: rgba(0, 0, 0, 0.66);
+  box-shadow: var(--glass-ring);
   font-family: var(--font-mono);
   opacity: var(--hero-terminal-opacity, 1);
   transform: translate3d(0, calc(var(--hero-terminal-y, 0) * 1px), 0);
@@ -477,12 +479,12 @@
   gap: 5px;
   min-width: 78px;
   padding: 10px 12px;
-  border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: var(--radius);
   background: rgba(5, 5, 8, 0.68);
   box-shadow:
+    var(--glass-ring),
     inset 0 1px 0 rgba(255, 255, 255, 0.08),
-    0 18px 48px rgba(0, 0, 0, 0.34);
+    0 12px 32px rgba(0, 0, 0, 0.2);
   transform:
     translate(-50%, -50%)
     translate3d(
@@ -490,14 +492,20 @@
       calc(var(--orbital-y) * var(--tile-depth) * 28px),
       0
     );
-  transition: border-color 160ms ease, background 160ms ease, transform 220ms ease;
+  transition:
+    background var(--motion-fast) var(--motion-ease),
+    box-shadow var(--motion-medium) var(--motion-ease),
+    transform var(--motion-medium) var(--motion-ease);
   will-change: transform;
 }
 
 .heroVisual:hover .orbitalTile,
 .heroVisual:focus-within .orbitalTile {
-  border-color: rgba(255, 255, 255, 0.22);
   background: rgba(8, 8, 12, 0.78);
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    0 14px 36px rgba(0, 0, 0, 0.22);
 }
 
 .orbitalTile strong {
@@ -515,16 +523,22 @@
 }
 
 .orbitalTile.core {
-  border-color: rgba(255, 255, 255, 0.22);
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.22),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
 }
 
 .orbitalTile.mock {
-  border-color: rgba(246, 211, 101, 0.3);
+  box-shadow:
+    0 0 0 1px rgba(246, 211, 101, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
 }
 
 .orbitalTile.planned,
 .orbitalTile.future {
-  border-color: rgba(221, 2, 14, 0.34);
+  box-shadow:
+    0 0 0 1px rgba(221, 2, 14, 0.34),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
 }
 
 .heroProofStrip {
@@ -541,10 +555,10 @@
   gap: 12px;
   min-height: 128px;
   padding: 24px;
-  border: 1px solid rgba(255, 255, 255, 0.09);
   border-radius: var(--radius);
   background: rgba(255, 255, 255, 0.026);
-  backdrop-filter: blur(18px);
+  box-shadow: var(--glass-ring);
+  backdrop-filter: blur(var(--glass-blur));
 }
 
 .readinessItem span,
@@ -603,15 +617,15 @@
 .consolePanel,
 .playerCard,
 .leaderboardPanel {
-  border: 1px solid var(--border);
   border-radius: var(--radius);
   background:
     linear-gradient(180deg, rgba(255, 255, 255, 0.044), rgba(255, 255, 255, 0.016)),
     var(--surface);
   box-shadow:
+    var(--glass-ring),
     inset 0 1px 0 rgba(255, 255, 255, 0.07),
-    0 20px 70px rgba(0, 0, 0, 0.18);
-  backdrop-filter: blur(22px) saturate(132%);
+    0 12px 34px rgba(0, 0, 0, 0.14);
+  backdrop-filter: blur(var(--glass-blur)) saturate(132%);
 }
 
 .stage {
@@ -635,11 +649,10 @@
   gap: var(--space-card);
   min-height: 190px;
   padding: var(--space-card);
-  border: 1px solid var(--border);
-  border-left-width: 3px;
   border-radius: var(--radius);
   background: rgba(0, 0, 0, 0.28);
-  backdrop-filter: blur(18px);
+  box-shadow: var(--glass-ring);
+  backdrop-filter: blur(var(--glass-blur));
 }
 
 .protocolAlert strong {
@@ -656,11 +669,15 @@
 }
 
 .protocolAlert.note {
-  border-left-color: var(--protocol);
+  box-shadow:
+    var(--glass-ring),
+    inset 0 1px 0 rgba(182, 193, 255, 0.22);
 }
 
 .protocolAlert.warning {
-  border-left-color: var(--warning);
+  box-shadow:
+    var(--glass-ring),
+    inset 0 1px 0 rgba(250, 204, 21, 0.24);
 }
 
 .statusBox {
@@ -703,13 +720,13 @@
 
 .trialStreamPanel,
 .assertionCase {
-  border: 1px solid var(--border);
   border-radius: var(--radius);
   background: rgba(0, 0, 0, 0.32);
   box-shadow:
+    var(--glass-ring),
     inset 0 1px 0 rgba(255, 255, 255, 0.07),
-    0 20px 70px rgba(0, 0, 0, 0.2);
-  backdrop-filter: blur(18px);
+    0 12px 34px rgba(0, 0, 0, 0.16);
+  backdrop-filter: blur(var(--glass-blur));
 }
 
 .trialStreamPanel {
@@ -756,29 +773,29 @@
 .verificationRow span:nth-child(2) {
   width: fit-content;
   padding: 4px 7px;
-  border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: calc(var(--radius) - 2px);
+  box-shadow: var(--glass-ring);
 }
 
 .verificationRow.pass span:nth-child(2) {
-  border-color: rgba(74, 222, 128, 0.32);
+  box-shadow: 0 0 0 1px rgba(74, 222, 128, 0.32);
   color: var(--verified);
 }
 
 .verificationRow.warn span:nth-child(2) {
-  border-color: rgba(250, 204, 21, 0.34);
+  box-shadow: 0 0 0 1px rgba(250, 204, 21, 0.34);
   color: var(--warning);
 }
 
 .verificationRow.blocked span:nth-child(2) {
-  border-color: rgba(221, 2, 14, 0.46);
+  box-shadow: 0 0 0 1px rgba(221, 2, 14, 0.46);
   color: var(--danger);
 }
 
 .verificationRow.mock span:nth-child(2),
 .verificationRow.planned span:nth-child(2),
 .verificationRow.future span:nth-child(2) {
-  border-color: rgba(25, 32, 57, 0.82);
+  box-shadow: 0 0 0 1px rgba(25, 32, 57, 0.82);
   color: var(--protocol);
 }
 
@@ -799,10 +816,10 @@
 
 .assertionCase::before {
   position: absolute;
-  inset: 0 auto 0 0;
-  width: 2px;
+  inset: 0 22% auto;
+  height: 1px;
   content: "";
-  background: linear-gradient(180deg, var(--danger), transparent);
+  background: linear-gradient(90deg, transparent, var(--danger), transparent);
 }
 
 .assertionCase h3 {
@@ -828,9 +845,9 @@
   display: grid;
   gap: 4px;
   padding: 9px;
-  border: 1px solid rgba(255, 255, 255, 0.09);
   border-radius: calc(var(--radius) - 2px);
   background: rgba(255, 255, 255, 0.025);
+  box-shadow: var(--glass-ring);
   color: var(--muted);
   font-family: var(--font-mono);
   font-size: 0.66rem;
@@ -889,9 +906,9 @@
   display: grid;
   gap: 6px;
   padding: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: var(--radius);
   color: var(--muted);
+  box-shadow: var(--glass-ring);
   font-family: var(--font-mono);
   font-size: 0.7rem;
   text-transform: uppercase;
@@ -914,10 +931,13 @@
 
 .consolePanel {
   overflow: hidden;
-  border-color: rgba(221, 2, 14, 0.24);
   background:
     linear-gradient(180deg, rgba(25, 32, 57, 0.32), rgba(221, 2, 14, 0.024)),
     rgba(4, 4, 7, 0.62);
+  box-shadow:
+    0 0 0 1px rgba(221, 2, 14, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.07),
+    0 12px 34px rgba(0, 0, 0, 0.16);
 }
 
 .consoleHeader {
@@ -937,11 +957,11 @@
   display: grid;
   gap: 8px;
   padding: clamp(1.2rem, 2.6vw, 2rem);
-  border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: var(--radius);
   background:
     linear-gradient(135deg, rgba(25, 32, 57, 0.58), rgba(221, 2, 14, 0.055)),
     rgba(0, 0, 0, 0.2);
+  box-shadow: var(--glass-ring);
 }
 
 .rankStep strong {
@@ -1023,10 +1043,10 @@
 .consoleRow span:nth-child(3) {
   width: fit-content;
   padding: 4px 7px;
-  border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: calc(var(--radius) - 2px);
   color: var(--soft);
   font-size: 0.68rem;
+  box-shadow: var(--glass-ring);
 }
 
 .consoleFooter {
@@ -1040,12 +1060,12 @@
 
 .consoleFooter span {
   padding: 6px 9px;
-  border: 1px solid rgba(71, 240, 165, 0.2);
   border-radius: calc(var(--radius) - 2px);
   color: #dcffec;
   font-family: var(--font-mono);
   font-size: 0.7rem;
   text-transform: uppercase;
+  box-shadow: 0 0 0 1px rgba(71, 240, 165, 0.2);
 }
 
 .showcasePanel {
@@ -1115,23 +1135,24 @@
 
 .protocolStampRail span {
   padding: 7px 9px;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-left-color: rgba(221, 2, 14, 0.58);
   border-radius: calc(var(--radius) - 2px);
   background: rgba(255, 255, 255, 0.026);
   color: #ffffff;
   font-family: var(--font-mono);
   font-size: 0.68rem;
   text-transform: uppercase;
+  box-shadow:
+    var(--glass-ring),
+    inset 1px 0 0 rgba(221, 2, 14, 0.58);
 }
 
 .playerSignalRow span {
   display: grid;
   gap: 8px;
   padding: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: var(--radius);
   background: rgba(255, 255, 255, 0.026);
+  box-shadow: var(--glass-ring);
 }
 
 .playerSignalRow small {
@@ -1151,9 +1172,9 @@
   gap: 8px;
   min-width: 0;
   padding: 14px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: var(--radius);
   background: rgba(255, 255, 255, 0.024);
+  box-shadow: var(--glass-ring);
 }
 
 .playerMeta span,
