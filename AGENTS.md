@@ -33,26 +33,3 @@ Use expressive typography deliberately. BenchArena should feel editorial and pro
 | Logs / metadata / hashes / metrics | Monospace |
 
 If font files are not present in the repo, do not download random substitutes. Define named CSS variables with readable fallbacks and document the missing font files in the work summary.
-
-## CSS Orchestration
-
-- Keep `apps/web/app/globals.css` minimal.
-- Put design tokens and font variables in `apps/web/styles/tokens.css`.
-- Put base element rules in `apps/web/styles/base.css`.
-- Put layout primitives in `apps/web/styles/layout.css`.
-- Put shared effects in `apps/web/styles/effects.css`.
-- Put motion primitives in `apps/web/styles/motion.css`.
-- Put editorial/header typography in `apps/web/styles/cyber-editorial.css`.
-- Put grid/background texture utilities in `apps/web/styles/editor-grid.css`.
-- Put section-specific styles in CSS Modules beside each landing component.
-
-## Motion And Visual Rules
-
-- Use motion to create hierarchy and presence, not noise.
-- Honor `prefers-reduced-motion`.
-- Animate `transform` and `opacity` by default.
-- Keep the first viewport as one brand-led composition, not a dashboard.
-- The brand or product name must be a hero-level signal.
-- Do not place detached cards, badges, stats, or noisy overlays in the hero.
-- Keep runtime, proof, sandbox, wallet, MCP, Solana, database, and x402 features marked `Mock`, `Planned`, or `Future` unless real code exists.
-- Do not copy assets, code, or layouts from Codewars, xHermes, or any reference site. Use them only as product-language and interaction inspiration.
