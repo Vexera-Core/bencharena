@@ -1,181 +1,69 @@
-/* Shared controls, focus, and surface interaction effects. */
-
 :focus-visible {
-  outline: 2px solid var(--danger);
+  outline: 2px solid var(--accent);
   outline-offset: 4px;
 }
 
-.skipLink {
-  position: fixed;
-  top: 14px;
-  left: 14px;
-  z-index: 100;
-  padding: 10px 12px;
-  border: 1px solid var(--border-strong);
-  border-radius: var(--radius);
-  background: #09090d;
-  color: #ffffff;
-  font-weight: 900;
-  transform: translateY(-140%);
-  transition: transform 160ms ease;
-}
-
-.skipLink:focus-visible {
-  transform: translateY(0);
-}
-
-.primaryButton,
-.ghostButton {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 38px;
-  padding: 0 13px;
-  border-radius: var(--radius);
-  font-size: 0.74rem;
-  font-weight: 950;
-  letter-spacing: 0;
+.kicker {
+  color: var(--accent);
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  transition:
-    background var(--motion-fast) var(--motion-ease),
-    box-shadow var(--motion-medium) var(--motion-ease),
-    color var(--motion-fast) var(--motion-ease),
-    transform var(--motion-fast) var(--motion-ease);
 }
 
-.primaryButton {
-  border: 0;
-  background: linear-gradient(135deg, var(--arena-red-hot), var(--arena-red) 54%, var(--arena-red-deep));
-  color: #ffffff;
-  box-shadow:
-    0 0 0 1px rgba(221, 2, 14, 0.72),
-    0 16px 34px rgba(221, 2, 14, 0.14);
+.trust-line,
+.surface,
+.notice,
+.protocol-list li,
+.build-list li {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface-soft);
 }
 
-.primaryButton:hover,
-.primaryButton:focus-visible {
-  transform: translateY(-1px);
-  box-shadow:
-    0 0 0 1px rgba(255, 255, 255, 0.28),
-    0 20px 42px rgba(221, 2, 14, 0.2);
-}
-
-.ghostButton {
-  border: 0;
-  background: rgba(25, 32, 57, 0.32);
-  color: var(--soft);
-  box-shadow: var(--glass-ring);
-}
-
-.ghostButton:hover,
-.ghostButton:focus-visible {
-  background: rgba(25, 32, 57, 0.52);
-}
-
-.stage:hover,
-.surfaceCard:hover,
-.trialCard:hover,
-.metricCard:hover,
-.leaderboardPanel:hover,
-.playerCard:hover,
-.statusBox:hover,
-.protocolAlert:hover {
-  background-color: rgba(255, 255, 255, 0.055);
-  transform: translateY(-4px);
-}
-
-.stage,
-.surfaceCard,
-.statusBox,
-.protocolAlert,
-.trialCard,
-.metricCard,
-.leaderboardPanel,
-.playerCard,
-.primaryButton,
-.ghostButton {
-  transition:
-    background var(--motion-fast) var(--motion-ease),
-    box-shadow var(--motion-medium) var(--motion-ease),
-    transform var(--motion-fast) var(--motion-ease);
-  backdrop-filter: blur(var(--glass-blur));
-}
-
-.stage:hover,
-.stage:focus-within,
-.surfaceCard:hover,
-.surfaceCard:focus-within,
-.statusBox:hover,
-.statusBox:focus-within,
-.protocolAlert:hover,
-.protocolAlert:focus-within {
-  box-shadow:
-    0 0 0 1px rgba(255, 255, 255, 0.16),
-    inset 0 1px 0 rgba(255, 255, 255, 0.08),
-    0 14px 34px rgba(0, 0, 0, 0.18);
-}
-
-.stage:hover .stageIndex,
-.stage:focus-within .stageIndex {
-  color: var(--arena-red-hot);
-}
-
-.surfaceCard:hover .surfaceIcon,
-.surfaceCard:focus-within .surfaceIcon {
-  color: #ffffff;
-  transform: translateY(-2px);
-}
-
-.surfaceIcon {
-  transition:
-    color var(--motion-fast) var(--motion-ease),
-    transform var(--motion-fast) var(--motion-ease);
-}
-
-.protocolAlert.important {
-  box-shadow:
-    var(--glass-ring),
-    inset 0 1px 0 rgba(74, 222, 128, 0.24);
-  background: #000000;
-}
-
-.important {
-  background: linear-gradient(135deg, rgba(25, 32, 57, 0.34), rgba(221, 2, 14, 0.045));
-}
-
-.badge,
-.cardTopline span,
-.statusPill,
-.rankBadge {
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
+.trust-line {
   width: fit-content;
-  margin-bottom: 18px;
-  padding: 6px 10px;
-  border: 0;
-  border-radius: var(--radius);
-  background: rgba(25, 32, 57, 0.32);
-  box-shadow: var(--glass-ring);
-  color: #ffffff;
-  font-family: var(--font-technical);
-  font-size: 0.72rem;
-  font-weight: 900;
-  letter-spacing: 0;
-  text-transform: uppercase;
+  max-width: 100%;
+  padding: 0.85rem 1rem;
+  color: var(--text);
 }
 
-.statusPill.pass {
-  box-shadow: 0 0 0 1px rgba(71, 240, 165, 0.34);
-  color: #dcffec;
+.surface,
+.notice,
+.protocol-list li,
+.build-list li {
+  padding: clamp(1.25rem, 3vw, 2rem);
 }
 
-.statusPill.warning {
-  box-shadow: 0 0 0 1px rgba(246, 211, 101, 0.34);
-  color: #fff4bd;
+.surface h3 {
+  margin: 0.8rem 0 1rem;
+  font-size: 1.35rem;
+  line-height: 1.1;
 }
 
-.badgeVerified {
-  box-shadow: 0 0 0 1px rgba(71, 240, 165, 0.34);
-  color: #dcffec;
+.protocol-list li {
+  display: grid;
+  gap: 1.25rem;
+  min-height: 10rem;
+  align-content: space-between;
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.protocol-list span {
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+}
+
+.notice {
+  display: grid;
+  gap: 1.25rem;
+  background: linear-gradient(135deg, var(--surface), rgba(221, 2, 14, 0.08));
+}
+
+.build-list li {
+  min-height: 6rem;
+  font-weight: 700;
 }

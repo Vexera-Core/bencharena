@@ -1,44 +1,27 @@
-/* Global element defaults and accessible base behavior. */
-
 * {
   box-sizing: border-box;
-}
-
-*::selection {
-  background: rgba(221, 2, 14, 0.52);
-  color: #ffffff;
 }
 
 html,
 body {
   min-height: 100%;
   margin: 0;
-  overflow-x: hidden;
-  scroll-behavior: smooth;
-  background:
-    radial-gradient(circle at 48% -18%, rgba(221, 2, 14, 0.17), transparent 38rem),
-    radial-gradient(circle at 92% 28%, rgba(25, 32, 57, 0.34), transparent 44rem),
-    linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.026) 1px, transparent 1px),
-    var(--bg);
-  background-size: auto, auto, 76px 76px, 76px 76px, auto;
-  font-synthesis: none;
-  -webkit-font-smoothing: antialiased;
-  -webkit-tap-highlight-color: rgba(221, 2, 14, 0.18);
-  text-rendering: optimizeLegibility;
 }
 
 html {
-  color-scheme: dark;
-  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
 }
 
-a,
-button,
-input,
-select {
-  font: inherit;
-  touch-action: manipulation;
+body {
+  overflow-x: hidden;
+  background:
+    radial-gradient(circle at 70% 0%, var(--accent-soft), transparent 32rem),
+    linear-gradient(180deg, #05060a 0%, var(--background) 42%);
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-synthesis: none;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
 a {
@@ -46,29 +29,29 @@ a {
   text-decoration: none;
 }
 
-[id] {
-  scroll-margin-top: 112px;
-}
-
 h1,
 h2,
 h3,
 p {
-  margin-top: 0;
-  overflow-wrap: anywhere;
+  margin: 0;
 }
 
-h1 {
-  margin-bottom: 0;
-  color: #ffffff;
-  font-family: var(--font-display);
-  font-weight: 700;
-  letter-spacing: 0;
+h1,
+h2,
+h3 {
+  max-width: 820px;
+  letter-spacing: -0.03em;
+  line-height: 0.95;
   text-wrap: balance;
 }
 
-strong,
-b {
-  font-family: var(--font-emphasis);
-  font-weight: 700;
+p {
+  max-width: 720px;
+  color: var(--muted);
+  line-height: 1.75;
+  text-wrap: pretty;
+}
+
+img {
+  display: block;
 }

@@ -1,90 +1,18 @@
-/* Core BenchArena design tokens. */
-
-@font-face {
-  font-family: "Mileast";
-  font-display: swap;
-  font-style: normal;
-  font-weight: 400;
-  src:
-    local("Mileast"),
-    url("/fonts/Mileast.otf") format("opentype");
-}
-
-@font-face {
-  font-family: "Alphacorsa";
-  font-display: swap;
-  font-style: normal;
-  font-weight: 400;
-  src:
-    local("Alphacorsa Personal Use"),
-    url("/fonts/Alphacorsa-Personal-Use.ttf") format("truetype");
-}
-
-@font-face {
-  font-family: "Armelia";
-  font-display: swap;
-  font-style: normal;
-  font-weight: 400;
-  src:
-    local("Armelie Regular"),
-    url("/fonts/Armelie-Regular.otf") format("opentype");
-}
-
-@font-face {
-  font-family: "CurovaSemibold";
-  font-display: swap;
-  font-style: normal;
-  font-weight: 700;
-  src:
-    local("QurovaDEMO SemiBold"),
-    url("/fonts/QurovaDEMO-SemiBold.otf") format("opentype");
-}
-
 :root {
   color-scheme: dark;
-  --bg: #000000;
-  --bg-soft: #05070d;
-  --navy: #192039;
-  --navy-soft: rgba(25, 32, 57, 0.54);
-  --surface: rgba(25, 32, 57, 0.18);
-  --surface-strong: rgba(25, 32, 57, 0.34);
-  --glass: rgba(255, 255, 255, 0.035);
-  --glass-strong: rgba(255, 255, 255, 0.07);
-  --border: rgba(255, 255, 255, 0.1);
-  --border-strong: rgba(255, 255, 255, 0.2);
+  --background: #000000;
+  --surface: rgba(25, 32, 57, 0.52);
+  --surface-soft: rgba(25, 32, 57, 0.28);
+  --border: rgba(255, 255, 255, 0.12);
   --text: #ffffff;
-  --muted: #a1a1aa;
-  --soft: #e4e4e7;
-  --protocol: #b6c1ff;
-  --verified: #4ade80;
-  --warning: #facc15;
-  --arena-red: #dd020e;
-  --arena-red-hot: #ff1422;
-  --arena-red-deep: #5f0207;
-  --danger: var(--arena-red);
-  --radius: 8px;
-  --shadow-deep: 0 28px 72px rgba(0, 0, 0, 0.22);
-  --glass-blur: 18px;
-  --glass-ring: 0 0 0 1px rgba(255, 255, 255, 0.1);
-  --space-section: clamp(7rem, 13vw, 14rem);
-  --space-section-compact: clamp(4.5rem, 9vw, 9rem);
-  --space-block: clamp(2.5rem, 6vw, 6rem);
-  --space-card: clamp(1.5rem, 3vw, 3rem);
-  --motion-ease: cubic-bezier(0.16, 1, 0.3, 1);
-  --motion-fast: 180ms;
-  --motion-medium: 420ms;
-  --motion-slow: 900ms;
-  --font-ui: "Aptos", "Segoe UI Variable", "Segoe UI", ui-sans-serif, system-ui, sans-serif;
-  --font-body: "Mileast", var(--font-ui);
-  --font-display: "Armelia", var(--font-bodoni), "Bodoni 72", Didot, Georgia, serif;
-  --font-accent: "Alphacorsa", var(--font-cormorant), "Cormorant Garamond", Georgia, serif;
-  /* Warband is not present in the repo yet; secondary headings use a crisp local fallback. */
-  --font-secondary: "CurovaSemibold", var(--font-ui);
-  --font-emphasis: "CurovaSemibold", var(--font-ui);
-  --font-technical: "CurovaSemibold", var(--font-ui);
-  --font-mono: "SFMono-Regular", "Cascadia Code", Consolas, "Liberation Mono", monospace;
-  background: var(--bg);
-  color: var(--text);
-  font-family: var(--font-body);
-  font-variant-numeric: tabular-nums;
+  --muted: #a8b0c2;
+  --accent: #dd020e;
+  --accent-soft: rgba(221, 2, 14, 0.18);
+  --max-width: 1180px;
+  --radius: 10px;
+  --space-page: clamp(1.25rem, 2vw, 2rem);
+  --space-section: clamp(5rem, 10vw, 9rem);
+  --space-block: clamp(2rem, 5vw, 4rem);
+  --font-sans: Aptos, "Segoe UI Variable", "Segoe UI", Inter, ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "Cascadia Code", "SFMono-Regular", Consolas, "Liberation Mono", monospace;
 }
