@@ -1,6 +1,11 @@
+mod passport;
 mod security;
 mod types;
 
+pub use passport::{
+    PassportError, create_offchain_proof_receipt, generate_passport, normalize_identity,
+    passport_hash, stable_identity_hash,
+};
 pub use security::{
     SecurityGateFinding, SecurityGateResult, reject_private_key_language, reject_raw_memory_upload,
     reject_secret_fields, run_security_gate, validate_identity,
