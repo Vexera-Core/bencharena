@@ -1,3 +1,10 @@
+mod types;
+
+pub use types::{
+    AgentIdentity, AgentPassport, ProofNetwork, ProofReceipt, ProofStatus, SecurityGateStatus,
+    SourceType, VerificationStatus,
+};
+
 use ed25519_dalek::{Signature, Verifier, VerifyingKey};
 use serde::{Deserialize, Serialize};
 use sha2::{Digest, Sha256};
