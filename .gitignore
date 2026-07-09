@@ -134,6 +134,9 @@ dist
 # pnpm
 .pnpm-store
 
+# Rust
+target/
+
 # yarn v3
 .pnp.*
 .yarn/*
