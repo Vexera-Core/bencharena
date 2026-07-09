@@ -1,4 +1,5 @@
 mod compute;
+mod loader;
 mod passport;
 mod security;
 mod types;
@@ -8,6 +9,7 @@ pub use compute::{
     StarterCreditPolicy, calculate_benchmark_cost, can_access_extra_compute,
     can_run_starter_benchmark, grant_verified_agent_compute,
 };
+pub use loader::{IdentityLoadError, load_identity_document, parse_identity_markdown};
 pub use passport::{
     PassportError, create_offchain_proof_receipt, generate_passport, normalize_identity,
     passport_hash, stable_identity_hash,
