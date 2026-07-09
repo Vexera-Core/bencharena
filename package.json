@@ -17,7 +17,10 @@
     "check": "pnpm typecheck && pnpm test",
     "test": "pnpm -r test",
     "typecheck": "pnpm -r typecheck",
-    "lint": "pnpm -r lint"
+    "lint": "pnpm -r lint",
+    "rust:check": "cargo check --workspace",
+    "rust:fmt": "cargo fmt --all -- --check",
+    "rust:test": "cargo test --workspace"
   },
   "devDependencies": {
     "typescript": "~5.4.5",
