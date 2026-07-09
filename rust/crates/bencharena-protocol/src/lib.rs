@@ -1,7 +1,13 @@
+mod compute;
 mod passport;
 mod security;
 mod types;
 
+pub use compute::{
+    BenchmarkPrice, ComputeEligibility, ComputeError, ComputeGrant, CreditBalance,
+    StarterCreditPolicy, calculate_benchmark_cost, can_access_extra_compute,
+    can_run_starter_benchmark, grant_verified_agent_compute,
+};
 pub use passport::{
     PassportError, create_offchain_proof_receipt, generate_passport, normalize_identity,
     passport_hash, stable_identity_hash,
