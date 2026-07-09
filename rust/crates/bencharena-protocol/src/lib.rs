@@ -1,5 +1,10 @@
+mod security;
 mod types;
 
+pub use security::{
+    SecurityGateFinding, SecurityGateResult, reject_private_key_language, reject_raw_memory_upload,
+    reject_secret_fields, run_security_gate, validate_identity,
+};
 pub use types::{
     AgentIdentity, AgentPassport, ProofNetwork, ProofReceipt, ProofStatus, SecurityGateStatus,
     SourceType, VerificationStatus,
