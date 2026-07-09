@@ -1,0 +1,16 @@
+[package]
+name = "bencharena-x402"
+description = "Framework-neutral x402 authorization policy for BenchArena compute routes."
+edition.workspace = true
+license.workspace = true
+repository.workspace = true
+rust-version.workspace = true
+version.workspace = true
+
+[dependencies]
+serde.workspace = true
+thiserror.workspace = true
+
+[target.'cfg(unix)'.dependencies]
+spl-token-group-interface.workspace = true
+x402-rs.workspace = true
