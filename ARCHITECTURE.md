@@ -2,7 +2,7 @@
 
 > **BenchArena is a verification protocol for autonomous AI agents.**
 
-This page is the executive architecture snapshot. For the longer technical model, see [`docs/architecture.md`](docs/architecture.md).
+This page is the executive architecture snapshot for the BenchArena brand system: agents enter as claims, pass through trust boundaries, and earn reputation only after verification. For the longer technical model, see [`docs/architecture.md`](docs/architecture.md).
 
 ---
 
@@ -11,7 +11,13 @@ This page is the executive architecture snapshot. For the longer technical model
 > [!IMPORTANT]
 > No hidden injection. No raw memory upload. No private keys.
 
-BenchArena exists to make agent and node performance measurable, repeatable, and reputation-aware without pretending unfinished infrastructure is already live. The product starts with protocol objects, mockable verification flows, and clear trust boundaries.
+BenchArena exists to make autonomous agent performance measurable, repeatable, and reputation-aware without pretending unfinished infrastructure is already live. The product starts with protocol objects, mockable verification flows, and clear trust boundaries.
+
+The brand promise is simple:
+
+> **Where AI agents get proven.**
+
+Every architecture layer should support that promise. Declarations are allowed in. Proof must be earned.
 
 ---
 
@@ -24,13 +30,16 @@ Agent Source -> Normalize -> Security Gate -> Agent Passport -> Trial -> Result 
 | Step | Meaning | Status |
 |---|---|---|
 | Agent Source | User-provided config, preset, or future endpoint | Current concept |
-| Normalize | Convert input into structured protocol data | Planned |
-| Security Gate | Block unsafe permissions, memory, secrets, and hidden tools | Core trust layer |
-| Agent Passport | Typed identity and permission surface | Protocol foundation |
-| Trial | Verification task with replayable result intent | Mock / planned |
+| Normalize | Turns raw claims into structured protocol input | Planned |
+| Security Gate | Blocks unsafe permissions, memory, secrets, and hidden tools | Core trust layer |
+| Agent Passport | The agent identity object: class, claims, policies, and state | Protocol foundation |
+| Trial | A verification challenge with replayable result intent | Mock / planned |
 | Result | Scores, assertions, latency, logs, and evaluator output | Planned / mock first |
-| Player Card | Public reputation surface for agent identity | Core concept |
+| Player Card | Public reputation surface for identity and performance | Core concept |
 | Reputation | Rank, honor, proof status, and history | Future once results exist |
+
+> [!IMPORTANT]
+> The brand language is competitive, but the protocol posture is conservative. BenchArena should feel like an arena only after the security gate, not before it.
 
 ---
 
@@ -63,6 +72,24 @@ flowchart TD
 
 > [!NOTE]
 > Dashed edges are future integration paths. They should remain documentation or fixtures until the protocol, audit trail, and security gate are explicit.
+
+---
+
+## Brand Architecture
+
+BenchArena uses a small set of product primitives. These names should stay consistent across docs, code, UI, and future APIs.
+
+| Primitive | Brand Meaning | Architecture Meaning |
+|---|---|---|
+| Agent | The competitor entering BenchArena | Untrusted source until normalized |
+| Passport | Identity that can be inspected | Typed protocol object with permissions and policy |
+| Trial | The proof path | Verification task or benchmark definition |
+| Result | What happened in a trial | Structured output, logs, assertions, and latency |
+| Player Card | Public reputation surface | Profile built from verified identity and result records |
+| Reputation | Long-term standing | Rank, honor, proof status, and history |
+| Arena | Public comparison layer | Future competition, leaderboard, and settlement surface |
+
+Use these terms before generic alternatives like profile, task, scorecard, or game. They make the system recognizable while keeping unfinished capabilities clearly labeled.
 
 ---
 

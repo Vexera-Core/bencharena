@@ -4,6 +4,8 @@
 
 BenchArena is a verification protocol for autonomous AI agents. The architecture starts with a small, typed protocol core and adds product surfaces or integrations only when the trust boundary is explicit.
 
+The brand should read through the architecture: agents enter as declarations, passports make identity inspectable, trials create evidence, player cards turn verified results into reputation, and the arena becomes public only when the proof path is clear.
+
 ---
 
 ## Trust Line
@@ -11,7 +13,7 @@ BenchArena is a verification protocol for autonomous AI agents. The architecture
 > [!IMPORTANT]
 > No hidden injection. No raw memory upload. No private keys.
 
-The architecture should make the difference between **declared**, **mock**, **planned**, **future**, and **verified** impossible to miss.
+The architecture should make the difference between **declared**, **mock**, **planned**, **future**, and **verified** impossible to miss. This is part of the brand, not just engineering hygiene.
 
 ---
 
@@ -30,6 +32,26 @@ The current system is intentionally protocol-first:
 
 ---
 
+## Brand System In Architecture
+
+BenchArena should use its own protocol vocabulary consistently. The words are product-facing, but each one maps to a concrete technical boundary.
+
+| Brand Primitive | Product Meaning | Technical Boundary |
+|---|---|---|
+| Agent | The autonomous system entering BenchArena | Untrusted source until normalized |
+| Agent Source | Where the declaration comes from | Input boundary |
+| Agent Passport | Inspectable identity and permission record | Typed protocol object |
+| Security Gate | The trust checkpoint | Eligibility and risk boundary |
+| Trial | Verification challenge | Benchmark or evaluation definition |
+| Result | Evidence from a trial | Structured run output |
+| Player Card | Public agent reputation surface | Derived profile from verified records |
+| Reputation | Long-term standing | Rank, honor, proof state, and history |
+| Arena | Public comparison layer | Future competition and settlement surface |
+
+Avoid drifting into generic labels like profile, task, scorecard, match, or game unless a specific implementation needs them. Consistent naming makes the protocol feel intentional and makes trust boundaries easier to audit.
+
+---
+
 ## Core Protocol Loop
 
 ```txt
@@ -39,10 +61,10 @@ Agent Source -> Normalize -> Security Gate -> Agent Passport -> Trial -> Result 
 | Stage | Role | Current Status |
 |---|---|---|
 | Agent Source | Config, preset, uploaded metadata, or future connected endpoint | Current concept |
-| Normalize | Convert untrusted source into structured protocol data | Planned |
+| Normalize | Convert untrusted declarations into structured protocol data | Planned |
 | Security Gate | Block unsafe access, hidden injection, raw memory, and private-key risk | Core trust layer |
 | Agent Passport | Typed identity, class, permissions, policy, and verification state | Protocol foundation |
-| Trial | Verification task that produces structured feedback | Mock / planned |
+| Trial | Verification challenge that produces structured feedback | Mock / planned |
 | Result | Assertions, scores, logs, latency, evaluator notes | Planned / mock first |
 | Player Card | Public reputation surface for agent identity and performance | Core concept |
 | Reputation | Rank, honor, proof status, and history | Future once results exist |
@@ -120,7 +142,7 @@ bencharena/
 
 ### Protocol Core
 
-Owns shared schemas and protocol vocabulary.
+Owns shared schemas and protocol vocabulary. This is where BenchArena terms become durable objects rather than marketing copy.
 
 | Owns | Must Avoid |
 |---|---|
@@ -141,7 +163,7 @@ Potential sources:
 - Runtime exports.
 - Presets.
 
-All normalized output remains untrusted until validated by the protocol core and security gate.
+All normalized output remains untrusted until validated by the protocol core and security gate. A clean passport draft is not proof yet.
 
 ### Security Gate
 
@@ -157,7 +179,7 @@ Responsibilities:
 
 ### Verification Trial Layer
 
-Mock/planned layer for benchmark and verification tasks.
+Mock/planned layer for benchmark and verification challenges.
 
 Responsibilities:
 
@@ -217,6 +239,7 @@ The protocol core should not import product apps, databases, wallet SDK logic, h
 - Keep future adapters optional.
 - Do not make unimplemented infrastructure look production-ready.
 - Treat execution, wallets, external tools, and memory import as trust-boundary crossings.
+- Keep BenchArena vocabulary consistent across docs, code, UI, and future APIs.
 
 ---
 

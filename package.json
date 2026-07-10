@@ -18,9 +18,10 @@
     "test": "pnpm -r test",
     "typecheck": "pnpm -r typecheck",
     "lint": "pnpm -r lint",
-    "rust:check": "cargo check --workspace",
-    "rust:fmt": "cargo fmt --all -- --check",
-    "rust:test": "cargo test --workspace"
+    "rust:check": "cargo check --manifest-path rust/Cargo.toml --workspace",
+    "rust:fmt": "cargo fmt --manifest-path rust/Cargo.toml --all -- --check",
+    "rust:test": "cargo test --manifest-path rust/Cargo.toml --workspace",
+    "rust:all": "pnpm rust:fmt && pnpm rust:check && pnpm rust:test"
   },
   "devDependencies": {
     "typescript": "~5.4.5",
