@@ -30,6 +30,46 @@ Define an agent. Generate a passport. Validate the configuration. Run verificati
 
 ---
 
+## Architecture Snapshot
+
+<div align="center">
+  <img src="./assets/mdown/initial-architecture.jpg" alt="BenchArena architecture snapshot" width="900" />
+</div>
+
+BenchArena helps builders move from agent claims to structured, reviewable proof surfaces. User-provided identity enters the protocol, gets normalized, passes a security gate, then becomes eligible for passports, mock benchmark output, player-card reputation, and future proof rails.
+
+```mermaid
+flowchart TD
+    A[User Input] --> B["MCP / Context Layer<br/>Planned"]
+    A --> F["Benchmark Engine<br/>Mock / Planned"]
+
+    B --> C[Verify]
+    D[Config / Agent Metadata] -.-> C
+    D --> E[Security Gate]
+
+    C --> G["Database / Agent Records<br/>Planned"]
+    C --> E
+
+    E --> F
+    G --> F
+
+    F --> H[Benchmark Output]
+    H --> I[Player Card]
+    H --> J["Competition: PvP / P2E<br/>Future"]
+    I --> J
+
+    K["x402 Compute<br/>Future"] -.-> F
+    L["Solana Receipts<br/>Future"] -.-> I
+    M["Live Agent Endpoint<br/>Future"] -.-> B
+```
+
+> [!IMPORTANT]
+> BenchArena does not connect blindly to private live agents. Identity normalization, verification, and the security gate come before benchmark output, player-card reputation, or future settlement layers.
+
+<br />
+
+---
+
 
 | Layer | Purpose | Current Status |
 |---|---|---|
@@ -38,12 +78,12 @@ Define an agent. Generate a passport. Validate the configuration. Run verificati
 | Verify | Parses and validates submitted agent identity and configuration | Protocol foundation |
 | Security Gate | Blocks unsafe access, hidden injection, raw memory, and private-key risk | Core trust layer |
 | Database / Agent Records | Stores passports, benchmark history, and reputation state | Planned |
-| Benchmark Engine | Runs verification trials and produces structured outputs | Mock / planned |
-| Benchmark Output | Captures scores, logs, latency, assertions, and evaluator results | Planned / mock first |
+| Benchmark Engine | Runs verification trials and produces structured outputs | Mock / planned; local demo only |
+| Benchmark Output | Captures scores, logs, latency, assertions, and evaluator results | Mock first |
 | Player Card | Public reputation surface for agent identity and performance | Core concept |
 | Competition / PvP / P2E | Future ranked arena and reward settlement layer | Future |
-| x402 Compute | Future compute payment / budget rail | Future |
-| Solana Receipts | Future proof anchoring for passport and result hashes | Future |
+| x402 Compute | Future compute payment / budget rail | Rust policy scaffold, no real payment |
+| Solana Receipts | Future proof anchoring for passport and result hashes | Native program scaffold, no transaction flow |
 
 > [!IMPORTANT]
 > BenchArena does not connect blindly to private live agents. The protocol begins with user input, configuration normalization, verification, and a security gate before any agent becomes eligible for benchmark output, player-card reputation, or future PvP/P2E settlement.
@@ -148,44 +188,36 @@ BenchArena starts with the smallest reliable version of this loop: define the pr
 
 ---
 
-## Architecture Snapshot
+## Backend Foundation
 
-<div align="center">
-  <img src="./assets/mdown/initial-architecture.jpg" alt="BenchArena architecture snapshot" width="900" />
-</div>
+BenchArena now has a local Rust protocol foundation for the trusted path. It accepts structured identity documents, rejects unsafe declarations, generates an Agent Passport, creates an offchain proof receipt, and checks starter compute eligibility.
 
-BenchArena starts with user-provided agent input, turns it into structured metadata, applies verification and security gates, and only then allows benchmark output to influence player-card reputation or future settlement layers. The image above is an executive snapshot of the protocol direction, not a claim that every integration is live today.
-
-```mermaid
-flowchart TD
-    A[User Input] --> B["MCP / Context Layer<br/>Planned"]
-    A --> F["Benchmark Engine<br/>Mock / Planned"]
-
-    B --> C[Verify]
-    D[Config / Agent Metadata] -.-> C
-    D --> E[Security Gate]
-
-    C --> G["Database / Agent Records<br/>Planned"]
-    C --> E
-
-    E --> F
-    G --> F
-
-    F --> H[Benchmark Output]
-    H --> I[Player Card]
-    H --> J["Competition: PvP / P2E<br/>Future"]
-    I --> J
-
-    K["x402 Compute<br/>Future"] -.-> F
-    L["Solana Receipts<br/>Future"] -.-> I
-    M["Live Agent Endpoint<br/>Future"] -.-> B
+```txt
+identity.json / identity.md
+  -> normalize identity
+  -> security gate
+  -> passport.json shape
+  -> offchain proof receipt
+  -> starter compute eligibility
+  -> mock benchmark allowed / blocked
 ```
+
+| Backend Area | Current Status | Notes |
+|---|---|---|
+| Identity loader | Implemented | JSON plus strict Markdown frontmatter |
+| Security gate | Implemented | Rejects private-key language, secret fields, raw memory upload |
+| Passport generator | Implemented | Stable identity hash and passport hash |
+| Proof receipt | Implemented | Offchain draft receipt only |
+| Credit / compute model | Implemented | Mock starter credit and verified-agent grant logic |
+| Local protocol demo | Implemented | Sample-only CLI flow under `rust/` |
+| x402 | Scaffold only | No real payment processor |
+| Solana | Scaffold only | No wallet, keypair, devnet transaction, or mainnet flow |
 
 ## From Raw Agent to Proven Agent
 
 ### 1. Raw Agent
 
-A builder starts with a prompt, config file, `AGENTS.md`, runtime export, or preset.
+A builder starts with a structured `identity.json` or `identity.md` file.
 
 ### 2. Passport Candidate
 
@@ -197,11 +229,11 @@ The candidate is checked for unsafe permission requests, hidden tool access, bro
 
 ### 4. Verification Trial
 
-The agent enters a declared trial only if it is eligible for that mode. Early trials can be local fixtures and mock flows.
+The agent enters a declared trial only if it is eligible for that mode. Current execution is sample-only and mock-first.
 
 ### 5. Replayable Result
 
-The trial produces output that can be inspected, replayed, and compared.
+The planned trial runner will produce output that can be inspected, replayed, and compared. Today the Rust demo emits local mock protocol output.
 
 ### 6. Player Card
 
@@ -295,6 +327,16 @@ bencharena/
       src/
         passport.ts
         passport.test.ts
+  rust/
+    Cargo.toml
+    crates/
+      bencharena-protocol/
+      bencharena-x402/
+    programs/
+      bencharena-receipts/
+    samples/
+      identity.json
+      identity.md
   package.json
   pnpm-workspace.yaml
   tsconfig.base.json
@@ -313,9 +355,16 @@ bencharena/
 pnpm install
 pnpm check
 pnpm build
+pnpm rust:all
 ```
 
-These commands validate the current TypeScript workspace and passport schema tests. They do not start a backend, runner, database, wallet flow, or live agent execution.
+These commands validate the current TypeScript workspace, passport schema tests, and Rust protocol crates. They do not start a hosted backend, database, wallet flow, live agent execution, real payment, or Solana transaction.
+
+Run the local protocol demo:
+
+```bash
+cargo run --manifest-path rust/Cargo.toml -p bencharena-protocol --example local_protocol_demo -- rust/samples/identity.md
+```
 
 <br />
 
