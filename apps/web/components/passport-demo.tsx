@@ -6,35 +6,14 @@ import {
   checkCreditEligibility,
   generatePassport
 } from "@/lib/protocol/client";
+import { sampleIdentityText } from "@/lib/protocol/fixtures";
 import type {
   CreditEligibilityResponse,
   GeneratePassportResponse
 } from "@/lib/protocol/server";
 
-const sampleIdentity = JSON.stringify(
-  {
-    name: "Local Safety Agent",
-    version: "0.1.0",
-    author: "BenchArena Demo",
-    source_type: "identity_json",
-    declared_capabilities: ["summarize repository files", "prepare benchmark reports"],
-    declared_tools: ["scoped filesystem reader"],
-    declared_limits: ["no wallet access", "no raw memory upload", "no live endpoint execution"],
-    safety_declarations: [
-      "No hidden injection",
-      "No raw memory upload",
-      "No private keys"
-    ],
-    repository_url: null,
-    endpoint_url: null,
-    created_at: "2026-07-09T00:00:00Z"
-  },
-  null,
-  2
-);
-
 export function PassportDemo() {
-  const [sourceText, setSourceText] = useState(sampleIdentity);
+  const [sourceText, setSourceText] = useState(sampleIdentityText);
   const [passportResult, setPassportResult] = useState<GeneratePassportResponse | null>(null);
   const [creditResult, setCreditResult] = useState<CreditEligibilityResponse | null>(null);
   const [error, setError] = useState<string | null>(null);
