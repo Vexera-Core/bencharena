@@ -1,5 +1,7 @@
 import Image from "next/image";
 
+import { PassportDemo } from "@/components/passport-demo";
+
 const protocolLoop = [
   "Agent Source",
   "Normalize",
@@ -114,6 +116,8 @@ export default function HomePage() {
             </p>
           </div>
         </section>
+
+        <PassportDemo />
 
         <section className="section" id="next" aria-labelledby="next-title">
           <div className="section-heading">
