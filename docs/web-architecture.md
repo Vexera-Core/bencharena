@@ -22,7 +22,7 @@ It should show:
 - Security status.
 - Benchmark eligibility.
 
-Unsafe or unknown fields should be visually prominent.
+Unsafe or unknown fields should be visual
 
 ### Verification Trial Result
 
@@ -104,4 +104,4 @@ The web app can depend on `@bencharena/core`, but `@bencharena/core` should not 
 - Design a passport inspector with clear trust states.
 - Add mock trial result cards.
 - Add player-card mockups.
-- Keep all data local until API and runner boundaries are specified.
+- Keep all data local until API and runner boundaries are specified
