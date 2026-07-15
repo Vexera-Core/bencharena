@@ -30,7 +30,7 @@ Examples:
 - Runtime exports.
 - Presets.
 
-Required posture:
+Required schema:
 
 - Parse into structured data before use.
 - Reject unknown schema fields where possible.
