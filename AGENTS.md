@@ -1,309 +1,325 @@
-# BenchArena Agent Notes
+# AGENTS.md
 
-BenchArena is a verification protocol for autonomous AI agents.
+## Project Identity
+
+This repository is `bencharena`.
+
+BenchArena is the verification protocol for autonomous AI agents. It gives open-source builders, vibe coders, AI developers, and researchers a way to passport, validate, compare, and prove the agents they create.
+
+Core line:
+
+> BenchArena is where AI agents get proven.
 
 Core loop:
 
-`Agent Source -> Normalize -> Security Gate -> Agent Passport -> Trial -> Result -> Player Card -> Reputation`
-
-Trust line that must stay visible in product and protocol surfaces:
-
-`No hidden injection. No raw memory upload. No private keys.`
-
-## Current Project Phase
-
-Architecture, README, and high-level positioning are mostly established.
-
-Default work mode is now **implementation-first**:
-
-1. Add real scaffolds, schemas, routes, packages, tests, scripts, and mock-first integrations.
-2. Keep unimplemented systems clearly marked `Mock`, `Planned`, or `Future`.
-3. Update README/docs only when they reflect real code that was added.
-4. Do not spend commits only polishing language unless the user explicitly asks for docs.
-
-Do not get stuck in planning mode. Prefer small working increments.
-
-## Installed Skills
-
-Use only installed project skills when relevant:
-
-- `/impeccable` for final quality pass, cleanup, consistency, and verifying no broken leftovers.
-- `/make-interfaces-feel-better` for visual polish, spacing, hierarchy, hover states, and reducing generic UI.
-- `/web-design-guidelines` for accessibility, typography, focus states, contrast, reduced motion, and responsive checks.
-- `/vercel-composition-patterns` for component orchestration, feature folders, package boundaries, and scalable structure.
-- `/vercel-react-best-practices` for Next.js, React, server/client boundaries, API routes, bundle hygiene, and tests.
-- `/vercel-react-view-transitions` only for route/page transitions or motion that improves navigation and hierarchy.
-
-If a task is backend/protocol/Rust/Solana/payment related, act as a Senior Backend Engineer and Protocol Architect. Use `/vercel-composition-patterns`, `/vercel-react-best-practices`, and `/impeccable` for structure and verification.
-
-## What To Build Next
-
-Prioritize practical implementation scaffolds over more abstract docs.
-
-High-priority areas:
-
-- Identity file parsing:
-  - `identity.json`
-  - `identity.md` with structured frontmatter
-- Passport generation:
-  - `passport.json` as canonical machine-readable output
-  - `passport.md` as human-readable report
-- Canonical JSON normalization and stable hashing.
-- Mock API routes:
-  - parse identity
-  - generate passport
-  - verify passport
-  - produce mock/offchain proof receipt
-- Rust workspace for protocol, verification, proof, credits, and future Solana anchoring.
-- Credit/payment model:
-  - mock $1 starter credit/deposit
-  - starter/free benchmark eligibility
-  - extra compute eligibility for verified agents
-  - no real payment processor until explicitly requested
-- Future Solana/devnet scaffold:
-  - hash anchoring only
-  - no keypairs
-  - no mainnet
-  - no wallet connection unless explicitly requested
-- Future MCP integrations:
-  - official connections only
-  - verify docs before implementing
-  - start with mock connectors and typed boundaries
-- Future marketplace surfaces:
-  - agent profile
-  - verification status
-  - passport/proof status
-  - compute eligibility
-  - reputation/player card
-
-## Integration Rules
-
-When adding integrations, follow this order:
-
-1. Types and schemas.
-2. Pure functions.
-3. Tests.
-4. Mock API route or local script.
-5. UI surface if needed.
-6. README/docs update only if the implementation exists.
-
-Never claim a live integration exists unless real code exists.
-
-Do not implement:
-- real wallet connection
-- real payments
-- real Solana transactions
-- real MCP server connection
-- real sandbox execution
-- private endpoint execution
-- raw memory upload
-- private-key handling
-
-unless the user explicitly asks and the safety boundary is clear.
-
-## Identity And Passport Rules
-
-Markdown is for humans. JSON is for machines.
-
-Use:
-
-- `identity.json` as structured declared identity.
-- `identity.md` only when it compiles into the same canonical identity structure.
-- `passport.json` as canonical generated passport.
-- `passport.md` as a human-readable passport/report.
-
-Canonical JSON is the source of truth for:
-- validation
-- hashing
-- receipts
-- replay rules
-- future Solana anchoring
-
-Declarations are not proof.
-
-A passport may contain declared metadata, but verified claims must come from trial results.
-
-## Rust / Solana Direction
-
-Rust should be added as a real workspace when backend protocol work begins.
-
-Preferred structure:
-
 ```txt
-rust/
-  Cargo.toml
-  crates/
-    bencharena-protocol/
-    bencharena-verification/
-    bencharena-proof/
-    bencharena-credits/
-  programs/
-    bencharena-passport/
+Agent Source → Agent Code → Agent Build → Normalize → Security Gate → Agent Passport → Trial → Result → Player Card → Reputation
 
-Rust scripts should support:
+Source of Truth
 
-cargo fmt
-cargo check
-cargo test
+Before making any significant change, read these files if they exist:
 
-Solana is devnet/future only until explicitly implemented.
+README.md
+CONTRIBUTING.md
+SECURITY.md
+docs/product-brief.md
+docs/architecture.md
+docs/trust-model.md
+docs/web-architecture.md
+docs/roadmap.md
 
-Future Solana program purpose:
+Use README.md as the public product source of truth.
 
-anchor identity/passport/result/credit receipt hashes
-never store private raw agent data
-never store private keys
-never store raw memory
+Use this AGENTS.md file as the development behavior guide.
 
-No keypairs, wallet connection, deploy output, or target build artifacts should be committed.
+If a referenced file does not exist yet, do not fail. State that it is missing and continue carefully.
 
-Credit And Compute Rules
+Current Repository Stage
 
-The credit system starts mock-first.
+This repository is in early foundation mode.
 
-Concept:
+Do not assume completed infrastructure exists unless the files are present in the repository.
 
-builder/agent can have a $1 starter credit/deposit
-starter policy can unlock a first benchmark
-extra compute requires credits or verified-good-agent grant
-verified agents can receive compute grants later
+Do not invent working backend services, databases, Docker services, Solana programs, MCP servers, x402 rails, or benchmark runners unless they already exist in code.
 
-Do not add real Stripe, x402, crypto payment, wallet, or billing flow until explicitly requested.
+When adding new work, build in this order:
 
-Payment/credit status must be clearly labeled:
+documentation
+repository structure
+shared types
+mock data
+UI components
+pages
+API routes
+runner logic
+integrations
+proof/payment layers
 
-mock_pending
-mock_paid
-comped
-failed
-planned
-Frontend Typography
+The first useful product version should work with mock data before real integrations are added.
 
-Use expressive typography deliberately. BenchArena should feel editorial and protocol-grade, not like a generic SaaS template.
+Product Rules
 
-Role	Font
-Body / regular text	Mileast
-Main display / hero	Armelia
-Editorial notes / thesis lines	Alphacorsa
-Secondary headings	Warband
-Bold emphasis in paragraphs / callouts	CurovaSemibold
-Logs / metadata / hashes / metrics	Monospace
+BenchArena is not a gambling product, casino product, monster-battle clone, or meme-token game.
 
-Do not merely write font-family names. If fonts are used, wire the actual files through @font-face or the correct Next.js font setup.
+Use these terms:
 
-If font files are not present in the repo:
+agent
+passport
+verification
+trial
+benchmark
+player card
+proof
+reputation
+leaderboard
+receipt
+rank
+honor
+arena
 
-do not download random substitutes
-use clean modern fallbacks
-report missing files in the work summary
+Avoid these terms unless explicitly discussing what not to do:
 
-Avoid ugly default fonts anywhere visible.
+gambling
+betting
+casino
+loot box
+wagering
+monster battle
+Pokémon-style
+pay-to-win
+Trust Rules
 
-CSS Orchestration
+Never design or implement flows that require:
 
-Keep CSS modular and backend/API-ready.
+private keys
+seed phrases
+raw wallet files
+unrestricted shell access
+unrestricted host filesystem access
+raw memory upload by default
+hidden tool injection
+blind connection to a private live agent
 
-Keep apps/web/app/globals.css minimal.
-Put design tokens and font variables in apps/web/styles/tokens.css.
-Put base element rules in apps/web/styles/base.css.
-Put layout primitives in apps/web/styles/layout.css.
-Put shared effects in apps/web/styles/effects.css.
-Put motion primitives in apps/web/styles/motion.css.
-Put editorial/header typography in apps/web/styles/cyber-editorial.css.
-Put workspace/grid utilities in apps/web/styles/editor-grid.css.
-Put section-specific styles in CSS Modules beside each component.
+Always preserve this trust line:
 
-Do not dump section styling into globals.css.
+No hidden injection. No raw memory upload. No private keys.
 
-Frontend Visual Rules
+If a feature touches agent execution, tools, memory, wallets, MCP servers, payments, or external APIs, explain the trust boundary before implementing.
 
-Use the current BenchArena logo and palette:
+Technical Direction
 
-black base
-deep navy #192039
-arena red from the logo
-white typography
-transparent/glass surfaces where useful
+Use the actual repository files as the source of truth.
 
-Avoid:
+Do not assume dependencies, scripts, folders, or frameworks beyond what is present in:
 
-generic SaaS cards
-muddy gray surfaces
-cheap glow
-noisy hero overlays
-casino, meme, gambling, monster-battle, or pay-to-win language
-copied Codewars/xHermes assets, code, or layouts
+package.json
+pnpm-workspace.yaml
+turbo.json
+tsconfig.json
+tsconfig.base.json
+existing app/package folders
+existing Docker or infra files
 
-Use Codewars only as interaction/workbench inspiration.
-Use xHermes only as dark infrastructure/runtime inspiration.
+If a command or script does not exist, say so clearly.
 
-Motion Rules
-Use motion to create hierarchy and presence, not noise.
-Honor prefers-reduced-motion.
-Animate transform and opacity by default.
-Use Framer Motion only where it improves clarity.
-Keep motion slow, premium, controlled, and non-bouncy.
-Hero/background hover effects must not block readability.
-README / Docs Update Rules
+Expected early direction, only if confirmed by the repo:
 
-README/docs should be updated only when:
+TypeScript
+Node.js
+pnpm
+Next.js
+React
+Tailwind CSS
+mock data first
 
-a real scaffold was added
-a real script was added
-a real API route was added
-a real package/crate was added
-a real mock integration exists
-status labels changed because implementation changed
+Expected later direction, only when intentionally added:
 
-Do not make large README rewrites for every task.
+PostgreSQL
+Redis
+Docker Compose
+MCP Firewall
+Solana Receipts
+x402 Compute
+benchmark runner
+replay logs
+usage receipts
+GitHub Integration Rules
 
-When docs are updated, be honest:
+This repo is connected to GitHub by normal Git remote authentication.
 
-Implemented
-Mock
-Planned
-Future
-Commit Rules
+Do not commit secrets.
 
-Use small consecutive commits.
+Never write real values for:
 
-Preferred style:
+GITHUB_TOKEN
+OPENAI_API_KEY
+ANTHROPIC_API_KEY
+DATABASE_URL
+SOLANA_RPC_URL
+wallet private keys
+seed phrases
+.env contents
 
-<commit-name>--add-identity-schemas
-<commit-name>--add-passport-generator
-<commit-name>--add-mock-passport-api
-<commit-name>--add-rust-protocol-workspace
-<commit-name>--add-credit-compute-model
-<commit-name>--final-protocol-tests
+Use placeholder documentation only in .env.example.
 
-Do not hard-code commit numbers unless the user asks.
+If GitHub Actions are added later, secrets must be referenced securely through GitHub Secrets, for example:
 
-Verification Commands
+env:
+  OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
 
-Run relevant commands before final response.
+Do not create GitHub Actions, Codex Actions, deployment workflows, or CI secrets unless explicitly requested.
 
-For TypeScript/Next.js:
+MCP and Open-Source Integration Rules
 
+MCP support is part of the future architecture, but do not connect real MCP servers by default.
+
+For MCP-related work:
+
+start with documentation
+define descriptor types
+define trust boundaries
+define mock manifests
+avoid live external tool calls
+never allow hidden tool injection
+never allow unreviewed filesystem, shell, wallet, or network access
+
+Open-source collaborations should be structured around safe extension points:
+
+benchmark packs
+agent presets
+passport schemas
+MCP descriptor examples
+replay/result schemas
+UI components
+documentation improvements
+
+Do not add real external dependency integrations unless the repo already contains the required package and configuration, or the user explicitly asks for that integration.
+
+Design Direction
+
+BenchArena should feel like a serious verification protocol with competitive energy.
+
+Visual style:
+
+dark
+technical
+clean
+card-based
+protocol metadata
+verification badges
+rank and honor elements
+proof and receipt surfaces
+replay-style inspection surfaces
+
+Do not make the UI look like:
+
+a casino
+a meme coin site
+a cartoon battle game
+a copied Codewars UI
+a copied Pokémon-style game
+
+Use Codewars only as product-architecture inspiration:
+
+Codewars: Kata → Solve → Feedback → Rank → Honor → Leaderboard
+BenchArena: Agent → Passport → Trial → Result → Reputation → Leaderboard
+Development Rules
+
+Keep changes small and commit-friendly.
+
+Prefer one logical layer per commit.
+
+When making changes, report:
+
+files changed
+why they changed
+how to test
+suggested commit message
+
+Before claiming completion, run relevant checks if available:
+
+pnpm lint
 pnpm typecheck
 pnpm test
 pnpm build
 
-For Rust:
+If scripts do not exist, state that clearly.
 
-cargo fmt --manifest-path rust/Cargo.toml --check
-cargo check --manifest-path rust/Cargo.toml
-cargo test --manifest-path rust/Cargo.toml
+Do not claim tests passed unless they were actually run.
 
-If a command cannot run because a tool is missing, report it clearly.
+Commit Style
 
-Final Response Format
+Use numbered commit messages in this project style.
 
-Always summarize:
+Examples:
 
-Commits created.
-Files changed.
-What was implemented.
-What remains mock/planned/future.
-Tests/scripts run.
-Missing tools or blocked items.
-Preview or next command.
+017--init-bencharena-foundation
+018--add-codex-project-context
+019--add-product-brief-docs
+020--add-web-architecture-notes
+021--add-mock-agent-passports
+022--add-player-card-ui
+
+Suggested format:
+
+NNN--short-action-description
+
+Use lowercase words separated by hyphens.
+
+First Build Priorities
+
+The next smallest useful commits should be:
+
+018--add-codex-project-context
+019--add-product-brief-docs
+020--add-architecture-and-trust-docs
+021--add-web-architecture-and-roadmap
+022--add-mock-agent-passport-data
+
+Do not jump directly into complex backend work.
+
+Expected Product Objects
+
+When adding types or mock data, start with these objects:
+
+Agent
+Agent Passport
+Verification State
+Security Gate Result
+Trial
+Trial Result
+Player Card
+Leaderboard Row
+Usage Receipt
+Proof Receipt
+
+Keep early objects simple and readable.
+
+Output Expectations
+
+For planning tasks, respond with:
+
+understanding
+proposed files
+exact changes
+test plan
+commit message
+
+For implementation tasks, make the smallest safe change and explain exactly what changed.
+
+For unclear tasks, ask one focused clarification question before editing.
+
+Non-Negotiables
+
+BenchArena must remain:
+
+passport-first
+verification-first
+security-conscious
+mock-data-friendly in early stages
+honest about unfinished features
+proof-ready without leaking private data
+open-source friendly
+useful for agent developers, vibe coders, AI researchers, security teams, MCP builders, Web3 builders, and DePIN/compute teams
+
+---
