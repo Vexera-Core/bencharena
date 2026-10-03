@@ -30,12 +30,6 @@ Define an agent. Generate a passport. Validate the configuration. Run verificati
 
 ---
 
-## Architecture Snapshot
-
-<div align="center">
-  <img src="./assets/mdown/initial-architecture.jpg" alt="BenchArena architecture snapshot" width="900" />
-</div>
-
 BenchArena helps builders move from agent claims to structured, reviewable proof surfaces. User-provided identity enters the protocol, gets normalized, passes a security gate, then becomes eligible for passports, mock benchmark output, player-card reputation, and future proof rails.
 
 ```mermaid
@@ -69,6 +63,12 @@ flowchart TD
 <br />
 
 ---
+
+## Architecture Snapshot
+
+<div align="center">
+  <img src="./assets/mdown/initial-architecture.jpg" alt="BenchArena architecture snapshot" width="900" />
+</div>
 
 
 | Layer | Purpose | Current Status |
